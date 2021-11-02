@@ -8,12 +8,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using WanderersDiary.Entities.Models.User;
 
 namespace WanderersDiary.API.Services.Auth
 {
 	public interface IJwtGenerator
 	{
-		string CreateToken(IdentityUser user);
+		string CreateToken(Wanderer user);
 	}
 
 	public class JwtGenerator : IJwtGenerator
@@ -25,7 +26,7 @@ namespace WanderersDiary.API.Services.Auth
 			_key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
 		}
 
-		public string CreateToken(IdentityUser user)
+		public string CreateToken(Wanderer user)
 		{
 			List<Claim> claims = new()
 			{

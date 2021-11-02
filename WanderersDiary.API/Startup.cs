@@ -22,6 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.API.Services.Auth;
 using WanderersDiary.Entities;
+using WanderersDiary.Entities.Models.User;
 
 namespace WanderersDiary.API
 {
@@ -50,14 +51,14 @@ namespace WanderersDiary.API
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))
             );
 
-            services.AddIdentityCore<IdentityUser>()
+            services.AddIdentityCore<Wanderer>()
                 .AddEntityFrameworkStores<WDDbContext>()
-                .AddSignInManager<SignInManager<IdentityUser>>();
+                .AddSignInManager<SignInManager<Wanderer>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
+                .AddJwtBearer(options =>
                 {
-                    opt.TokenValidationParameters = new TokenValidationParameters
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
@@ -66,6 +67,7 @@ namespace WanderersDiary.API
                         ValidateLifetime = true,
                         ClockSkew = TimeSpan.Zero
                     };
+                    options.SaveToken = true;
                 }
             );
 

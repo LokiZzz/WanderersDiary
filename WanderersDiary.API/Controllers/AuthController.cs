@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WanderersDiary.API.Services.Auth;
 using WanderersDiary.Contracts.Auth;
+using WanderersDiary.Entities.Models.User;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace WanderersDiary.API.Controllers
@@ -20,13 +21,13 @@ namespace WanderersDiary.API.Controllers
     {
         private readonly ILogger<AuthController> _logger;
 
-        public UserManager<IdentityUser> UserManager { get; }
-        public SignInManager<IdentityUser> SignInManager { get; }
+        public UserManager<Wanderer> UserManager { get; }
+        public SignInManager<Wanderer> SignInManager { get; }
         public IJwtGenerator JwtGenerator { get; }
 
         public AuthController(ILogger<AuthController> logger,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Wanderer> userManager,
+            SignInManager<Wanderer> signInManager,
             IJwtGenerator jwtGenerator)
         {
             _logger = logger;
@@ -39,7 +40,7 @@ namespace WanderersDiary.API.Controllers
         [HttpPost("signin")]
         public async Task<ActionResult<SignInResponse>> SignInAsync(SignInRequest request)
         {
-            IdentityUser user = await UserManager.FindByEmailAsync(request.Login);
+            Wanderer user = await UserManager.FindByEmailAsync(request.Login);
             if (user == null)
             {
                 return Unauthorized();
@@ -57,9 +58,9 @@ namespace WanderersDiary.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("signup")]
-        public async Task<ActionResult<SignUpResponse>> SignUpAsync(SignInRequest request)
+        public async Task<ActionResult<SignUpResponse>> SignUpAsync(SignUpRequest request)
         {
-            IdentityUser newUser = new IdentityUser { Email = request.Email, UserName = request.Login };
+            Wanderer newUser = new Wanderer { Email = request.Email, UserName = request.Login };
             IdentityResult result = await UserManager.CreateAsync(newUser);
 
             if(result.Succeeded)

@@ -7,11 +7,12 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using WanderersDiary.Entities.Models.Character;
+using WanderersDiary.Entities.Models;
+using WanderersDiary.Entities.Models.User;
 
 namespace WanderersDiary.Entities
 {
-    public class WDDbContext : IdentityDbContext
+    public class WDDbContext : IdentityDbContext<Wanderer>
     {
         public WDDbContext(DbContextOptions options) : base(options) { }
 

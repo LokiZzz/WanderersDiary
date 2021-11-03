@@ -44,7 +44,7 @@ namespace WanderersDiary.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("signin")]
+        [HttpPost("sign-in")]
         public async Task<ActionResult<SignInResponse>> SignInAsync(SignInRequest request)
         {
             Wanderer user = await UserManager.FindByNameAsync(request.Login);
@@ -78,7 +78,7 @@ namespace WanderersDiary.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("signup")]
+        [HttpPost("sign-up")]
         public async Task<ActionResult<SignUpResponse>> SignUpAsync(SignUpRequest request)
         {
             Wanderer newUser = new Wanderer { Email = request.Email, UserName = request.Login };
@@ -107,7 +107,7 @@ namespace WanderersDiary.API.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("refreshtoken")]
+        [Route("refresh-token")]
         public async Task<IActionResult> RefreshToken([FromBody] TokenRequest tokenRequest)
         {
             VerifyTokenResult res = await JwtGenerator.VerifyTokenAsync(tokenRequest);
@@ -122,26 +122,58 @@ namespace WanderersDiary.API.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("confirmemail")]
+        [Route("confirm-email")]
         public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest request)
         {
             Wanderer user = UserManager.FindByIdAsync(request.UserId).Result;
             IdentityResult result = await UserManager.ConfirmEmailAsync(user, request.Token);
 
-            if (result.Succeeded)
+            return result.Succeeded ? Ok() : BadRequest();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("request-password-reset")]
+        public async Task<IActionResult> RequestPasswordReset(string username)
+        {
+            Wanderer user = await UserManager.FindByNameAsync(username);
+
+            if (user == null || user?.EmailConfirmed != true)
             {
-                return Ok();
+                BadRequest("User not found.");
             }
-            else
-            {
-                return BadRequest();
-            }
+
+            string token = await UserManager.GeneratePasswordResetTokenAsync(user);
+            await EmailService.SendAsync(
+                user.Email, 
+                new EmailMessage { Subject = "Reset password", HtmlContent = token }
+            );
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordRequest request)
+        {
+            Wanderer user = await UserManager.FindByNameAsync(request.UserName);
+
+            IdentityResult result = await UserManager.ResetPasswordAsync(
+                user, 
+                request.Token, 
+                request.NewPassword
+            );
+
+            return result.Succeeded ? Ok() : BadRequest();
         }
 
         [HttpGet("check")]
-        public string Get()
+        public async Task<string> Get()
         {
-            return User.GetId();
+            Wanderer user = await UserManager.FindByIdAsync(User.GetId());
+
+            return $"{user.UserName} ({user.Id})";
         }
 
         private string GetEmailConfirmationURL(string userId, string confirmationToken)

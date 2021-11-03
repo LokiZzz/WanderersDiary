@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,9 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WanderersDiary.API.Services.Auth;
+using WanderersDiary.API.Services.Email;
 using WanderersDiary.Contracts.Auth;
 using WanderersDiary.Entities.Models.User;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
@@ -25,38 +28,53 @@ namespace WanderersDiary.API.Controllers
         public UserManager<Wanderer> UserManager { get; }
         public SignInManager<Wanderer> SignInManager { get; }
         public IJwtGenerator JwtGenerator { get; }
+        public IEmailService EmailService { get; }
 
         public AuthController(ILogger<AuthController> logger,
             UserManager<Wanderer> userManager,
             SignInManager<Wanderer> signInManager,
-            IJwtGenerator jwtGenerator)
+            IJwtGenerator jwtGenerator,
+            IEmailService emailService)
         {
             _logger = logger;
             UserManager = userManager;
             SignInManager = signInManager;
             JwtGenerator = jwtGenerator;
+            EmailService = emailService;
         }
 
         [AllowAnonymous]
         [HttpPost("signin")]
         public async Task<ActionResult<SignInResponse>> SignInAsync(SignInRequest request)
         {
-            Wanderer user = await UserManager.FindByEmailAsync(request.Login);
+            Wanderer user = await UserManager.FindByNameAsync(request.Login);
             if (user == null)
             {
                 return Unauthorized();
             }
 
+            if (!user.EmailConfirmed)
+            {
+                return new SignInResponse { IsSuccess = false, Errors = new List<string> { "Please, confirm your email." } };
+            }
+
             SignInResult result = await SignInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (result.Succeeded)
-            {
+            {               
                 CreateTokenResult tokenResult = await JwtGenerator.CreateTokenAsync(user);
 
-                return new SignInResponse { Token = tokenResult.Token, RefreshToken = tokenResult.RefreshToken };
+                return new SignInResponse 
+                { 
+                    IsSuccess = true,
+                    Token = tokenResult.Token, 
+                    RefreshToken = tokenResult.RefreshToken 
+                };
             }
-
-            return Unauthorized();
+            else
+            {
+                return new SignInResponse { IsSuccess = false };
+            }
         }
 
         [AllowAnonymous]
@@ -68,18 +86,23 @@ namespace WanderersDiary.API.Controllers
 
             if(result.Succeeded)
             {
-                await UserManager.AddPasswordAsync(newUser, request.Password);
+                result = await UserManager.AddPasswordAsync(newUser, request.Password);
 
-                return new SignUpResponse { IsSuccess = true };
+                if (result.Succeeded)
+                {
+                    string confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(newUser);
+                    string confirmationLink = GetEmailConfirmationURL(newUser.Id, confirmationToken);
+                    await EmailService.SendAsync(newUser.Email, new EmailMessage { Subject = "Confirm email", HtmlContent = confirmationLink });
+
+                    return new SignUpResponse { IsSuccess = true };
+                }
             }
-            else
-            {
-                return new SignUpResponse 
-                { 
-                    IsSuccess = false, 
-                    Errors = result.Errors.Select(e => e.Description).ToList() 
-                };
-            }
+            
+            return new SignUpResponse 
+            { 
+                IsSuccess = false, 
+                Errors = result.Errors.Select(e => e.Description).ToList() 
+            };
         }
 
         [AllowAnonymous]
@@ -97,10 +120,44 @@ namespace WanderersDiary.API.Controllers
             return Ok(res);
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("confirmemail")]
+        public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest request)
+        {
+            Wanderer user = UserManager.FindByIdAsync(request.UserId).Result;
+            IdentityResult result = await UserManager.ConfirmEmailAsync(user, request.Token);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpGet("check")]
         public string Get()
         {
             return User.GetId();
+        }
+
+        private string GetEmailConfirmationURL(string userId, string confirmationToken)
+        {
+            string currentController = ControllerContext.RouteData.Values["controller"].ToString();
+
+            return Url.Action(
+                action: nameof(ConfirmEmail), 
+                controller: currentController, 
+                values: new ConfirmEmailRequest
+                { 
+                    UserId = userId, 
+                    Token = confirmationToken 
+                }, 
+                protocol: HttpContext.Request.Scheme
+            );
         }
     }
 }

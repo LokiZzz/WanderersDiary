@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.API.Services.Auth;
+using WanderersDiary.API.Services.Email;
 using WanderersDiary.Entities;
 using WanderersDiary.Entities.Models.User;
 
@@ -37,6 +38,24 @@ namespace WanderersDiary.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureSecurity(services);
+
+            ConfigureUtilityServices(services);
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WanderersDiary.API", Version = "v1" });
+            });
+        }
+
+        private void ConfigureUtilityServices(IServiceCollection services)
+        {
+            services.TryAddScoped<IEmailService, EmailService>();
+        }
+
+        private void ConfigureSecurity(IServiceCollection services)
+        {
             services.TryAddSingleton<ISystemClock, SystemClock>();
             services.TryAddScoped<IJwtGenerator, JwtGenerator>();
 
@@ -51,8 +70,12 @@ namespace WanderersDiary.API
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionString"))
             );
 
-            services.AddIdentityCore<Wanderer>()
+            services.AddIdentityCore<Wanderer>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+            })
                 .AddEntityFrameworkStores<WDDbContext>()
+                .AddDefaultTokenProviders()
                 .AddSignInManager<SignInManager<Wanderer>>();
 
             TokenValidationParameters tokenValidationParameters = GetTokenValidationParameters();
@@ -65,12 +88,6 @@ namespace WanderersDiary.API
                     options.SaveToken = true;
                 }
             );
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WanderersDiary.API", Version = "v1" });
-            });
         }
 
         private TokenValidationParameters GetTokenValidationParameters()
@@ -82,7 +99,6 @@ namespace WanderersDiary.API
                 ValidateAudience = false,
                 ValidateIssuer = false,
                 ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero
             };
         }
 

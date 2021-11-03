@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:auth="clr-namespace:WanderersDiary.Client.ViewModels.Auth"
+             xmlns:res="clr-namespace:WanderersDiary.Client.Resources"
+             x:Class="WanderersDiary.Client.Views.Auth.SignInPage"
+             x:DataType="auth:SignInPageVM">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Text="{Binding Login}"/>
+            <Entry Text="{Binding Password}"/>
+            <Button Text="{x:Static res:LanguageResources.SignInPage_SignIn}" Command="{Binding SignInCommand}"/>
+            <Button Text="switch!!!!!!" Command="{Binding SwitchLanguageCommand}"/>
+            <Label Text="{Binding Response}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

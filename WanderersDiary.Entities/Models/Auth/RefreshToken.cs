@@ -11,6 +11,7 @@ namespace WanderersDiary.Entities.Models.Auth
 {
     public class RefreshToken : EntityBase
     {
+        public string JWTId { get; set; }
         public string Token { get; set; }
         public bool IsUsed { get; set; } 
         public bool IsRevoked { get; set; } 

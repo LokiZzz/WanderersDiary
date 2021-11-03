@@ -55,18 +55,13 @@ namespace WanderersDiary.API
                 .AddEntityFrameworkStores<WDDbContext>()
                 .AddSignInManager<SignInManager<Wanderer>>();
 
+            TokenValidationParameters tokenValidationParameters = GetTokenValidationParameters();
+            services.AddSingleton(tokenValidationParameters);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
-                        ValidateAudience = false,
-                        ValidateIssuer = false,
-                        ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero
-                    };
+                    options.TokenValidationParameters = tokenValidationParameters;
                     options.SaveToken = true;
                 }
             );
@@ -76,6 +71,19 @@ namespace WanderersDiary.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WanderersDiary.API", Version = "v1" });
             });
+        }
+
+        private TokenValidationParameters GetTokenValidationParameters()
+        {
+            return new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

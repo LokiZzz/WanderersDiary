@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -50,7 +51,9 @@ namespace WanderersDiary.API.Controllers
 
             if (result.Succeeded)
             {
-                return new SignInResponse { Token = JwtGenerator.CreateToken(user)};
+                CreateTokenResult tokenResult = await JwtGenerator.CreateTokenAsync(user);
+
+                return new SignInResponse { Token = tokenResult.Token, RefreshToken = tokenResult.RefreshToken };
             }
 
             return Unauthorized();
@@ -77,6 +80,21 @@ namespace WanderersDiary.API.Controllers
                     Errors = result.Errors.Select(e => e.Description).ToList() 
                 };
             }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("refreshtoken")]
+        public async Task<IActionResult> RefreshToken([FromBody] TokenRequest tokenRequest)
+        {
+            VerifyTokenResult res = await JwtGenerator.VerifyTokenAsync(tokenRequest);
+
+            if (res == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(res);
         }
 
         [HttpGet("check")]

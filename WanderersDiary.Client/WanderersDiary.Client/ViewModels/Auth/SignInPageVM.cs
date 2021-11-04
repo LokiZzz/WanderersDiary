@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
+using WanderersDiary.Client.Localization;
+using Xamarin.Forms;
 
 namespace WanderersDiary.Client.ViewModels.Auth
 {
@@ -31,6 +33,12 @@ namespace WanderersDiary.Client.ViewModels.Auth
             {
                 CultureInfo.CurrentUICulture = new CultureInfo("ru-RU", false);
             }
+
+            MessagingCenter.Send<object, CultureChangedMessage>(
+                sender: this, 
+                message: string.Empty, 
+                args: new CultureChangedMessage(CultureInfo.CurrentUICulture)
+            );
         }
 
         public DelegateCommand SwitchLanguageCommand { get; set; }

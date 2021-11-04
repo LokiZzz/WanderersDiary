@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WanderersDiary.Client.Resources {
+namespace WanderersDiary.Client.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WanderersDiary.Client.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WanderersDiary.Client.Resources.LanguageResources", typeof(LanguageResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WanderersDiary.Client.Localization.LanguageResources", typeof(LanguageResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -9,7 +9,7 @@
         <StackLayout>
             <Entry Text="{Binding Login}"/>
             <Entry Text="{Binding Password}"/>
-            <Button Text="{x:Static res:LanguageResources.SignInPage_SignIn}" Command="{Binding SignInCommand}"/>
+            <Button Text="{Binding Resources[SignInPage_SignIn]}" Command="{Binding SignInCommand}"/>
             <Button Text="switch!!!!!!" Command="{Binding SwitchLanguageCommand}"/>
             <Label Text="{Binding Response}"/>
         </StackLayout>

@@ -8,9 +8,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Entry Text="{Binding Login}"/>
-            <Entry Text="{Binding Password}"/>
+            <Entry Text="{Binding Password}" IsPassword="True"/>
             <Button Text="{Binding Resources[SignInPage_SignIn]}" Command="{Binding SignInCommand}"/>
-            <Button Text="switch!!!!!!" Command="{Binding SwitchLanguageCommand}"/>
             <Label Text="{Binding Response}"/>
         </StackLayout>
     </ContentPage.Content>

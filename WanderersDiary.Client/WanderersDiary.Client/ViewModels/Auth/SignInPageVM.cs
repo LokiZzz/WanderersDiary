@@ -6,42 +6,32 @@ using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.Client.Localization;
+using WanderersDiary.Client.Services.Auth;
+using WanderersDiary.Contracts.Auth;
 using Xamarin.Forms;
 
 namespace WanderersDiary.Client.ViewModels.Auth
 {
     public class SignInPageVM : ViewModelBase
     {
-        public SignInPageVM(INavigationService navigationService) : base(navigationService)
+        public IAccountService AccountService { get; }
+
+        public SignInPageVM(INavigationService navigationService, IAccountService accountService) : base(navigationService)
         {
-            SwitchLanguageCommand = new DelegateCommand(ExecuteSwitchLanguage);
             SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
+            AccountService = accountService;
         }
 
-        private Task ExecuteSignIn()
+        private async Task ExecuteSignIn()
         {
-            throw new NotImplementedException();
+            Login = "lokizzz5";
+            Password = "03Dragonfly#03";
+
+            SignInResponse response = await AccountService.SignInAsync(Login, Password);
+
+            Response = $"Token: {response.Token}\nRefreshToken: {response.RefreshToken}";
         }
 
-        private void ExecuteSwitchLanguage()
-        {
-            if (CultureInfo.CurrentUICulture.Name == "ru-RU")
-            {
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
-            }
-            else
-            {
-                CultureInfo.CurrentUICulture = new CultureInfo("ru-RU", false);
-            }
-
-            MessagingCenter.Send<object, CultureChangedMessage>(
-                sender: this, 
-                message: string.Empty, 
-                args: new CultureChangedMessage(CultureInfo.CurrentUICulture)
-            );
-        }
-
-        public DelegateCommand SwitchLanguageCommand { get; set; }
         public DelegateCommand SignInCommand { get; set; }
 
         #region Bindable properties

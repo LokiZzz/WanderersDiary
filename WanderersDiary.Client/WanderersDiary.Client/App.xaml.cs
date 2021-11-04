@@ -2,6 +2,8 @@ using Prism;
 using Prism.Ioc;
 using System;
 using WanderersDiary.Client.Navigation;
+using WanderersDiary.Client.Services.Auth;
+using WanderersDiary.Client.Services.HTTP;
 using WanderersDiary.Client.ViewModels;
 using WanderersDiary.Client.ViewModels.Auth;
 using WanderersDiary.Client.ViewModels.Common;
@@ -11,7 +13,6 @@ using WanderersDiary.Client.Views.Common;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
-using static WanderersDiary.Client.Navigation.NavigationParametersNames.Common;
 
 namespace WanderersDiary.Client
 {
@@ -43,6 +44,8 @@ namespace WanderersDiary.Client
         private void RegisterUtilityServices(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterScoped<INavigationTrailService, NavigationTrailService>();
+            containerRegistry.RegisterSingleton<IRestService, RestService>();
+            containerRegistry.RegisterSingleton<IAccountService, AccountService>();
         }
 
         private static void RegisterForNavigation(IContainerRegistry containerRegistry)

@@ -9,6 +9,14 @@ using Xamarin.Forms;
 
 namespace WanderersDiary.Client.Resources
 {
+    //How to use:
+
+    //CultureInfo.CurrentUICulture = new CultureInfo("en-US", false);
+    //CultureInfo.CurrentUICulture = new CultureInfo("ru-RU", false);
+    //MessagingCenter.Send<object, CultureChangedMessage>(sender: this, message: string.Empty, args: new CultureChangedMessage(CultureInfo.CurrentUICulture));
+
+    //<Button Text="{Binding Resources[SignInPage_SignIn]}"/>
+
     public class LocalizedResources : INotifyPropertyChanged
     {
         private const string DEFAULT_LANGUAGE = "en";

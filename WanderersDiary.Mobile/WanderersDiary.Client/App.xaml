@@ -3,12 +3,10 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="http://prismlibrary.com"
                         xmlns:Styles="clr-namespace:WanderersDiary.Client.Styles"
-                        xmlns:Themes="clr-namespace:WanderersDiary.Client.Themes"
                         x:Class="WanderersDiary.Client.App">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <Themes:MainTheme />
                 <Styles:StyleDictionary/>
             </ResourceDictionary.MergedDictionaries>
             

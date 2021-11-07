@@ -6,11 +6,10 @@
              x:Class="WanderersDiary.Client.Views.Auth.SignInPage"
              x:DataType="auth:SignInPageVM">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Entry Text="{Binding Login}"/>
             <Entry Text="{Binding Password}" IsPassword="True"/>
             <Button Text="{Binding Resources[SignInPage_SignIn]}" Command="{Binding SignInCommand}"/>
-            <Label Text="{Binding Response}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

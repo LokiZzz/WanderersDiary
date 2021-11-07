@@ -1,11 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             x:Class="WanderersDiary.Client.App">
-  <Application.Resources>
-
-    <!-- Application resource dictionary -->
-
-  </Application.Resources>
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="http://prismlibrary.com"
+                        xmlns:Styles="clr-namespace:WanderersDiary.Client.Styles"
+                        xmlns:Themes="clr-namespace:WanderersDiary.Client.Themes"
+                        x:Class="WanderersDiary.Client.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <Themes:MainTheme />
+                <Styles:StyleDictionary/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <ControlTemplate x:Key="BusyPageTemplate">
+                <Grid>
+                    <Rectangle BackgroundColor="Black" 
+                               Opacity="0.5" 
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill"
+                               IsVisible="{Binding IsBusy}"/>
+                    <ActivityIndicator VerticalOptions="Fill"
+                                       HorizontalOptions="Fill"
+                                       IsRunning="True"
+                                       IsVisible="{Binding IsBusy}"/>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
 </prism:PrismApplication>

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.Client.Localization;
+using WanderersDiary.Client.Services.Alert;
 using WanderersDiary.Client.Services.Auth;
 using WanderersDiary.Contracts.Auth;
 using Xamarin.Forms;
@@ -15,11 +16,15 @@ namespace WanderersDiary.Client.ViewModels.Auth
     public class SignInPageVM : ViewModelBase
     {
         public IAccountService AccountService { get; }
+        public IAlertService AlertService { get; }
 
-        public SignInPageVM(INavigationService navigationService, IAccountService accountService) : base(navigationService)
+        public SignInPageVM(INavigationService navigationService, 
+            IAccountService accountService) 
+            : base(navigationService)
         {
             SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
             AccountService = accountService;
+            AlertService = DependencyService.Get<IAlertService>();
         }
 
         private async Task ExecuteSignIn()
@@ -29,7 +34,10 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
             SignInResponse response = await AccountService.SignInAsync(Login, Password);
 
-            Response = $"Token: {response.Token}\nRefreshToken: {response.RefreshToken}";
+            if (response.IsSuccess)
+                AlertService.LongAlert("Success");
+            else
+                AlertService.LongAlert("Fail");
         }
 
         public DelegateCommand SignInCommand { get; set; }
@@ -48,13 +56,6 @@ namespace WanderersDiary.Client.ViewModels.Auth
         {
             get { return _password; }
             set { SetProperty(ref _password, value); }
-        }
-
-        private string _response;
-        public string Response
-        {
-            get { return _response; }
-            set { SetProperty(ref _response, value); }
         }
 
         #endregion

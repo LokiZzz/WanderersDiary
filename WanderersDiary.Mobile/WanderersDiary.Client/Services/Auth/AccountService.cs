@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.Client.Services.HTTP;
 using WanderersDiary.Contracts.Auth;
+using Xamarin.Essentials;
 
 namespace WanderersDiary.Client.Services.Auth
 {
@@ -23,7 +24,7 @@ namespace WanderersDiary.Client.Services.Auth
 
         public async Task<SignInResponse> SignInAsync(string login, string password)
         {
-            return await RestService.PostAsync<SignInRequest, SignInResponse>(
+            SignInResponse response = await RestService.PostAsync<SignInRequest, SignInResponse>(
                 @"https://192.168.50.40:44370/auth/sign-in",
                 new SignInRequest
                 {
@@ -31,6 +32,14 @@ namespace WanderersDiary.Client.Services.Auth
                     Password = password
                 }
             );
+
+            if(response.IsSuccess)
+            {
+                Preferences.Set(Settings.Auth.Token, response.Token);
+                Preferences.Set(Settings.Auth.RefreshToken, response.Token);
+            }
+
+            return response;
         }
     }
 }

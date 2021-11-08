@@ -2,8 +2,21 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Color x:Key="PageBackgroundColor">#131313</Color>
+    <Color x:Key="ButtonTextColor">#FDFDFD</Color>
+
     <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStop Color="{DynamicResource ButtonBackgroundColor1}" Offset="0.1" />
+                    <GradientStop Color="{DynamicResource ButtonBackgroundColor2}" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
     </Style>
     
 </ResourceDictionary>

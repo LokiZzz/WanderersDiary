@@ -3,8 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="WanderersDiary.Client.PurpleTheme">
        
-    <Color x:Key="PageBackgroundColor">DarkGray</Color>
+    <Color x:Key="ButtonBackgroundColor1">#4A00E0</Color>
+    <Color x:Key="ButtonBackgroundColor2">#8E2DE2</Color>
 
-    <Color x:Key="ButtonBackgroundColor">Pink</Color>
-    
 </ResourceDictionary>

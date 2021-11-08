@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.Client.Localization;
 using WanderersDiary.Client.Resources;
+using WanderersDiary.Client.Services;
 using WanderersDiary.Client.Services.Alert;
 using WanderersDiary.Client.Services.Auth;
 using WanderersDiary.Contracts.Auth;
@@ -18,50 +19,28 @@ namespace WanderersDiary.Client.ViewModels.Auth
     public class SignInPageVM : ViewModelBase
     {
         public IAccountService AccountService { get; }
+        public IThemeService ThemeService { get; }
         public IAlertService AlertService { get; }
 
         public SignInPageVM(INavigationService navigationService, 
-            IAccountService accountService) 
+            IAccountService accountService, IThemeService themeService) 
             : base(navigationService)
         {
             SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
             ChangeThemeCommand = new DelegateCommand(() => ExecuteChangeTheme());
 
             AccountService = accountService;
+            ThemeService = themeService;
             AlertService = DependencyService.Get<IAlertService>();
         }
 
+        bool isPurple = false;
         private void ExecuteChangeTheme()
-        {  
-            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-            if (mergedDictionaries != null)
-            {
-                var dictionariesToDelete = new List<ResourceDictionary>();
-                foreach(var dictionary in mergedDictionaries)
-                {
-                    if(dictionary?.Source?.OriginalString?.Contains("Styles") == false)
-                    {
-                        dictionariesToDelete.Add(dictionary);
-                    }
-                }
-                dictionariesToDelete.ForEach(d => mergedDictionaries.Remove(d));
+        {
+            ETheme theme = isPurple ? ETheme.Purple : ETheme.Gold;
+            isPurple = !isPurple;
 
-                ETheme theme = (ETheme)Preferences.Get(Settings.App.Theme, 0);
-                theme = theme == ETheme.Purple ? ETheme.Gold : ETheme.Purple;
-
-                switch (theme)
-                {
-                    case ETheme.Purple:
-                        mergedDictionaries.Add(new PurpleTheme());
-                        break;
-                    case ETheme.Gold:
-                    default:
-                        mergedDictionaries.Add(new GoldTheme());
-                        break;
-                }
-
-                Preferences.Set(Settings.App.Theme, (int)theme);
-            }
+            ThemeService.ChangeTheme(theme);
         }
 
         private async Task ExecuteSignIn()

@@ -3,6 +3,7 @@ using Prism.Ioc;
 using System;
 using WanderersDiary.Client.Navigation;
 using WanderersDiary.Client.Resources;
+using WanderersDiary.Client.Services;
 using WanderersDiary.Client.Services.Auth;
 using WanderersDiary.Client.Services.HTTP;
 using WanderersDiary.Client.ViewModels;
@@ -29,25 +30,12 @@ namespace WanderersDiary.Client
         {
             InitializeComponent();
 
-            InitializeTheme();
-
             INavigationTrailService trailService = Container.Resolve<INavigationTrailService>();
             NvaigationTrail trail = trailService.GetOnStartTrail();
 
+            Container.Resolve<IThemeService>().InitializeTheme();
+
             await NavigationService.NavigateAsync(NavigationNames.Auth.SignIn);
-        }
-
-        private void InitializeTheme()
-        {
-            ETheme theme = (ETheme)Preferences.Get(Settings.App.Theme, 0);
-
-            if(theme == 0)
-            {
-                theme = ETheme.Purple;
-                Preferences.Set(Settings.App.Theme, (int)theme);
-            }
-
-            Application.Current.Resources.MergedDictionaries.Add(new PurpleTheme());
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -63,6 +51,7 @@ namespace WanderersDiary.Client
             containerRegistry.RegisterScoped<INavigationTrailService, NavigationTrailService>();
             containerRegistry.RegisterSingleton<IRestService, RestService>();
             containerRegistry.RegisterSingleton<IAccountService, AccountService>();
+            containerRegistry.RegisterSingleton<IThemeService, ThemeService>();
         }
 
         private static void RegisterForNavigation(IContainerRegistry containerRegistry)

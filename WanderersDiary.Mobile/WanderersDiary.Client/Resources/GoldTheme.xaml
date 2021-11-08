@@ -3,8 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="WanderersDiary.Client.GoldTheme">
 
-    <Color x:Key="PageBackgroundColor">Black</Color>
-
-    <Color x:Key="ButtonBackgroundColor">Gold</Color>
+    <Color x:Key="ButtonBackgroundColor1">#f2709c</Color>
+    <Color x:Key="ButtonBackgroundColor2">#ff9472</Color>
 
 </ResourceDictionary>

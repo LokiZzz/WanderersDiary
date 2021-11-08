@@ -32,22 +32,28 @@ namespace WanderersDiary.Client.ViewModels.Auth
             AccountService = accountService;
             ThemeService = themeService;
             AlertService = DependencyService.Get<IAlertService>();
+
+            Login = "lokizzz5";
+            Password = "03Dragonfly#03";
         }
 
         bool isPurple = false;
+        bool isEnglish = false;
+
         private void ExecuteChangeTheme()
         {
             ETheme theme = isPurple ? ETheme.Purple : ETheme.Gold;
             isPurple = !isPurple;
 
             ThemeService.ChangeTheme(theme);
+
+            CultureInfo.CurrentUICulture = isEnglish ? new CultureInfo("ru-RU", false) : new CultureInfo("en-US", false);
+            MessagingCenter.Send<object, CultureChangedMessage>(sender: this, message: string.Empty, args: new CultureChangedMessage(CultureInfo.CurrentUICulture));
+            isEnglish = !isEnglish;
         }
 
         private async Task ExecuteSignIn()
         {
-            Login = "lokizzz5";
-            Password = "03Dragonfly#03";
-
             SignInResponse response = await AccountService.SignInAsync(Login, Password);
 
             if (response.IsSuccess)

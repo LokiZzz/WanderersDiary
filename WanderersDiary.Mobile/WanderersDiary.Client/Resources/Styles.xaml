@@ -3,12 +3,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Color x:Key="PageBackgroundColor">#131313</Color>
+    <Color x:Key="SecondaryBackgroundColor">#202020</Color>
     <Color x:Key="ButtonTextColor">#FDFDFD</Color>
+    <Color x:Key="CommonTextColor">#FDFDFD</Color>
 
-    <Style TargetType="Button">
-        <Setter Property="Margin" Value="10"/>
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
+        <Setter Property="Opacity" Value="0.9"/>
+        <Setter Property="Margin" Value="15"/>
         <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}"/>
+        <Setter Property="FontFamily" Value="PlayfairDisplay"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush>
@@ -18,5 +23,37 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style x:Key="AlternateButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="BorderColor" Value="{DynamicResource ButtonTextColor}"/>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
+        <Setter Property="FontFamily" Value="SourceSansPro"/>
+    </Style>
+
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackgroundColor}"/>
+        <Setter Property="Opacity" Value="0.8"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="Margin" Value="15"/>
+    </Style>
+
+    <Style x:Key="BaseLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
+        <Setter Property="FontFamily" Value="PlayfairDisplay"/>
+    </Style>
+
+    <Style x:Key="DisplayTitleLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="FontSize" Value="36"/>
+    </Style>
+
+    <Style x:Key="EntryHeadlinerLabelStyle" TargetType="Label"  BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
 </ResourceDictionary>

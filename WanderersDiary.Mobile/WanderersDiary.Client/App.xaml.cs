@@ -17,6 +17,9 @@ using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 
+[assembly: ExportFont("PlayfairDisplay-VariableFont_wght.ttf", Alias = "PlayfairDisplay")]
+[assembly: ExportFont("SourceSansPro-Regular.ttf", Alias = "SourceSansPro")]
+
 namespace WanderersDiary.Client
 {
     public partial class App

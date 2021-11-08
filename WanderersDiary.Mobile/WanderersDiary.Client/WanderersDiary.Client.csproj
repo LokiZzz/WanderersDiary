@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\PlayfairDisplay-VariableFont_wght.ttf" />
+    <None Remove="Resources\Fonts\SourceSansPro-Regular.ttf" />
+    <None Remove="Resources\Images\EYES.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\PlayfairDisplay-VariableFont_wght.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\SourceSansPro-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Images\EYES.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.7.0" />

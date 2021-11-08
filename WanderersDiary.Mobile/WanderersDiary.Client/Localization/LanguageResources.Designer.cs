@@ -61,11 +61,56 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wanderer&apos;s Diary.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot password?.
+        /// </summary>
+        public static string SignInPage_ForgotPassword {
+            get {
+                return ResourceManager.GetString("SignInPage_ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login:.
+        /// </summary>
+        public static string SignInPage_Login {
+            get {
+                return ResourceManager.GetString("SignInPage_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        public static string SignInPage_Password {
+            get {
+                return ResourceManager.GetString("SignInPage_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in.
         /// </summary>
         public static string SignInPage_SignIn {
             get {
                 return ResourceManager.GetString("SignInPage_SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up.
+        /// </summary>
+        public static string SignInPage_SignUp {
+            get {
+                return ResourceManager.GetString("SignInPage_SignUp", resourceCulture);
             }
         }
     }

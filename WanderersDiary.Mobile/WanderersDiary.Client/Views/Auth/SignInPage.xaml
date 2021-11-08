@@ -11,7 +11,7 @@
             <Entry Text="{Binding Password}" IsPassword="True"/>
             <Button Text="{Binding Resources[SignInPage_SignIn]}" Command="{Binding SignInCommand}"/>
 
-            <Button Text="Сменить тему" Command="{Binding ChangeThemeCommand}" Visual="RippleButtonVisual"/>
+            <Button Text="Сменить тему" Command="{Binding ChangeThemeCommand}"/>
 
         </StackLayout>
     </ContentPage.Content>

@@ -47,7 +47,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
                 dictionariesToDelete.ForEach(d => mergedDictionaries.Remove(d));
 
                 ETheme theme = (ETheme)Preferences.Get(Settings.App.Theme, 0);
-                theme = theme == 0 || theme == ETheme.Purple ? ETheme.Gold : ETheme.Purple;
+                theme = theme == ETheme.Purple ? ETheme.Gold : ETheme.Purple;
 
                 switch (theme)
                 {

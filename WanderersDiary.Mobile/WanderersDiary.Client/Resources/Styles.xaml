@@ -4,8 +4,6 @@
 
     <Style TargetType="Button">
         <Setter Property="BackgroundColor" Value="{DynamicResource ButtonBackgroundColor}"/>
-        <Setter Property="Visual" Value="Material"/>
-
     </Style>
     
 </ResourceDictionary>

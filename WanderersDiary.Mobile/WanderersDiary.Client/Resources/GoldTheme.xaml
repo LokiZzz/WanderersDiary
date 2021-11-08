@@ -2,9 +2,9 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="WanderersDiary.Client.GoldTheme">
-    
-    <Color x:Key="PageBackgroundColor">DarkGray</Color>
 
-    <Color x:Key="ButtonBackgroundColor">Pink</Color>
-    
+    <Color x:Key="PageBackgroundColor">Black</Color>
+
+    <Color x:Key="ButtonBackgroundColor">Gold</Color>
+
 </ResourceDictionary>

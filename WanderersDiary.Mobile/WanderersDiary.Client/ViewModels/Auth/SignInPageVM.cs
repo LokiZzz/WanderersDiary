@@ -6,9 +6,11 @@ using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.Client.Localization;
+using WanderersDiary.Client.Resources;
 using WanderersDiary.Client.Services.Alert;
 using WanderersDiary.Client.Services.Auth;
 using WanderersDiary.Contracts.Auth;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WanderersDiary.Client.ViewModels.Auth
@@ -23,8 +25,43 @@ namespace WanderersDiary.Client.ViewModels.Auth
             : base(navigationService)
         {
             SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
+            ChangeThemeCommand = new DelegateCommand(() => ExecuteChangeTheme());
+
             AccountService = accountService;
             AlertService = DependencyService.Get<IAlertService>();
+        }
+
+        private void ExecuteChangeTheme()
+        {  
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                var dictionariesToDelete = new List<ResourceDictionary>();
+                foreach(var dictionary in mergedDictionaries)
+                {
+                    if(dictionary?.Source?.OriginalString?.Contains("Styles") == false)
+                    {
+                        dictionariesToDelete.Add(dictionary);
+                    }
+                }
+                dictionariesToDelete.ForEach(d => mergedDictionaries.Remove(d));
+
+                ETheme theme = (ETheme)Preferences.Get(Settings.App.Theme, 0);
+                theme = theme == 0 || theme == ETheme.Purple ? ETheme.Gold : ETheme.Purple;
+
+                switch (theme)
+                {
+                    case ETheme.Purple:
+                        mergedDictionaries.Add(new PurpleTheme());
+                        break;
+                    case ETheme.Gold:
+                    default:
+                        mergedDictionaries.Add(new GoldTheme());
+                        break;
+                }
+
+                Preferences.Set(Settings.App.Theme, (int)theme);
+            }
         }
 
         private async Task ExecuteSignIn()
@@ -41,6 +78,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
         }
 
         public DelegateCommand SignInCommand { get; set; }
+        public DelegateCommand ChangeThemeCommand { get; set; }
 
         #region Bindable properties
 

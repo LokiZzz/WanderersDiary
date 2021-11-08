@@ -6,6 +6,11 @@ namespace WanderersDiary.Client
 {
     public static class Settings
     {
+        public static class App
+        {
+            public static readonly string Theme = nameof(Theme);
+        }
+
         public static class Auth
         {
             public static readonly string Token = nameof(Token);

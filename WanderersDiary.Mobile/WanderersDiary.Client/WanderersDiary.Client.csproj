@@ -21,6 +21,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LanguageResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\PurpleTheme.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

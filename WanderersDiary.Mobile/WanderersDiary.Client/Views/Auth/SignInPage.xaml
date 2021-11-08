@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:auth="clr-namespace:WanderersDiary.Client.ViewModels.Auth"
-             xmlns:res="clr-namespace:WanderersDiary.Client.Resources"
              x:Class="WanderersDiary.Client.Views.Auth.SignInPage"
-             x:DataType="auth:SignInPageVM">
+             x:DataType="auth:SignInPageVM"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Entry Text="{Binding Login}"/>
             <Entry Text="{Binding Password}" IsPassword="True"/>
             <Button Text="{Binding Resources[SignInPage_SignIn]}" Command="{Binding SignInCommand}"/>
+
+            <Button Text="Сменить тему" Command="{Binding ChangeThemeCommand}" Visual="RippleButtonVisual"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

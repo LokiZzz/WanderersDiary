@@ -16,7 +16,7 @@ namespace WanderersDiary.Client.Services.HTTP
             return new StringContent(json, Encoding.UTF8, "application/json");
         }
 
-        public static async Task<TModel> ToResponseModelAsync<TModel>(this HttpResponseMessage httpResponseMessage)
+        public static async Task<TModel> ToResponseModelAsync<TModel>(this HttpResponseMessage httpResponseMessage) where TModel : class
         {
             string responseString = await httpResponseMessage.Content.ReadAsStringAsync();
 

@@ -120,8 +120,17 @@
   <data name="AppName" xml:space="preserve">
     <value>Дневник Странника</value>
   </data>
+  <data name="ConnectionError" xml:space="preserve">
+    <value>Проверьте интернет соединение</value>
+  </data>
+  <data name="SignInPage_ConfirmEmailError" xml:space="preserve">
+    <value>Сначала подтвердите адрес электронной почты.</value>
+  </data>
   <data name="SignInPage_ForgotPassword" xml:space="preserve">
     <value>Забыл пароль?</value>
+  </data>
+  <data name="SignInPage_InvalidPasswordError" xml:space="preserve">
+    <value>Неверный логин или пароль.</value>
   </data>
   <data name="SignInPage_Login" xml:space="preserve">
     <value>Логин:</value>

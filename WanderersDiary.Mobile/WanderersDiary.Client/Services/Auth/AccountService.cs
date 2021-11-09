@@ -22,10 +22,12 @@ namespace WanderersDiary.Client.Services.Auth
             RestService = restService;
         }
 
+        public string FullPath(string path) => App.ServerAddress + path;
+
         public async Task<SignInResponse> SignInAsync(string login, string password)
         {
             SignInResponse response = await RestService.PostAsync<SignInRequest, SignInResponse>(
-                @"https://192.168.50.40:44370/auth/sign-in",
+                FullPath("/auth/sign-in"),
                 new SignInRequest
                 {
                     Login = login,

@@ -26,6 +26,7 @@
                         <Entry Text="{Binding Login}" Margin="0,0,0,15"/>
                         <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Password]}"/>
                         <Entry Text="{Binding Password}" IsPassword="True"/>
+                        <Label Style="{StaticResource ErrorLabelStyle}" Text="{Binding ErrorText}" IsVisible="{Binding IsErrorVisible}"/>
                     </StackLayout>
                 </Grid>
 

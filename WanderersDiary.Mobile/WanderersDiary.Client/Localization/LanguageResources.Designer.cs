@@ -70,11 +70,38 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check your internet connection.
+        /// </summary>
+        public static string ConnectionError {
+            get {
+                return ResourceManager.GetString("ConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please, confirm your email first..
+        /// </summary>
+        public static string SignInPage_ConfirmEmailError {
+            get {
+                return ResourceManager.GetString("SignInPage_ConfirmEmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot password?.
         /// </summary>
         public static string SignInPage_ForgotPassword {
             get {
                 return ResourceManager.GetString("SignInPage_ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid login or password..
+        /// </summary>
+        public static string SignInPage_InvalidPasswordError {
+            get {
+                return ResourceManager.GetString("SignInPage_InvalidPasswordError", resourceCulture);
             }
         }
         

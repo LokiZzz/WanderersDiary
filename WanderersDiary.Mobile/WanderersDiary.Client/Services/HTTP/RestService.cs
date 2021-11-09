@@ -10,18 +10,25 @@ namespace WanderersDiary.Client.Services.HTTP
 {
     public interface IRestService
     {
-        Task<TResponse> PostAsync<TRequest, TResponse>(string path, TRequest request);
+        Task<TResponse> PostAsync<TRequest, TResponse>(string path, TRequest request) where TResponse : class;
     }
 
     public class RestService : IRestService
     {
-        public async Task<TResponse> PostAsync<TRequest, TResponse>(string path, TRequest request)
+        public async Task<TResponse> PostAsync<TRequest, TResponse>(string path, TRequest request) where TResponse : class
         {
-            using (HttpClient httpClient = CreateUnsecureClient())
+            try
             {
-                HttpResponseMessage responseMessage = await httpClient.PostAsync(path, request.GetJsonStringContent());
+                using (HttpClient httpClient = CreateUnsecureClient())
+                {
+                    HttpResponseMessage responseMessage = await httpClient.PostAsync(path, request.GetJsonStringContent());
 
-                return await responseMessage.ToResponseModelAsync<TResponse>();
+                    return await responseMessage.ToResponseModelAsync<TResponse>();
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
             }
         }
 

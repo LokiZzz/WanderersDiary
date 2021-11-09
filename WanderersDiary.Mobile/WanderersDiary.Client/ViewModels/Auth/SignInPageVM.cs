@@ -54,12 +54,22 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
         private async Task ExecuteSignIn()
         {
+            IsBusy = true;
+
+            IsErrorVisible = false;
             SignInResponse response = await AccountService.SignInAsync(Login, Password);
 
             if (response.IsSuccess)
-                AlertService.LongAlert("Success");
+            {
+                //Navigate to main page
+            }
             else
-                AlertService.LongAlert("Fail");
+            {
+                IsErrorVisible = true;
+                ErrorText = GetErrorText(response.Errors);
+            }
+
+            IsBusy = false;
         }
 
         public DelegateCommand SignInCommand { get; set; }
@@ -81,6 +91,40 @@ namespace WanderersDiary.Client.ViewModels.Auth
             set { SetProperty(ref _password, value); }
         }
 
+        private bool _isErrorVisible;
+        public bool IsErrorVisible
+        {
+            get { return _isErrorVisible; }
+            set { SetProperty(ref _isErrorVisible, value); }
+        }
+
+        private string _errorText;
+        public string ErrorText
+        {
+            get { return _errorText; }
+            set { SetProperty(ref _errorText, value); }
+        }
+
         #endregion
+
+        private string GetErrorText(List<ESignInError> errors)
+        {
+            string errorText = string.Empty;
+
+            foreach (ESignInError error in errors)
+            {
+                switch (error)
+                {
+                    case ESignInError.EmailNotConfirmed:
+                        errorText += Resources["SignInPage_ConfirmEmailError"];
+                        break;
+                    case ESignInError.InvalidLoginOrPassword:
+                        errorText += Resources["SignInPage_InvalidPasswordError"];
+                        break;
+                }
+            }
+
+            return errorText;
+        }
     }
 }

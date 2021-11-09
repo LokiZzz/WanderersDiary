@@ -12,6 +12,12 @@ namespace WanderersDiary.Contracts.Auth
 
         public bool IsSuccess { get; set; }
 
-        public List<string> Errors { get; set; }
+        public List<ESignInError> Errors { get; set; }
+    }
+
+    public enum ESignInError
+    {
+        InvalidLoginOrPassword = 1,
+        EmailNotConfirmed = 2
     }
 }

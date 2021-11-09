@@ -55,7 +55,11 @@ namespace WanderersDiary.API.Controllers
 
             if (!user.EmailConfirmed)
             {
-                return new SignInResponse { IsSuccess = false, Errors = new List<string> { "Please, confirm your email." } };
+                return new SignInResponse 
+                { 
+                    IsSuccess = false, 
+                    Errors = new List<ESignInError> { ESignInError.EmailNotConfirmed } 
+                };
             }
 
             SignInResult result = await SignInManager.CheckPasswordSignInAsync(user, request.Password, false);
@@ -73,7 +77,11 @@ namespace WanderersDiary.API.Controllers
             }
             else
             {
-                return new SignInResponse { IsSuccess = false };
+                return new SignInResponse 
+                { 
+                    IsSuccess = false, 
+                    Errors = new List<ESignInError> { ESignInError.InvalidLoginOrPassword } 
+                };
             }
         }
 

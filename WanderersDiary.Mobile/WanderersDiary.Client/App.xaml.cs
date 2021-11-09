@@ -24,10 +24,15 @@ namespace WanderersDiary.Client
 {
     public partial class App
     {
+        #if DEBUG
+        public static readonly string ServerAddress = "https://192.168.50.40:44370";
+        #endif
+        #if !DEBUG
+        public static readonly string ServerAddress = "";
+        #endif
+
         public App(IPlatformInitializer initializer)
-            : base(initializer)
-        {
-        }
+            : base(initializer) { }
 
         protected override async void OnInitialized()
         {

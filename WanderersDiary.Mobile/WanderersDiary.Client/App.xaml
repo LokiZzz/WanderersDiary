@@ -11,18 +11,19 @@
             
             <ControlTemplate x:Key="BusyPageTemplate">
                 <Grid>
-                    <Rectangle BackgroundColor="Black" 
-                               Opacity="0.5" 
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill"
-                               IsVisible="{Binding IsBusy}"/>
-                    <ActivityIndicator VerticalOptions="Fill"
-                                       HorizontalOptions="Fill"
-                                       IsRunning="True"
-                                       IsVisible="{Binding IsBusy}"/>
                     <ContentPresenter />
+                    <BoxView BackgroundColor="Black" 
+                             Opacity="0.7"
+                             IsVisible="{TemplateBinding BindingContext.IsBusy}"/>
+                    <ActivityIndicator Scale="1.3"  
+                                       IsVisible="{TemplateBinding BindingContext.IsBusy}" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" 
+                                       IsRunning="true" 
+                                       Color="White"/>
                 </Grid>
             </ControlTemplate>
+        
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using WanderersDiary.Client.Localization;
+using WanderersDiary.Client.Navigation;
 using WanderersDiary.Client.Resources;
 using WanderersDiary.Client.Services;
 using WanderersDiary.Client.Services.Alert;
@@ -23,11 +24,12 @@ namespace WanderersDiary.Client.ViewModels.Auth
         public IAlertService AlertService { get; }
 
         public SignInPageVM(INavigationService navigationService, 
-            IAccountService accountService, IThemeService themeService) 
+            IAccountService accountService, 
+            IThemeService themeService) 
             : base(navigationService)
         {
             SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
-            ChangeThemeCommand = new DelegateCommand(() => ExecuteChangeTheme());
+            SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
 
             AccountService = accountService;
             ThemeService = themeService;
@@ -37,19 +39,9 @@ namespace WanderersDiary.Client.ViewModels.Auth
             Password = "03Dragonfly#03";
         }
 
-        bool isPurple = false;
-        bool isEnglish = false;
-
-        private void ExecuteChangeTheme()
+        private async Task ExecuteSignUp()
         {
-            ETheme theme = isPurple ? ETheme.Purple : ETheme.Gold;
-            isPurple = !isPurple;
-
-            ThemeService.ChangeTheme(theme);
-
-            CultureInfo.CurrentUICulture = isEnglish ? new CultureInfo("ru-RU", false) : new CultureInfo("en-US", false);
-            MessagingCenter.Send<object, CultureChangedMessage>(sender: this, message: string.Empty, args: new CultureChangedMessage(CultureInfo.CurrentUICulture));
-            isEnglish = !isEnglish;
+            await NavigationService.TryNavigateAsync(NavigationNames.Auth.SignUp);
         }
 
         private async Task ExecuteSignIn()
@@ -59,11 +51,11 @@ namespace WanderersDiary.Client.ViewModels.Auth
             IsErrorVisible = false;
             SignInResponse response = await AccountService.SignInAsync(Login, Password);
 
-            if (response.IsSuccess)
+            if (response?.IsSuccess == true)
             {
                 //Navigate to main page
             }
-            else
+            else if(response?.IsSuccess == false)
             {
                 IsErrorVisible = true;
                 ErrorText = GetErrorText(response.Errors);
@@ -73,7 +65,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
         }
 
         public DelegateCommand SignInCommand { get; set; }
-        public DelegateCommand ChangeThemeCommand { get; set; }
+        public DelegateCommand SignUpCommand { get; set; }
 
         #region Bindable properties
 
@@ -91,7 +83,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
             set { SetProperty(ref _password, value); }
         }
 
-        private bool _isErrorVisible;
+        private bool _isErrorVisible = false;
         public bool IsErrorVisible
         {
             get { return _isErrorVisible; }
@@ -111,16 +103,19 @@ namespace WanderersDiary.Client.ViewModels.Auth
         {
             string errorText = string.Empty;
 
-            foreach (ESignInError error in errors)
+            if (errors != null)
             {
-                switch (error)
+                foreach (ESignInError error in errors)
                 {
-                    case ESignInError.EmailNotConfirmed:
-                        errorText += Resources["SignInPage_ConfirmEmailError"];
-                        break;
-                    case ESignInError.InvalidLoginOrPassword:
-                        errorText += Resources["SignInPage_InvalidPasswordError"];
-                        break;
+                    switch (error)
+                    {
+                        case ESignInError.EmailNotConfirmed:
+                            errorText += Resources["SignInPage_ConfirmEmailError"];
+                            break;
+                        case ESignInError.InvalidLoginOrPassword:
+                            errorText += Resources["SignInPage_InvalidPasswordError"];
+                            break;
+                    }
                 }
             }
 

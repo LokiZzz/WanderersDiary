@@ -16,6 +16,7 @@ namespace WanderersDiary.Client.Navigation
         internal static class Auth
         {
             public static readonly string SignIn = nameof(SignInPage);
+            public static readonly string SignUp = nameof(SignUpPage);
         }
     }
 }

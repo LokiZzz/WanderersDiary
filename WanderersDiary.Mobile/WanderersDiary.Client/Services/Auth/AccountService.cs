@@ -11,6 +11,7 @@ namespace WanderersDiary.Client.Services.Auth
     public interface IAccountService
     {
         Task<SignInResponse> SignInAsync(string login, string password);
+        Task<SignUpResponse> SignUpAsync(string login, string password, string email);
     }
 
     public class AccountService : IAccountService
@@ -35,11 +36,26 @@ namespace WanderersDiary.Client.Services.Auth
                 }
             );
 
-            if(response.IsSuccess)
+            if(response?.IsSuccess == true)
             {
                 Preferences.Set(Settings.Auth.Token, response.Token);
                 Preferences.Set(Settings.Auth.RefreshToken, response.Token);
             }
+
+            return response;
+        }
+
+        public async Task<SignUpResponse> SignUpAsync(string login, string password, string email)
+        {
+            SignUpResponse response = await RestService.PostAsync<SignUpRequest, SignUpResponse>(
+                FullPath("/auth/sign-up"),
+                new SignUpRequest
+                {
+                    Login = login,
+                    Password = password,
+                    Email = email
+                }
+            );
 
             return response;
         }

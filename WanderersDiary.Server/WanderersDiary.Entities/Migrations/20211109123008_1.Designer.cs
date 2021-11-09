@@ -10,7 +10,7 @@ using WanderersDiary.Entities;
 namespace WanderersDiary.Entities.Migrations
 {
     [DbContext(typeof(WDDbContext))]
-    [Migration("20211102191101_1")]
+    [Migration("20211109123008_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,6 +150,41 @@ namespace WanderersDiary.Entities.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("WanderersDiary.Entities.Models.Auth.RefreshToken", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("JWTId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("WanderersDiary.Entities.Models.Character", b =>
@@ -296,6 +331,15 @@ namespace WanderersDiary.Entities.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WanderersDiary.Entities.Models.Auth.RefreshToken", b =>
+                {
+                    b.HasOne("WanderersDiary.Entities.Models.User.Wanderer", "User")
+                        .WithMany("RegreshTokens")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WanderersDiary.Entities.Models.Character", b =>
                 {
                     b.HasOne("WanderersDiary.Entities.Models.User.Wanderer", "Wanderer")
@@ -308,6 +352,8 @@ namespace WanderersDiary.Entities.Migrations
             modelBuilder.Entity("WanderersDiary.Entities.Models.User.Wanderer", b =>
                 {
                     b.Navigation("Characters");
+
+                    b.Navigation("RegreshTokens");
                 });
 #pragma warning restore 612, 618
         }

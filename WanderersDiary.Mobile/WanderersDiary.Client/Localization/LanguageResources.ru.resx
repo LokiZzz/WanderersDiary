@@ -127,7 +127,7 @@
     <value>Сначала подтвердите адрес электронной почты.</value>
   </data>
   <data name="SignInPage_ForgotPassword" xml:space="preserve">
-    <value>Забыл пароль?</value>
+    <value>Забыли пароль?</value>
   </data>
   <data name="SignInPage_InvalidPasswordError" xml:space="preserve">
     <value>Неверный логин или пароль.</value>
@@ -143,5 +143,23 @@
   </data>
   <data name="SignInPage_SignUp" xml:space="preserve">
     <value>Зарегистрироваться</value>
+  </data>
+  <data name="SignUpPage_Email" xml:space="preserve">
+    <value>Электронная почта:</value>
+  </data>
+  <data name="SignUpPage_EmailExists" xml:space="preserve">
+    <value>Такая почта уже зарегистрирована.</value>
+  </data>
+  <data name="SignUpPage_LoginExists" xml:space="preserve">
+    <value>Такой логин уже зарегистрирован.</value>
+  </data>
+  <data name="SignUpPage_PasswordRequirementsError" xml:space="preserve">
+    <value>Серьёзно? Придумай пароль хотя бы из пяти символов.</value>
+  </data>
+  <data name="SignUpPage_RepeatPassword" xml:space="preserve">
+    <value>Повторите пароль:</value>
+  </data>
+  <data name="SignUpPage_Title" xml:space="preserve">
+    <value>Регистрация</value>
   </data>
 </root>

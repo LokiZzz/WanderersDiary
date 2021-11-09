@@ -10,8 +10,8 @@ namespace WanderersDiary.Client.Navigation
     {
         public static async Task<INavigationResult> TryNavigateAsync(this INavigationService navigation, 
             string path, 
-            NavigationParameters parameters, 
-            bool? IsModal)
+            NavigationParameters parameters = null, 
+            bool? IsModal = null)
         {
             INavigationResult result = await navigation.NavigateAsync(path, parameters, IsModal);
 

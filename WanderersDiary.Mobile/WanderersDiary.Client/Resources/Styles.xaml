@@ -8,6 +8,8 @@
     <Color x:Key="CommonTextColor">#FDFDFD</Color>
     <Color x:Key="ErrorTextColor">#FF0033</Color>
 
+    <!--Buttons-->
+    
     <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="Opacity" Value="0.9"/>
         <Setter Property="Margin" Value="15"/>
@@ -32,6 +34,39 @@
         <Setter Property="BorderColor" Value="{DynamicResource ButtonTextColor}"/>
     </Style>
 
+    <!--Title Labels-->
+    
+    <Style x:Key="BaseTitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
+        <Setter Property="FontFamily" Value="PlayfairDisplay"/>
+    </Style>
+
+    <Style x:Key="DisplayTitleLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseTitleLabelStyle}">
+        <Setter Property="FontSize" Value="36"/>
+    </Style>
+
+    <Style x:Key="EntryHeadlinerLabelStyle" TargetType="Label"  BasedOn="{StaticResource BaseTitleLabelStyle}">
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <Style x:Key="InteractiveLabelStyle" TargetType="Label"  BasedOn="{StaticResource BaseTitleLabelStyle}">
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <!--Text Labels-->
+    
+    <Style x:Key="BaseTextLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
+        <Setter Property="FontFamily" Value="SourceSansPro"/>
+    </Style>
+
+    <Style x:Key="ErrorLabelStyle" TargetType="Label"  BasedOn="{StaticResource BaseTextLabelStyle}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="TextColor" Value="{DynamicResource ErrorTextColor}"/>
+    </Style>
+    
+    <!--Other Controls-->
+    
     <Style TargetType="Entry">
         <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
         <Setter Property="FontFamily" Value="SourceSansPro"/>
@@ -42,24 +77,6 @@
         <Setter Property="Opacity" Value="0.8"/>
         <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="Margin" Value="15"/>
-    </Style>
-
-    <Style x:Key="BaseLabelStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
-        <Setter Property="FontFamily" Value="PlayfairDisplay"/>
-    </Style>
-
-    <Style x:Key="DisplayTitleLabelStyle" TargetType="Label" BasedOn="{StaticResource BaseLabelStyle}">
-        <Setter Property="FontSize" Value="36"/>
-    </Style>
-
-    <Style x:Key="EntryHeadlinerLabelStyle" TargetType="Label"  BasedOn="{StaticResource BaseLabelStyle}">
-        <Setter Property="FontSize" Value="16"/>
-    </Style>
-
-    <Style x:Key="ErrorLabelStyle" TargetType="Label"  BasedOn="{StaticResource BaseLabelStyle}">
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="TextColor" Value="{DynamicResource ErrorTextColor}"/>
     </Style>
 
 </ResourceDictionary>

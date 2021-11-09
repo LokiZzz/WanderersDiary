@@ -72,11 +72,14 @@ namespace WanderersDiary.API
 
             services.AddIdentityCore<Wanderer>(options =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedEmail = true;
+                options.User.RequireUniqueEmail = true;
+                options.Password = GetPasswordOptions();
             })
                 .AddEntityFrameworkStores<WDDbContext>()
                 .AddDefaultTokenProviders()
-                .AddSignInManager<SignInManager<Wanderer>>();
+                .AddSignInManager<SignInManager<Wanderer>>()
+                .AddErrorDescriber<CustomIdentityErrorDescriber>();
 
             TokenValidationParameters tokenValidationParameters = GetTokenValidationParameters();
             services.AddSingleton(tokenValidationParameters);
@@ -88,6 +91,19 @@ namespace WanderersDiary.API
                     options.SaveToken = true;
                 }
             );
+        }
+
+        private PasswordOptions GetPasswordOptions()
+        {
+            return new PasswordOptions
+            {
+                RequireDigit = false,
+                RequiredLength = 5,
+                RequiredUniqueChars = 0,
+                RequireLowercase = false,
+                RequireNonAlphanumeric = false,
+                RequireUppercase = false
+            };
         }
 
         private TokenValidationParameters GetTokenValidationParameters()

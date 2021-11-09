@@ -140,5 +140,59 @@ namespace WanderersDiary.Client.Localization {
                 return ResourceManager.GetString("SignInPage_SignUp", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        public static string SignUpPage_Email {
+            get {
+                return ResourceManager.GetString("SignUpPage_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address already exists..
+        /// </summary>
+        public static string SignUpPage_EmailExists {
+            get {
+                return ResourceManager.GetString("SignUpPage_EmailExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login address already exists..
+        /// </summary>
+        public static string SignUpPage_LoginExists {
+            get {
+                return ResourceManager.GetString("SignUpPage_LoginExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seriously? Can you create a password of at least five characters?.
+        /// </summary>
+        public static string SignUpPage_PasswordRequirementsError {
+            get {
+                return ResourceManager.GetString("SignUpPage_PasswordRequirementsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat password:.
+        /// </summary>
+        public static string SignUpPage_RepeatPassword {
+            get {
+                return ResourceManager.GetString("SignUpPage_RepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up.
+        /// </summary>
+        public static string SignUpPage_Title {
+            get {
+                return ResourceManager.GetString("SignUpPage_Title", resourceCulture);
+            }
+        }
     }
 }

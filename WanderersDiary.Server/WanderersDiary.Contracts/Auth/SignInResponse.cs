@@ -18,6 +18,7 @@ namespace WanderersDiary.Contracts.Auth
     public enum ESignInError
     {
         InvalidLoginOrPassword = 1,
-        EmailNotConfirmed = 2
+        EmailNotConfirmed = 2,
+        Other = 3
     }
 }

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:auth="clr-namespace:WanderersDiary.Client.ViewModels.Auth"
              xmlns:image="clr-namespace:WanderersDiary.Client.Resources.Images"
-             x:Class="WanderersDiary.Client.Views.Auth.SignInPage"
-             x:DataType="auth:SignInPageVM"
+             x:Class="WanderersDiary.Client.Views.Auth.SignUpPage"
+             x:DataType="auth:SignUpPageVM"
              BackgroundColor="{DynamicResource PageBackgroundColor}"
              ControlTemplate="{StaticResource BusyPageTemplate}">
     <ContentPage.Content>
@@ -14,41 +14,29 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Image Source="{image:ImageResource WanderersDiary.Client.Resources.Images.EYES.png}" Opacity="0.1" 
-                   Margin="-360,0,0,0" VerticalOptions="Fill" Aspect="AspectFill"
-                   Grid.RowSpan="2"/>
-
             <StackLayout Grid.Row="0" Spacing="0" VerticalOptions="Center" Margin="15,-40,15,0">
-                <Label  Style="{StaticResource DisplayTitleLabelStyle}" Text="{Binding Resources[AppName]}" Margin="20,60"/>
+                <Label  Style="{StaticResource DisplayTitleLabelStyle}" Text="{Binding Resources[SignUpPage_Title]}" Margin="20,60"/>
                 <Grid>
                     <Frame  BackgroundColor="{DynamicResource SecondaryBackgroundColor}" Margin="0"/>
                     <StackLayout Spacing="0" Margin="20">
                         <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Login]}"/>
                         <Entry Text="{Binding Login}" Margin="0,0,0,15"/>
-                        
+
                         <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Password]}"/>
-                        <Entry Text="{Binding Password}" IsPassword="True"/>
-                        
+                        <Entry Text="{Binding Password}" IsPassword="True" Margin="0,0,0,15"/>
+
+                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_RepeatPassword]}"/>
+                        <Entry Text="{Binding RepeatPassword}" IsPassword="True" Margin="0,0,0,15"/>
+
+                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_Email]}"/>
+                        <Entry Text="{Binding Email}"/>
+
                         <Label Style="{StaticResource ErrorLabelStyle}" Text="{Binding ErrorText}" IsVisible="{Binding IsErrorVisible}"/>
                     </StackLayout>
                 </Grid>
 
-                <Button Style="{StaticResource BaseButtonStyle}" 
-                        Text="{Binding Resources[SignInPage_SignIn]}" 
-                        Command="{Binding SignInCommand}" 
-                        Margin="0,15,0,0"/>
-
-                <Button Style="{StaticResource AlternateButtonStyle}" 
-                        Text="{Binding Resources[SignInPage_SignUp]}" 
-                        Command="{Binding SignUpCommand}" 
-                        Margin="0,15,0,0"/>
+                <Button Style="{StaticResource BaseButtonStyle}" Text="{Binding Resources[SignInPage_SignUp]}" Command="{Binding SignUpCommand}" Margin="0,15,0,0"/>
             </StackLayout>
-
-            <Label Grid.Row="1" 
-                   Margin="0,30,0,15" 
-                   Text="{Binding Resources[SignInPage_ForgotPassword]}" 
-                   Style="{StaticResource InteractiveLabelStyle}" 
-                   HorizontalOptions="Center"/>
 
         </Grid>
     </ContentPage.Content>

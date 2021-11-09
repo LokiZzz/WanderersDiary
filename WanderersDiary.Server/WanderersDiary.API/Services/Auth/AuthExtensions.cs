@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WanderersDiary.Contracts.Auth;
 using WanderersDiary.Entities.Models.User;
 
 namespace WanderersDiary.API.Services.Auth
@@ -37,6 +38,21 @@ namespace WanderersDiary.API.Services.Auth
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToUniversalTime();
 
             return dtDateTime;
+        }
+
+        public static ESignUpErrors ToSignUpError(this IdentityError error)
+        {
+            switch(error.Code)
+            {
+                case nameof(CustomIdentityErrorDescriber.DuplicateUserName):
+                    return ESignUpErrors.LoginExists;
+                case nameof(CustomIdentityErrorDescriber.DuplicateEmail):
+                    return ESignUpErrors.EmailExists;
+                case nameof(CustomIdentityErrorDescriber.PasswordTooShort):
+                    return ESignUpErrors.PasswordDoesNotMatchRequirements;
+                default:
+                    return ESignUpErrors.Unknown;
+            }
         }
     }
 }

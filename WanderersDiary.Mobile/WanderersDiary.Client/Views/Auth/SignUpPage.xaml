@@ -21,7 +21,7 @@
                     <Frame  BackgroundColor="{DynamicResource SecondaryBackgroundColor}" Margin="0"/>
                     <StackLayout Spacing="0" Margin="20">
                         <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Login]}"/>
-                        <Entry Text="{Binding Login.Value}" IsPassword="True">
+                        <Entry Text="{Binding Login.Value}">
                             <Entry.Behaviors>
                                 <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Login.ValidateCommand}" />
                                 <behaviour:EntryValidationBehaviour IsValid="{Binding Login.IsValid}"/>
@@ -45,7 +45,7 @@
                         <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_RepeatPassword]}" Margin="0,15,0,0"/>
                         <Entry Text="{Binding Password.Item2.Value}" IsPassword="True">
                             <Entry.Behaviors>
-                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Password.Item2.ValidateCommand}" />
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Password.ValidateCommand}" />
                                 <behaviour:EntryValidationBehaviour IsValid="{Binding Password.Item2.IsValid}"/>
                             </Entry.Behaviors>
                         </Entry>

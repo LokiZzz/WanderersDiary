@@ -104,6 +104,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
             Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = Resources["SignUpPage_EmailRequired"] });
             Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = Resources["SignUpPage_EmailInvalid"] });
 
+            Password.Item1.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = Resources["SignUpPage_EnterPassword"] });
             Password.Item2.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = Resources["SignUpPage_ConfirmPassword"] });
             Password.Validations.Add(new MatchPairValidationRule<string> { ValidationMessage = Resources["SignUpPage_PasswordsDoesntMatch"] });
         }

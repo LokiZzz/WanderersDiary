@@ -168,6 +168,9 @@
   <data name="SignUpPage_EmailRequired" xml:space="preserve">
     <value>Email required.</value>
   </data>
+  <data name="SignUpPage_EnterPassword" xml:space="preserve">
+    <value>Password required.</value>
+  </data>
   <data name="SignUpPage_LoginExists" xml:space="preserve">
     <value>Login address already exists.</value>
   </data>

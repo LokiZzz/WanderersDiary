@@ -168,6 +168,9 @@
   <data name="SignUpPage_EmailRequired" xml:space="preserve">
     <value>Введите адрес элетронной почты.</value>
   </data>
+  <data name="SignUpPage_EnterPassword" xml:space="preserve">
+    <value>Введите пароль.</value>
+  </data>
   <data name="SignUpPage_LoginExists" xml:space="preserve">
     <value>Такой логин уже зарегистрирован.</value>
   </data>

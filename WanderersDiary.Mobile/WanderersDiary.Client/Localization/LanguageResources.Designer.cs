@@ -214,6 +214,15 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password required..
+        /// </summary>
+        public static string SignUpPage_EnterPassword {
+            get {
+                return ResourceManager.GetString("SignUpPage_EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login address already exists..
         /// </summary>
         public static string SignUpPage_LoginExists {

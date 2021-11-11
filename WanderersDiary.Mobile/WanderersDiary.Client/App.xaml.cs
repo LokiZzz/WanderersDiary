@@ -1,5 +1,6 @@
 using Prism;
 using Prism.Ioc;
+using Prism.Unity;
 using System;
 using WanderersDiary.Client.Navigation;
 using WanderersDiary.Client.Resources;
@@ -22,7 +23,7 @@ using Xamarin.Forms;
 
 namespace WanderersDiary.Client
 {
-    public partial class App
+    public partial class App : PrismApplication
     {
         #if DEBUG
         public static readonly string ServerAddress = "https://192.168.50.40:44370";

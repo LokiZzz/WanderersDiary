@@ -169,6 +169,15 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm password required..
+        /// </summary>
+        public static string SignUpPage_ConfirmPassword {
+            get {
+                return ResourceManager.GetString("SignUpPage_ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email:.
         /// </summary>
         public static string SignUpPage_Email {
@@ -187,6 +196,24 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid email..
+        /// </summary>
+        public static string SignUpPage_EmailInvalid {
+            get {
+                return ResourceManager.GetString("SignUpPage_EmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email required..
+        /// </summary>
+        public static string SignUpPage_EmailRequired {
+            get {
+                return ResourceManager.GetString("SignUpPage_EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login address already exists..
         /// </summary>
         public static string SignUpPage_LoginExists {
@@ -196,11 +223,29 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login required..
+        /// </summary>
+        public static string SignUpPage_LoginRequired {
+            get {
+                return ResourceManager.GetString("SignUpPage_LoginRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seriously? Can you create a password of at least five characters?.
         /// </summary>
         public static string SignUpPage_PasswordRequirementsError {
             get {
                 return ResourceManager.GetString("SignUpPage_PasswordRequirementsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password and confirm password doesn&apos;t match..
+        /// </summary>
+        public static string SignUpPage_PasswordsDoesntMatch {
+            get {
+                return ResourceManager.GetString("SignUpPage_PasswordsDoesntMatch", resourceCulture);
             }
         }
         

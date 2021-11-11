@@ -20,28 +20,49 @@
                 <Grid>
                     <Frame  BackgroundColor="{DynamicResource SecondaryBackgroundColor}" Margin="0"/>
                     <StackLayout Spacing="0" Margin="20">
-                        <!--<Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Login]}"/>
-                        <Entry Text="{Binding Login}" Margin="0,0,0,15"/>
+                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Login]}"/>
+                        <Entry Text="{Binding Login.Value}" IsPassword="True">
+                            <Entry.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Login.ValidateCommand}" />
+                                <behaviour:EntryValidationBehaviour IsValid="{Binding Login.IsValid}"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label Text="{Binding Login.Errors, Converter={StaticResource FirstValidationErrorConverter}}" 
+                               IsVisible="{Binding Login.IsValid, Converter={StaticResource NotConverter}}"
+                               Style="{StaticResource UnderlineErrorLabelStyle}"/>
 
-                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Password]}"/>
-                        <Entry Text="{Binding Password}" IsPassword="True" Margin="0,0,0,15"/>
+                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignInPage_Password]}" Margin="0,15,0,0"/>
+                        <Entry Text="{Binding Password.Item1.Value}" IsPassword="True">
+                            <Entry.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Password.Item1.ValidateCommand}" />
+                                <behaviour:EntryValidationBehaviour IsValid="{Binding Password.Item1.IsValid}"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label Text="{Binding Password.Item1.Errors, Converter={StaticResource FirstValidationErrorConverter}}" 
+                               IsVisible="{Binding Password.Item1.IsValid, Converter={StaticResource NotConverter}}"
+                               Style="{StaticResource UnderlineErrorLabelStyle}"/>
 
-                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_RepeatPassword]}"/>
-                        <Entry Text="{Binding RepeatPassword}" IsPassword="True" Margin="0,0,0,15"/>
+                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_RepeatPassword]}" Margin="0,15,0,0"/>
+                        <Entry Text="{Binding Password.Item2.Value}" IsPassword="True">
+                            <Entry.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Password.Item2.ValidateCommand}" />
+                                <behaviour:EntryValidationBehaviour IsValid="{Binding Password.Item2.IsValid}"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label Text="{Binding Password.Item2.Errors, Converter={StaticResource FirstValidationErrorConverter}}" 
+                               IsVisible="{Binding Password.Item2.IsValid, Converter={StaticResource NotConverter}}"
+                               Style="{StaticResource UnderlineErrorLabelStyle}"/>
 
-                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_Email]}"/>
-                        <Entry Text="{Binding Email}"/>-->
-                        <!--Email-->
-                        <Entry Text="{Binding Email.Value}" BackgroundColor="Orange">
+                        <Label Style="{StaticResource EntryHeadlinerLabelStyle}" Text="{Binding Resources[SignUpPage_Email]}" Margin="0,15,0,0"/>
+                        <Entry Text="{Binding Email.Value}">
                             <Entry.Behaviors>
                                 <prism:EventToCommandBehavior EventName="Unfocused" Command="{Binding Email.ValidateCommand}" />
                                 <behaviour:EntryValidationBehaviour IsValid="{Binding Email.IsValid}"/>
                             </Entry.Behaviors>
                         </Entry>
-
-                        <Label Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}" BackgroundColor="GreenYellow" 
+                        <Label Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}" 
                                IsVisible="{Binding Email.IsValid, Converter={StaticResource NotConverter}}"
-                               Style="{StaticResource ErrorLabelStyle}"/>
+                               Style="{StaticResource UnderlineErrorLabelStyle}"/>
 
                         <Label Style="{StaticResource ErrorLabelStyle}" Text="{Binding ErrorText}" IsVisible="{Binding IsErrorVisible}" Margin="0,15,0,0"/>
                     </StackLayout>

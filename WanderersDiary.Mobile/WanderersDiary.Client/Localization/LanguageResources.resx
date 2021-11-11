@@ -153,17 +153,32 @@
   <data name="SignInPage_SignUp" xml:space="preserve">
     <value>Sign up</value>
   </data>
+  <data name="SignUpPage_ConfirmPassword" xml:space="preserve">
+    <value>Confirm password required.</value>
+  </data>
   <data name="SignUpPage_Email" xml:space="preserve">
     <value>Email:</value>
   </data>
   <data name="SignUpPage_EmailExists" xml:space="preserve">
     <value>Email address already exists.</value>
   </data>
+  <data name="SignUpPage_EmailInvalid" xml:space="preserve">
+    <value>Invalid email.</value>
+  </data>
+  <data name="SignUpPage_EmailRequired" xml:space="preserve">
+    <value>Email required.</value>
+  </data>
   <data name="SignUpPage_LoginExists" xml:space="preserve">
     <value>Login address already exists.</value>
   </data>
+  <data name="SignUpPage_LoginRequired" xml:space="preserve">
+    <value>Login required.</value>
+  </data>
   <data name="SignUpPage_PasswordRequirementsError" xml:space="preserve">
     <value>Seriously? Can you create a password of at least five characters?</value>
+  </data>
+  <data name="SignUpPage_PasswordsDoesntMatch" xml:space="preserve">
+    <value>Password and confirm password doesn't match.</value>
   </data>
   <data name="SignUpPage_RepeatPassword" xml:space="preserve">
     <value>Repeat password:</value>

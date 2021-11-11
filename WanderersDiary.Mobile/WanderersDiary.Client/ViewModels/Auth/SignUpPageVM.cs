@@ -99,13 +99,13 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
         public void AddValidationRules()
         {
-            Login.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "First Name Required" });
+            Login.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = Resources["SignUpPage_LoginRequired"] });
 
-            Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
-            Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = "Invalid Email" });
+            Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = Resources["SignUpPage_EmailRequired"] });
+            Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = Resources["SignUpPage_EmailInvalid"] });
 
-            Password.Item2.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Confirm password required" });
-            Password.Validations.Add(new MatchPairValidationRule<string> { ValidationMessage = "Password and confirm password don't match" });
+            Password.Item2.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = Resources["SignUpPage_ConfirmPassword"] });
+            Password.Validations.Add(new MatchPairValidationRule<string> { ValidationMessage = Resources["SignUpPage_PasswordsDoesntMatch"] });
         }
 
         public ValidatableValue<string> Login { get; set; } = new ValidatableValue<string>();

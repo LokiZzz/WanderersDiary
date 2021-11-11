@@ -142,7 +142,7 @@
     <value>Неверный логин или пароль.</value>
   </data>
   <data name="SignInPage_Login" xml:space="preserve">
-    <value>Логин:</value>
+    <value>Псеводним:</value>
   </data>
   <data name="SignInPage_Password" xml:space="preserve">
     <value>Пароль:</value>
@@ -153,17 +153,32 @@
   <data name="SignInPage_SignUp" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>
+  <data name="SignUpPage_ConfirmPassword" xml:space="preserve">
+    <value>Подтвердите пароль.</value>
+  </data>
   <data name="SignUpPage_Email" xml:space="preserve">
     <value>Электронная почта:</value>
   </data>
   <data name="SignUpPage_EmailExists" xml:space="preserve">
     <value>Такая почта уже зарегистрирована.</value>
   </data>
+  <data name="SignUpPage_EmailInvalid" xml:space="preserve">
+    <value>Это не адрес электронной почты.</value>
+  </data>
+  <data name="SignUpPage_EmailRequired" xml:space="preserve">
+    <value>Введите адрес элетронной почты.</value>
+  </data>
   <data name="SignUpPage_LoginExists" xml:space="preserve">
     <value>Такой логин уже зарегистрирован.</value>
   </data>
+  <data name="SignUpPage_LoginRequired" xml:space="preserve">
+    <value>Введите псевдоним.</value>
+  </data>
   <data name="SignUpPage_PasswordRequirementsError" xml:space="preserve">
     <value>Серьёзно? Придумай пароль хотя бы из пяти символов.</value>
+  </data>
+  <data name="SignUpPage_PasswordsDoesntMatch" xml:space="preserve">
+    <value>Пароли не совпадают.</value>
   </data>
   <data name="SignUpPage_RepeatPassword" xml:space="preserve">
     <value>Повторите пароль:</value>

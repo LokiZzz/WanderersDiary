@@ -41,7 +41,7 @@ namespace WanderersDiary.Client
             Container.Resolve<IThemeService>().InitializeTheme();
 
             INavigationTrailService trailService = Container.Resolve<INavigationTrailService>();
-            NvaigationTrail trail = trailService.GetOnStartTrail();
+            NavigationTrail trail = trailService.GetOnStartTrail();
 
             await NavigationService.TryNavigateAsync(trail.Path, trail.Parameters, trail.IsModal);
         }
@@ -68,6 +68,7 @@ namespace WanderersDiary.Client
 
             //Common
             containerRegistry.RegisterForNavigation<ErrorPage, ErrorPageVM>();
+            containerRegistry.RegisterForNavigation<UserMessagePage, UserMessagePageVM>();
 
             //Auth
             containerRegistry.RegisterForNavigation<SignInPage, SignInPageVM>();

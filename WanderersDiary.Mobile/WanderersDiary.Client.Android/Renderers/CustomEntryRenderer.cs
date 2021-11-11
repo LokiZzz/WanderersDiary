@@ -14,6 +14,7 @@ using static Java.Util.ResourceBundle;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using WanderersDiary.Client.Android.Renderers;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
 namespace WanderersDiary.Client.Android.Renderers
@@ -28,7 +29,18 @@ namespace WanderersDiary.Client.Android.Renderers
 
             if (Control == null || e.NewElement == null) return;
 
-            Control.BackgroundTintList = ColorStateList.ValueOf(global::Android.Graphics.Color.White);
+            Control.BackgroundTintList = ColorStateList.ValueOf(e.NewElement.TextColor.ToAndroid());
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            if (e.PropertyName == "TextColor")
+            {
+                Entry entry = (Entry)sender;
+                Control.BackgroundTintList = ColorStateList.ValueOf(entry.TextColor.ToAndroid());
+            }
         }
     }
 }

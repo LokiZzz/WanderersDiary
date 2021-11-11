@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:common="clr-namespace:WanderersDiary.Client.ViewModels.Common"
+             x:Class="WanderersDiary.Client.Views.Common.UserMessagePage"
+             x:DataType="common:UserMessagePageVM"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="15" Spacing="15">
+            <Label Style="{StaticResource DisplayTitleLabelStyle}" Text="{Binding MessageTitle}" Margin="0,0,0,20"/>
+            <Label Style="{StaticResource BaseTextLabelStyle}" Text="{Binding Message}" FontSize="18"/>
+            <Button Style="{StaticResource BaseButtonStyle}" Text="{Binding Resources[Common_Close]}" Command="{Binding NavigateAfterCommand}" Margin="0,15"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

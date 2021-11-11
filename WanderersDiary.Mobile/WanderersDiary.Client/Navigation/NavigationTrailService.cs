@@ -7,18 +7,18 @@ namespace WanderersDiary.Client.Navigation
 {
     public interface INavigationTrailService
     {
-        NvaigationTrail GetOnStartTrail();
+        NavigationTrail GetOnStartTrail();
     }
 
     public class NavigationTrailService : INavigationTrailService
     {
-        public NvaigationTrail GetOnStartTrail()
+        public NavigationTrail GetOnStartTrail()
         {
-            return new NvaigationTrail { Path = NavigationNames.Auth.SignIn };
+            return new NavigationTrail { Path = NavigationNames.Auth.SignIn };
         }
     }
 
-    public class NvaigationTrail
+    public class NavigationTrail
     {
         public string Path { get; set; }
 

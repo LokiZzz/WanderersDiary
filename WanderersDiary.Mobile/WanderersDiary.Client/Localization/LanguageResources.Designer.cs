@@ -70,11 +70,38 @@ namespace WanderersDiary.Client.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Common_Close {
+            get {
+                return ResourceManager.GetString("Common_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check your internet connection.
         /// </summary>
         public static string ConnectionError {
             get {
                 return ResourceManager.GetString("ConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now, please, go to your email and check incoming messages. There are mail with your account confirmation link. If there are no such mails, try to wait a few minutes or check spam folder..
+        /// </summary>
+        public static string Message_ConfirmEmail {
+            get {
+                return ResourceManager.GetString("Message_ConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nice work!.
+        /// </summary>
+        public static string Message_ConfirmEmail_Title {
+            get {
+                return ResourceManager.GetString("Message_ConfirmEmail_Title", resourceCulture);
             }
         }
         

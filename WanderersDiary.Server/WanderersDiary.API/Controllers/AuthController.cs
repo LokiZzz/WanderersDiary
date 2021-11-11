@@ -93,24 +93,6 @@ namespace WanderersDiary.API.Controllers
         [HttpPost("sign-up")]
         public async Task<ActionResult<SignUpResponse>> SignUpAsync(SignUpRequest request)
         {
-            //if ((await UserManager.FindByNameAsync(request.Login)) != null)
-            //{
-            //    return new SignUpResponse()
-            //    { 
-            //        IsSuccess = false, 
-            //        Errors = new List<ESignUpErrors> { ESignUpErrors.LoginExists }  
-            //    };
-            //}
-
-            //if ((await UserManager.FindByEmailAsync(request.Email)) != null)
-            //{
-            //    return new SignUpResponse()
-            //    {
-            //        IsSuccess = false,
-            //        Errors = new List<ESignUpErrors> { ESignUpErrors.EmailExists }
-            //    };
-            //}
-
             Wanderer newUser = new Wanderer { Email = request.Email, UserName = request.Login };
             IdentityResult result = await UserManager.CreateAsync(newUser);
 

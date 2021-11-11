@@ -6,7 +6,8 @@
              x:Class="WanderersDiary.Client.Views.Auth.SignInPage"
              x:DataType="auth:SignInPageVM"
              BackgroundColor="{DynamicResource PageBackgroundColor}"
-             ControlTemplate="{StaticResource BusyPageTemplate}">
+             ControlTemplate="{StaticResource BusyPageTemplate}"
+             Visual="Material">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

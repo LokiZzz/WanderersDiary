@@ -11,6 +11,7 @@ namespace WanderersDiary.Client.Navigation
         internal static class Common
         {
             public static readonly string Error = nameof(ErrorPage);
+            public static readonly string Message = nameof(UserMessagePage);
         }
 
         internal static class Auth

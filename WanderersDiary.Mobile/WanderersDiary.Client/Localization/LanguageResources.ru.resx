@@ -120,8 +120,17 @@
   <data name="AppName" xml:space="preserve">
     <value>Дневник Странника</value>
   </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
   <data name="ConnectionError" xml:space="preserve">
     <value>Проверьте интернет соединение</value>
+  </data>
+  <data name="Message_ConfirmEmail" xml:space="preserve">
+    <value>Теперь, пожалуйста, проверьте свою электронную почту. Там вас ждёт письмо со ссылкой для подтверждения вашего аккаунта. Если письмо не пришло, попробуйте немного подождать или проверить папку «Спам».</value>
+  </data>
+  <data name="Message_ConfirmEmail_Title" xml:space="preserve">
+    <value>Отличная работа!</value>
   </data>
   <data name="SignInPage_ConfirmEmailError" xml:space="preserve">
     <value>Сначала подтвердите адрес электронной почты.</value>

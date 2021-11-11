@@ -120,8 +120,17 @@
   <data name="AppName" xml:space="preserve">
     <value>Wanderer's Diary</value>
   </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="ConnectionError" xml:space="preserve">
     <value>Check your internet connection</value>
+  </data>
+  <data name="Message_ConfirmEmail" xml:space="preserve">
+    <value>Now, please, go to your email and check incoming messages. There are mail with your account confirmation link. If there are no such mails, try to wait a few minutes or check spam folder.</value>
+  </data>
+  <data name="Message_ConfirmEmail_Title" xml:space="preserve">
+    <value>Nice work!</value>
   </data>
   <data name="SignInPage_ConfirmEmailError" xml:space="preserve">
     <value>Please, confirm your email first.</value>

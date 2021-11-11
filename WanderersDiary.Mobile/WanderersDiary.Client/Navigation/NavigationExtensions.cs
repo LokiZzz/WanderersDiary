@@ -8,6 +8,11 @@ namespace WanderersDiary.Client.Navigation
 {
     public static class NavigationExtensions
     {
+        public static async Task<INavigationResult> TryNavigateAsync(this INavigationService navigation, NavigationTrail trail)
+        {
+            return await navigation.TryNavigateAsync(trail.Path, trail.Parameters, trail.IsModal);
+        }
+
         public static async Task<INavigationResult> TryNavigateAsync(this INavigationService navigation, 
             string path, 
             NavigationParameters parameters = null, 

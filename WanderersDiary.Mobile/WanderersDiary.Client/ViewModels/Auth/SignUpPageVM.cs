@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WanderersDiary.Client.Navigation;
 using WanderersDiary.Client.Services.Auth;
+using WanderersDiary.Client.Views.Validation;
 using WanderersDiary.Contracts.Auth;
 
 namespace WanderersDiary.Client.ViewModels.Auth
@@ -18,18 +20,24 @@ namespace WanderersDiary.Client.ViewModels.Auth
         {
             SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
             AccountService = accountService;
+            AddValidationRules();
         }
 
         private async Task ExecuteSignUp()
         {
+            if(!AreFieldsValid())
+            {
+                return;
+            }
+
             IsBusy = true;
 
             IsErrorVisible = false;
-            SignUpResponse response = await AccountService.SignUpAsync(Login, Password, Email);
+            SignUpResponse response = await AccountService.SignUpAsync(Login.Value, Password.Item1.Value, Email.Value);
 
             if (response?.IsSuccess == true)
             {
-                //Navigate to "please, confirm email" message page
+                await NavigateToAskUserConfirmEmail();
             }
             else if (response?.IsSuccess == false)
             {
@@ -38,6 +46,18 @@ namespace WanderersDiary.Client.ViewModels.Auth
             }
 
             IsBusy = false;
+        }
+
+        private async Task NavigateToAskUserConfirmEmail()
+        {
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add(NavigationParametersNames.Common.UserMessagePage.Title, Resources["Message_ConfirmEmail_Title"]);
+            parameters.Add(NavigationParametersNames.Common.UserMessagePage.Message, Resources["Message_ConfirmEmail"]);
+
+            NavigationTrail trailAfter = new NavigationTrail() { Path = NavigationNames.Auth.SignIn };
+            parameters.Add(NavigationParametersNames.Common.UserMessagePage.TrailAfter, trailAfter);
+
+            await NavigationService.TryNavigateAsync(NavigationNames.Common.Message, parameters);
         }
 
         private string GetErrorText(List<ESignUpErrors> errors)
@@ -75,33 +95,50 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
         #region Bindable properties
 
-        private string _login;
-        public string Login
+        bool AreFieldsValid() =>  Email.Validate() && Login.Validate() && Password.Validate();
+
+        public void AddValidationRules()
         {
-            get { return _login; }
-            set { SetProperty(ref _login, value); }
+            Login.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "First Name Required" });
+
+            Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
+            Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = "Invalid Email" });
+
+            Password.Item2.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Confirm password required" });
+            Password.Validations.Add(new MatchPairValidationRule<string> { ValidationMessage = "Password and confirm password don't match" });
         }
 
-        private string _password;
-        public string Password
-        {
-            get { return _password; }
-            set { SetProperty(ref _password, value); }
-        }
+        public ValidatableValue<string> Login { get; set; } = new ValidatableValue<string>();
+        public ValidatableValue<string> Email { get; set; } = new ValidatableValue<string>();
+        public ValidatablePair<string> Password { get; set; } = new ValidatablePair<string>();
 
-        private string _repeatPassword;
-        public string RepeatPassword
-        {
-            get { return _repeatPassword; }
-            set { SetProperty(ref _repeatPassword, value); }
-        }
+        //private string _login;
+        //public string Login
+        //{
+        //    get { return _login; }
+        //    set { SetProperty(ref _login, value); }
+        //}
 
-        private string _email;
-        public string Email
-        {
-            get { return _email; }
-            set { SetProperty(ref _email, value); }
-        }
+        //private string _password;
+        //public string Password
+        //{
+        //    get { return _password; }
+        //    set { SetProperty(ref _password, value); }
+        //}
+
+        //private string _repeatPassword;
+        //public string RepeatPassword
+        //{
+        //    get { return _repeatPassword; }
+        //    set { SetProperty(ref _repeatPassword, value); }
+        //}
+
+        //private string _email;
+        //public string Email
+        //{
+        //    get { return _email; }
+        //    set { SetProperty(ref _email, value); }
+        //}
 
         private bool _isErrorVisible = false;
         public bool IsErrorVisible

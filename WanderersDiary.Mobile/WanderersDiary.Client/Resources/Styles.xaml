@@ -70,6 +70,24 @@
     <Style TargetType="Entry">
         <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
         <Setter Property="FontFamily" Value="SourceSansPro"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <Setter.Value>
+                <VisualStateGroupList>
+                    <VisualStateGroup Name="ValidityStates">
+                        <VisualState Name="Valid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{DynamicResource CommonTextColor}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{DynamicResource ErrorTextColor}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="Frame">

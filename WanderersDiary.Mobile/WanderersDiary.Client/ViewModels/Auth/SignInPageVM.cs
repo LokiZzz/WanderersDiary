@@ -28,7 +28,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
             IThemeService themeService) 
             : base(navigationService)
         {
-            SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
+            SignInCommand = new DelegateCommand(async () => await ExecuteSignIn(), () => false);
             SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
 
             AccountService = accountService;

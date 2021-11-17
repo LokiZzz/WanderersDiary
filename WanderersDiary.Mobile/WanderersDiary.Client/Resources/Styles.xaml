@@ -11,7 +11,7 @@
     <!--Buttons-->
     
     <Style x:Key="BaseButtonStyle" TargetType="Button">
-        <Setter Property="Opacity" Value="0.9"/>
+        <!--<Setter Property="Opacity" Value="0.9"/>-->
         <Setter Property="Margin" Value="15"/>
         <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}"/>

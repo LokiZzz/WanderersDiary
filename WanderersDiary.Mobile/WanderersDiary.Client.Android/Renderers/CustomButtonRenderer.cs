@@ -37,35 +37,35 @@ namespace WanderersDiary.Client.Android.Renderers
         {
             if (e != null && Control != null)
             {
-                var density = Math.Max(1, Resources.DisplayMetrics.Density);
-                var button = e;
-                var cornerRadius = button.CornerRadius * density;
-                var borderWidth = button.BorderWidth * density;
+                float density = Math.Max(1, Resources.DisplayMetrics.Density);
+                Button button = e;
+                float cornerRadius = button.CornerRadius * density;
+                double borderWidth = button.BorderWidth * density;
 
                 // Create a new background drawable that looks same as the current one
-                var normal = new GradientDrawable();
+                GradientDrawable normal = new GradientDrawable();
                 normal.SetColor(button.BackgroundColor.ToAndroid());
                 normal.SetStroke((int)borderWidth, button.BorderColor.ToAndroid());
                 normal.SetCornerRadius(cornerRadius);
 
                 // Use a mask drawable to ensure Ripple respects the buttons' rounded corners
-                var mask = new PaintDrawable();
+                PaintDrawable mask = new PaintDrawable();
                 mask.SetCornerRadius(cornerRadius);
                 mask.SetBounds((int)button.Bounds.Left, (int)button.Bounds.Top, (int)button.Bounds.Right, (int)button.Bounds.Bottom);
 
                 // Use default Android ripple color
                 TypedValue outValue = new TypedValue();
                 Context.Theme.ResolveAttribute(global::Android.Resource.Attribute.ColorControlHighlight, outValue, true);
-                var defaultRippleColor = Context.GetColor(outValue.ResourceId);
+                int defaultRippleColor = Context.GetColor(outValue.ResourceId);
 
-                var rippleDrawable = new RippleDrawable(ColorStateList.ValueOf(
+                RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.ValueOf(
                     new global::Android.Graphics.Color(defaultRippleColor)),
                     normal,
                     mask
                 );
 
                 // Add the drawables to a state list and assign the state list to the button
-                var sld = new StateListDrawable();
+                StateListDrawable sld = new StateListDrawable();
 
                 // Important to have only Enabled state here - using Normal/Pressed states for example would prevent the Ripple from showing
                 // The RippleDrawable shows fade in on touch down, and fade out plus ripple out from hotspot on touch up anyway.

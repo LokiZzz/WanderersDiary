@@ -188,6 +188,20 @@ namespace WanderersDiary.API.Controllers
             return $"{user.UserName} ({user.Id})";
         }
 
+        [HttpGet("to-app")]
+        [AllowAnonymous]
+        public ContentResult RedirectToApp()
+        {
+            string appLink = @"spell://wanderers-diary";
+            string result = $"<html><body><a href=\"{appLink}\">Go to app</a></body></html>";
+
+            return new ContentResult
+            {
+                ContentType = "text/html",
+                Content = result
+            };
+        }
+
         private string GetEmailConfirmationURL(string userId, string confirmationToken)
         {
             string currentController = ControllerContext.RouteData.Values["controller"].ToString();

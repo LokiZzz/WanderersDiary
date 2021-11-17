@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Prism;
@@ -6,9 +7,16 @@ using Prism.Ioc;
 
 namespace WanderersDiary.Client.Droid
 {
+
     [Activity(Theme = "@style/MainTheme",
               ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    [IntentFilter(new[] { Intent.ActionView },
+                  DataScheme = "http",
+                  DataHost = "yourdomain",
+                  DataPathPrefix = "/",
+                  AutoVerify = true,
+                  Categories = new[] { Intent.ActionView, Intent.CategoryDefault, Intent.CategoryBrowsable })]
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -17,7 +25,7 @@ namespace WanderersDiary.Client.Droid
 
             base.OnCreate(savedInstanceState);
 
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
         }
 

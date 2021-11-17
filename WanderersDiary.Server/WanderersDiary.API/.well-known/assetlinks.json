@@ -1,0 +1,12 @@
+{
+  "relation": [
+    "delegate_permission/common.handle_all_urls"
+  ],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.gloomydragon.wanderersdiary",
+    "sha256_cert_fingerprints": [
+      "DB:7D:50:A2:D0:15:69:6B:AE:CD:86:B9:C7:85:6B:4F:2A:83:96:02:C5:1D:8A:17:ED:47:CB:A4:05:89:2D:29"
+    ]
+  }
+}

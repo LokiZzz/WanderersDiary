@@ -76,5 +76,10 @@ namespace WanderersDiary.Client
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageVM>();
 
         }
+
+        protected override void OnAppLinkRequestReceived(Uri uri)
+        {
+            base.OnAppLinkRequestReceived(uri);
+        }
     }
 }

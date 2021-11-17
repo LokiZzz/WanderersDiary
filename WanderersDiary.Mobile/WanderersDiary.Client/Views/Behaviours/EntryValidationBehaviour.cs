@@ -28,8 +28,6 @@ namespace WanderersDiary.Client.Views.Behaviours
             if (bindable is EntryValidationBehaviour IsValidBehavior && newValue is bool IsValid)
             {
                 VisualStateManager.GoToState(IsValidBehavior.AssociatedObject, IsValid ? "Valid" : "Invalid");
-
-                //IsValidBehavior.AssociatedObject.TextColor = IsValid ? Color.Default : Color.Red;
             }
         }
     }

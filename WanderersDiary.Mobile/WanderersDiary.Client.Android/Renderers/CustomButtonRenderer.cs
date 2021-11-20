@@ -18,14 +18,30 @@ namespace WanderersDiary.Client.Android.Renderers
     {
         public CustomButtonRenderer(Context context) : base(context) { }
 
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                FixRipple(button);
+            }
+
+            base.OnElementPropertyChanged(sender, e);
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
         {
             base.OnElementChanged(e);
 
-            if (e.NewElement != null && Control != null)
+            FixRipple(e.NewElement);
+        }
+
+        private void FixRipple(Button element)
+        {
+            if (element != null && Control != null)
             {
                 var density = Math.Max(1, Resources.DisplayMetrics.Density);
-                var button = (Button)e.NewElement;
+                var button = element;
                 var cornerRadius = button.CornerRadius * density;
                 var borderWidth = button.BorderWidth * density;
 

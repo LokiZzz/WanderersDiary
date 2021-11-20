@@ -28,7 +28,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
             IThemeService themeService) 
             : base(navigationService)
         {
-            SignInCommand = new DelegateCommand(async () => await ExecuteSignIn(), () => false);
+            SignInCommand = new DelegateCommand(async () => await ExecuteSignIn(), () => CanSignIn);
             SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
 
             AccountService = accountService;
@@ -43,6 +43,8 @@ namespace WanderersDiary.Client.ViewModels.Auth
         {
             await NavigationService.TryNavigateAsync(NavigationNames.Auth.SignUp);
         }
+
+        public bool CanSignIn => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password);
 
         private async Task ExecuteSignIn()
         {
@@ -73,14 +75,22 @@ namespace WanderersDiary.Client.ViewModels.Auth
         public string Login
         {
             get { return _login; }
-            set { SetProperty(ref _login, value); }
+            set 
+            { 
+                SetProperty(ref _login, value);
+                SignInCommand.RaiseCanExecuteChanged();
+            }
         }
 
         private string _password;
         public string Password
         {
             get { return _password; }
-            set { SetProperty(ref _password, value); }
+            set
+            {
+                SetProperty(ref _password, value);
+                SignInCommand.RaiseCanExecuteChanged();
+            }
         }
 
         private bool _isErrorVisible = false;

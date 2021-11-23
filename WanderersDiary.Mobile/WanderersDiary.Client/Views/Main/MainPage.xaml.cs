@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace WanderersDiary.Client.Views.Main
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : Shell
     {
         public MainPage()
         {

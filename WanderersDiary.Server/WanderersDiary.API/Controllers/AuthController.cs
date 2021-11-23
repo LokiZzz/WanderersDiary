@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -137,9 +138,9 @@ namespace WanderersDiary.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [Route("confirm-email")]
-        public async Task<EmailConfirmationResponse> ConfirmEmail([FromQuery] ConfirmEmailRequest request)
+        public async Task<EmailConfirmationResponse> ConfirmEmail([FromBody] ConfirmEmailRequest request)
         {
             Wanderer user = UserManager.FindByIdAsync(request.UserId).Result;
             IdentityResult result = await UserManager.ConfirmEmailAsync(user, request.Token);
@@ -201,9 +202,14 @@ namespace WanderersDiary.API.Controllers
 
         private string GetEmailConfirmationURL(string userId, string confirmationToken)
         {
-            string appLink = Configuration["AppLinks:ConfirmEmail"];
-            appLink = appLink.Replace("{userid}", userId);
-            appLink = appLink.Replace("{token}", confirmationToken);
+            Dictionary<string, string> queryParams = new Dictionary<string, string>()
+            {
+                {"intent", "1" },
+                {"userid", userId },
+                {"token", confirmationToken }
+            };
+
+            string appLink = QueryHelpers.AddQueryString(Configuration["AppLink"], queryParams);
 
             return appLink;
         }

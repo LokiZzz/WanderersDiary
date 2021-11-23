@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WanderersDiary.Client.Views.Auth;
 using WanderersDiary.Client.Views.Common;
+using WanderersDiary.Client.Views.Main;
 
 namespace WanderersDiary.Client.Navigation
 {
@@ -10,6 +11,7 @@ namespace WanderersDiary.Client.Navigation
     {
         internal static class Common
         {
+            public static readonly string Main = nameof(MainPage);
             public static readonly string Error = nameof(ErrorPage);
             public static readonly string Message = nameof(UserMessagePage);
         }

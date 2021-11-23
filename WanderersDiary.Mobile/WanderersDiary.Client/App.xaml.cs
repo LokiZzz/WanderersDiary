@@ -11,9 +11,11 @@ using WanderersDiary.Client.Services.HTTP;
 using WanderersDiary.Client.ViewModels;
 using WanderersDiary.Client.ViewModels.Auth;
 using WanderersDiary.Client.ViewModels.Common;
+using WanderersDiary.Client.ViewModels.Main;
 using WanderersDiary.Client.Views;
 using WanderersDiary.Client.Views.Auth;
 using WanderersDiary.Client.Views.Common;
+using WanderersDiary.Client.Views.Main;
 using Xamarin.Essentials;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
@@ -69,6 +71,7 @@ namespace WanderersDiary.Client
             containerRegistry.RegisterForNavigation<NavigationPage>();
 
             //Common
+            containerRegistry.RegisterForNavigation<MainPage, MainPageVM>();
             containerRegistry.RegisterForNavigation<ErrorPage, ErrorPageVM>();
             containerRegistry.RegisterForNavigation<UserMessagePage, UserMessagePageVM>();
 

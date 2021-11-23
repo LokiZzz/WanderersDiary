@@ -21,18 +21,24 @@ namespace WanderersDiary.Client.ViewModels.Auth
     {
         public IAccountService AccountService { get; }
         public IThemeService ThemeService { get; }
+        public INavigationService Navigation { get; }
         public IAlertService AlertService { get; }
 
         public SignInPageVM(INavigationService navigationService, 
             IAccountService accountService, 
-            IThemeService themeService) : base(navigationService)
+            IThemeService themeService,
+            INavigationService navigation) : base(navigationService)
         {
             SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
             SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
 
             AccountService = accountService;
             ThemeService = themeService;
+            Navigation = navigation;
             AlertService = DependencyService.Get<IAlertService>();
+
+            Login = "loki123123";
+            Password = "123456";
         }
 
         private async Task ExecuteSignUp()
@@ -51,7 +57,7 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
             if (response?.IsSuccess == true)
             {
-                //Navigate to main page
+                await Navigation.TryNavigateAsync(NavigationNames.Common.Main);
             }
             else if(response?.IsSuccess == false)
             {

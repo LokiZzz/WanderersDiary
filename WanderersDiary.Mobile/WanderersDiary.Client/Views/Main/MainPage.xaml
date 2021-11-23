@@ -1,12 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WanderersDiary.Client.Views.Main.MainPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="WanderersDiary.Client.Views.Main.MainPage"
+       BackgroundColor="{StaticResource PageBackgroundColor}">
+    <FlyoutItem Title="Европа">
+        <Tab Title="Западная">
+            <ShellContent Title="Франция">
+                <ContentPage Title="Франция">
+                    <StackLayout>
+                        <Label Text="Париж" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Великобритания">
+                <ContentPage Title="Великобитания">
+                    <StackLayout>
+                        <Label Text="Лондон" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Центральная">
+            <ShellContent Title="Германия">
+                <ContentPage Title="Германия">
+                    <StackLayout>
+                        <Label Text="Берлин" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Австрия">
+                <ContentPage Title="Австрия">
+                    <StackLayout>
+                        <Label Text="Вена" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Азия">
+        <Tab Title="Ближний Восток">
+            <ShellContent Title="Турция">
+                <ContentPage Title="Турция">
+                    <StackLayout>
+                        <Label Text="Анкара" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Иран">
+                <ContentPage Title="Иран">
+                    <StackLayout>
+                        <Label Text="Тегеран" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Восточная Азия">
+            <ShellContent Title="Китай">
+                <ContentPage Title="Китай">
+                    <StackLayout>
+                        <Label Text="Пекин" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+            <ShellContent Title="Япония">
+                <ContentPage Title="Япония">
+                    <StackLayout>
+                        <Label Text="Токио" />
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+</Shell>

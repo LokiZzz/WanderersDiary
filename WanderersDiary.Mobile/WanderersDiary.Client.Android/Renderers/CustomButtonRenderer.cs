@@ -40,31 +40,31 @@ namespace WanderersDiary.Client.Android.Renderers
         {
             if (element != null && Control != null)
             {
-                var density = Math.Max(1, Resources.DisplayMetrics.Density);
-                var button = element;
-                var cornerRadius = button.CornerRadius * density;
-                var borderWidth = button.BorderWidth * density;
+                float density = Math.Max(1, Resources.DisplayMetrics.Density);
+                Button button = element;
+                float cornerRadius = button.CornerRadius * density;
+                double borderWidth = button.BorderWidth * density;
 
                 // Create a new background drawable that looks same as the current one
-                var background = button.Background as LinearGradientBrush;
+                LinearGradientBrush background = button.Background as LinearGradientBrush;
                 GradientDrawable normal = GetNewGradientDrawable(button, cornerRadius, borderWidth, background);
 
                 // Use a mask drawable to ensure Ripple respects the buttons' rounded corners
-                var mask = new PaintDrawable();
+                PaintDrawable mask = new PaintDrawable();
                 mask.SetCornerRadius(cornerRadius);
 
-                var defaultRippleColor = GetIntFromFormsColor(Xamarin.Forms.Color.White);
+                int defaultRippleColor = GetIntFromFormsColor(Xamarin.Forms.Color.White);
 
-                var rippleDrawable =
+                RippleDrawable rippleDrawable =
                     new RippleDrawable(ColorStateList.ValueOf(new Color(defaultRippleColor)),
                         normal,
                         mask);
 
-                var disabled = GetNewGradientDrawable(button, cornerRadius, borderWidth, background);
-                disabled.SetColorFilter(new PorterDuffColorFilter(Color.LightGray, PorterDuff.Mode.Multiply));
+                GradientDrawable disabled = GetNewGradientDrawable(button, cornerRadius, borderWidth, background);
+                SetDisabledStyle(button, disabled, borderWidth);
 
                 // Add the drawables to a state list and assign the state list to the button
-                var sld = new StateListDrawable();
+                StateListDrawable sld = new StateListDrawable();
 
                 // Important to have only Enabled state here - using Normal/Pressed states for example would prevent the Ripple from showing
                 // The RippleDrawable shows fade in on touch down, and fade out plus ripple out from hotspot on touch up anyway.
@@ -81,9 +81,28 @@ namespace WanderersDiary.Client.Android.Renderers
             }
         }
 
+        private void SetDisabledStyle(Button button, GradientDrawable drawable, double borderWidth)
+        {
+            drawable.SetColorFilter(new PorterDuffColorFilter(Color.LightGray, PorterDuff.Mode.Multiply));
+
+            //if (button.BackgroundColor.A != -1)
+            //{
+            //    if (button.BackgroundColor.A == 0)
+            //    {
+            //        Xamarin.Forms.Color color = button.BorderColor.WithLuminosity(0.5);
+            //        drawable.SetStroke((int)borderWidth, color.ToAndroid());
+            //    }
+            //    else
+            //    {
+            //        Xamarin.Forms.Color color = button.BackgroundColor.WithLuminosity(0.5);
+            //        drawable.SetColor(color.ToAndroid());
+            //    }
+            //}
+        }
+
         private static GradientDrawable GetNewGradientDrawable(Button button, float cornerRadius, double borderWidth, LinearGradientBrush background)
         {
-            var drawable = new GradientDrawable(
+            GradientDrawable drawable = new GradientDrawable(
                 GradientDrawable.Orientation.TlBr,
                 background.GradientStops.Select(
                     s => GetIntFromFormsColor(s.Color)

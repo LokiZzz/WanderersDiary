@@ -18,6 +18,7 @@ namespace WanderersDiary.Client.Navigation
         {
             public static readonly string SignIn = nameof(SignInPage);
             public static readonly string SignUp = nameof(SignUpPage);
+            public static readonly string ConfirmEmail = nameof(EmailConfirmationPage);
         }
     }
 }

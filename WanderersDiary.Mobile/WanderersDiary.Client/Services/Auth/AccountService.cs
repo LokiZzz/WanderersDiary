@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using WanderersDiary.Client.Services.HTTP;
 using WanderersDiary.Contracts.Auth;
 using Xamarin.Essentials;
+using Xamarin.Forms.Internals;
 
 namespace WanderersDiary.Client.Services.Auth
 {
@@ -12,6 +13,7 @@ namespace WanderersDiary.Client.Services.Auth
     {
         Task<SignInResponse> SignInAsync(string login, string password);
         Task<SignUpResponse> SignUpAsync(string login, string password, string email);
+        Task<EmailConfirmationResponse> ConfirmEmailAsync(string userId, string token);
     }
 
     public class AccountService : IAccountService
@@ -54,6 +56,20 @@ namespace WanderersDiary.Client.Services.Auth
                     Login = login,
                     Password = password,
                     Email = email
+                }
+            );
+
+            return response;
+        }
+
+        public async Task<EmailConfirmationResponse> ConfirmEmailAsync(string userId, string token)
+        {
+            EmailConfirmationResponse response = await RestService.PostAsync<ConfirmEmailRequest, EmailConfirmationResponse>(
+                FullPath("/auth/confirm-email"),
+                new ConfirmEmailRequest
+                {
+                    UserId = userId,
+                    Token = token
                 }
             );
 

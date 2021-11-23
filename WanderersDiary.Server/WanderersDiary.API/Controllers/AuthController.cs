@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -25,18 +26,21 @@ namespace WanderersDiary.API.Controllers
     {
         private readonly ILogger<AuthController> _logger;
 
+        public IConfiguration Configuration { get; }
         public UserManager<Wanderer> UserManager { get; }
         public SignInManager<Wanderer> SignInManager { get; }
         public IJwtGenerator JwtGenerator { get; }
         public IEmailService EmailService { get; }
 
         public AuthController(ILogger<AuthController> logger,
+            IConfiguration configuration,
             UserManager<Wanderer> userManager,
             SignInManager<Wanderer> signInManager,
             IJwtGenerator jwtGenerator,
             IEmailService emailService)
         {
             _logger = logger;
+            Configuration = configuration;
             UserManager = userManager;
             SignInManager = signInManager;
             JwtGenerator = jwtGenerator;
@@ -135,12 +139,19 @@ namespace WanderersDiary.API.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("confirm-email")]
-        public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest request)
+        public async Task<EmailConfirmationResponse> ConfirmEmail([FromQuery] ConfirmEmailRequest request)
         {
             Wanderer user = UserManager.FindByIdAsync(request.UserId).Result;
             IdentityResult result = await UserManager.ConfirmEmailAsync(user, request.Token);
 
-            return result.Succeeded ? Ok() : BadRequest();
+            if(result.Succeeded)
+            {
+                return new EmailConfirmationResponse { IsSuccess = true };
+            }
+            else
+            {
+                return new EmailConfirmationResponse { IsSuccess = false };
+            }
         }
 
         [AllowAnonymous]
@@ -188,34 +199,13 @@ namespace WanderersDiary.API.Controllers
             return $"{user.UserName} ({user.Id})";
         }
 
-        [HttpGet("to-app")]
-        [AllowAnonymous]
-        public ContentResult RedirectToApp()
-        {
-            string appLink = @"spell://wanderers-diary";
-            string result = $"<html><body><a href=\"{appLink}\">Go to app</a></body></html>";
-
-            return new ContentResult
-            {
-                ContentType = "text/html",
-                Content = result
-            };
-        }
-
         private string GetEmailConfirmationURL(string userId, string confirmationToken)
         {
-            string currentController = ControllerContext.RouteData.Values["controller"].ToString();
+            string appLink = Configuration["AppLinks:ConfirmEmail"];
+            appLink = appLink.Replace("{userid}", userId);
+            appLink = appLink.Replace("{token}", confirmationToken);
 
-            return Url.Action(
-                action: nameof(ConfirmEmail), 
-                controller: currentController, 
-                values: new ConfirmEmailRequest
-                { 
-                    UserId = userId, 
-                    Token = confirmationToken 
-                }, 
-                protocol: HttpContext.Request.Scheme
-            );
+            return appLink;
         }
     }
 }

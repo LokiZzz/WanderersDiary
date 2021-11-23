@@ -12,7 +12,7 @@ namespace WanderersDiary.Client.Droid
               ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     [IntentFilter(new[] { Intent.ActionView },
                   DataScheme = "http",
-                  DataHost = "yourdomain",
+                  DataHost = "wanderers-diary",
                   DataPathPrefix = "/",
                   AutoVerify = true,
                   Categories = new[] { Intent.ActionView, Intent.CategoryDefault, Intent.CategoryBrowsable })]

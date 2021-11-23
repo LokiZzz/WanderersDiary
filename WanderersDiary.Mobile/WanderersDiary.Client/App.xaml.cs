@@ -2,6 +2,7 @@ using Prism;
 using Prism.Ioc;
 using Prism.Unity;
 using System;
+using System.Web;
 using WanderersDiary.Client.Navigation;
 using WanderersDiary.Client.Resources;
 using WanderersDiary.Client.Services;
@@ -74,12 +75,18 @@ namespace WanderersDiary.Client
             //Auth
             containerRegistry.RegisterForNavigation<SignInPage, SignInPageVM>();
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageVM>();
+            containerRegistry.RegisterForNavigation<EmailConfirmationPage, EmailConfirmationPageVM>();
 
         }
 
-        protected override void OnAppLinkRequestReceived(Uri uri)
+        protected override async void OnAppLinkRequestReceived(Uri uri)
         {
             base.OnAppLinkRequestReceived(uri);
+
+            INavigationTrailService trailService = Container.Resolve<INavigationTrailService>();
+            NavigationTrail trail = trailService.GetTrailFromAppLink(uri);
+
+            await NavigationService.TryNavigateAsync(trail.Path, trail.Parameters, trail.IsModal);
         }
     }
 }

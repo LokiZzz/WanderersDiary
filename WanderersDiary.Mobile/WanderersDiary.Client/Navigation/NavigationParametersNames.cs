@@ -6,6 +6,12 @@ namespace WanderersDiary.Client.Navigation
 {
     public static class NavigationParametersNames
     {
+        public static class EmailConfirmation
+        {
+            public static readonly string UserId = nameof(UserId);
+            public static readonly string Token = nameof(Token);
+        }
+
         public static class Common
         {
             internal static class ErrorPageParameters

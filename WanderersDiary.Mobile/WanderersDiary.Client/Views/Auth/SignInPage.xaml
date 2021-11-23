@@ -15,9 +15,9 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Image Source="{image:ImageResource WanderersDiary.Client.Resources.Images.EYES.png}" Opacity="0.1" 
-                   Margin="-360,0,0,0" VerticalOptions="Fill" Aspect="AspectFill"
-                   Grid.RowSpan="2"/>
+            <!--<Image Source="EYES.png" 
+                   Opacity="0.1" Margin="-360,0,0,0" VerticalOptions="Fill" Aspect="AspectFill"
+                   Grid.RowSpan="2"/>-->
 
             <StackLayout Grid.Row="0" Spacing="0" VerticalOptions="Center" Margin="15,-40,15,0">
                 <Label  Style="{StaticResource DisplayTitleLabelStyle}" Text="{Binding Resources[AppName]}" Margin="20,60"/>

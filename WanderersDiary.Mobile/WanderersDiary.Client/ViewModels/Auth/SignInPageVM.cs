@@ -25,18 +25,14 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
         public SignInPageVM(INavigationService navigationService, 
             IAccountService accountService, 
-            IThemeService themeService) 
-            : base(navigationService)
+            IThemeService themeService) : base(navigationService)
         {
-            SignInCommand = new DelegateCommand(async () => await ExecuteSignIn(), () => CanSignIn);
+            SignInCommand = new DelegateCommand(async () => await ExecuteSignIn());
             SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
 
             AccountService = accountService;
             ThemeService = themeService;
             AlertService = DependencyService.Get<IAlertService>();
-
-            Login = "lokizzz5";
-            Password = "03Dragonfly#03";
         }
 
         private async Task ExecuteSignUp()

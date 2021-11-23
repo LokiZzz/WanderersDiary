@@ -21,6 +21,11 @@ namespace WanderersDiary.Client.ViewModels.Auth
             SignUpCommand = new DelegateCommand(async () => await ExecuteSignUp());
             AccountService = accountService;
             AddValidationRules();
+
+            Login.Value = "lokizzz";
+            Email.Value = "lokizzzzzzzz@gmail.com";
+            Password.Item1.Value = "123456";
+            Password.Item2.Value = "123456";
         }
 
         private async Task ExecuteSignUp()

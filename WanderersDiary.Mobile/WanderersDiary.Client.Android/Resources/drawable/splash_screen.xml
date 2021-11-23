@@ -2,7 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item android:drawable="@color/launcher_background"/>
   <item>
-    <bitmap android:gravity="center"
-            android:src="@drawable/icon" />
+    <bitmap android:gravity="center" android:tileMode="disabled" android:src="@drawable/ic" />
   </item>
 </layer-list>

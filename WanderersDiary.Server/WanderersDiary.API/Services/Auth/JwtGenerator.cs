@@ -54,7 +54,7 @@ namespace WanderersDiary.API.Services.Auth
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = credentials
             };
 
@@ -66,7 +66,9 @@ namespace WanderersDiary.API.Services.Auth
             return new CreateTokenResult
             {
                 Token = tokenHandler.WriteToken(token),
-                RefreshToken = refreshToken.Token
+                TokenExpirationUtcDate = token.ValidTo,
+                RefreshToken = refreshToken.Token,
+                RefreshTokenExpirationUtcDate = refreshToken.ExpiryDate
             };
         }       
 
@@ -172,7 +174,7 @@ namespace WanderersDiary.API.Services.Auth
             string jti = principal.Claims.SingleOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             if (storedRefreshToken.JWTId != jti)
             {
-                return GetBadVerifyTokenResult("The token doesn't mateched the saved token.");
+                return GetBadVerifyTokenResult("The token doesn't matched the saved token.");
             }
 
             return new VerifyTokenResult { IsSuccess = true };
@@ -219,6 +221,10 @@ namespace WanderersDiary.API.Services.Auth
     {
         public string Token { get; set; }
 
+        public DateTime TokenExpirationUtcDate { get; set; }
+
         public string RefreshToken { get; set; }
+
+        public DateTime RefreshTokenExpirationUtcDate { get; set; }
     }
 }

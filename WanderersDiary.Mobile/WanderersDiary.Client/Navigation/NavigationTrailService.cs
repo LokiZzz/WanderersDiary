@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web;
+using WanderersDiary.Client.Services.Auth;
+using Xamarin.Essentials;
 
 namespace WanderersDiary.Client.Navigation
 {
@@ -15,9 +17,23 @@ namespace WanderersDiary.Client.Navigation
 
     public class NavigationTrailService : INavigationTrailService
     {
+        public IAccountService AccountService { get; }
+
+        public NavigationTrailService(IAccountService accountService)
+        {
+            AccountService = accountService;
+        }
+
         public NavigationTrail GetOnStartTrail()
         {
-            return new NavigationTrail { Path = NavigationNames.Auth.SignIn };
+            if (AccountService.IsUserSignedIn())
+            {
+                return new NavigationTrail { Path = NavigationNames.Common.Main };
+            }
+            else
+            {
+                return new NavigationTrail { Path = NavigationNames.Auth.SignIn };
+            }
         }
 
         public NavigationTrail GetTrailFromAppLink(Uri uri)

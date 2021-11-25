@@ -8,7 +8,11 @@ namespace WanderersDiary.Contracts.Auth
     {
         public string Token { get; set; }
 
+        public DateTime TokenExpirationUtcDate { get; set; }
+
         public string RefreshToken { get; set; }
+
+        public DateTime RefreshTokenExpirationUtcDate { get; set; }
 
         public bool IsSuccess { get; set; }
 

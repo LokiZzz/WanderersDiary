@@ -14,6 +14,7 @@ namespace WanderersDiary.Client.Services.Auth
         Task<SignInResponse> SignInAsync(string login, string password);
         Task<SignUpResponse> SignUpAsync(string login, string password, string email);
         Task<EmailConfirmationResponse> ConfirmEmailAsync(string userId, string token);
+        bool IsUserSignedIn();
     }
 
     public class AccountService : IAccountService
@@ -41,7 +42,9 @@ namespace WanderersDiary.Client.Services.Auth
             if(response?.IsSuccess == true)
             {
                 Preferences.Set(Settings.Auth.Token, response.Token);
+                Preferences.Set(Settings.Auth.TokenValidTo, response.TokenExpirationUtcDate);
                 Preferences.Set(Settings.Auth.RefreshToken, response.Token);
+                Preferences.Set(Settings.Auth.RefreshTokenValidTo, response.RefreshTokenExpirationUtcDate);
             }
 
             return response;
@@ -74,6 +77,14 @@ namespace WanderersDiary.Client.Services.Auth
             );
 
             return response;
+        }
+
+        public bool IsUserSignedIn()
+        {
+            string token = Preferences.Get(Settings.Auth.Token, null);
+            DateTime tokenValidTo = Preferences.Get(Settings.Auth.TokenValidTo, DateTime.MinValue);
+
+            return !string.IsNullOrEmpty(token) && tokenValidTo > DateTime.UtcNow;
         }
     }
 }

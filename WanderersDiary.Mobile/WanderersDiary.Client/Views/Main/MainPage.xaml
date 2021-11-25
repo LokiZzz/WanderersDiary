@@ -3,9 +3,25 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="WanderersDiary.Client.Views.Main.MainPage"
        BackgroundColor="{StaticResource PageBackgroundColor}">
+    <FlyoutItem Title="Азия">
+        <Tab Title="Ближний Восток">
+            <ContentPage Title="Турция">
+                <StackLayout Spacing="20">
+                    <Label Text="Анкара" />
+                </StackLayout>
+            </ContentPage>
+        </Tab>
+        <Tab Title="Восточная Азия">
+            <ContentPage Title="Китай">
+                <StackLayout>
+                    <Label Text="Пекин" />
+                </StackLayout>
+            </ContentPage>
+        </Tab>
+    </FlyoutItem>
     <FlyoutItem Title="Европа">
         <Tab Title="Западная">
-            <ShellContent Title="Франция">
+            <ShellContent Title="Франция" >
                 <ContentPage Title="Франция">
                     <StackLayout>
                         <Label Text="Париж" />
@@ -32,41 +48,6 @@
                 <ContentPage Title="Австрия">
                     <StackLayout>
                         <Label Text="Вена" />
-                    </StackLayout>
-                </ContentPage>
-            </ShellContent>
-        </Tab>
-    </FlyoutItem>
-
-    <FlyoutItem Title="Азия">
-        <Tab Title="Ближний Восток">
-            <ShellContent Title="Турция">
-                <ContentPage Title="Турция">
-                    <StackLayout>
-                        <Label Text="Анкара" />
-                    </StackLayout>
-                </ContentPage>
-            </ShellContent>
-            <ShellContent Title="Иран">
-                <ContentPage Title="Иран">
-                    <StackLayout>
-                        <Label Text="Тегеран" />
-                    </StackLayout>
-                </ContentPage>
-            </ShellContent>
-        </Tab>
-        <Tab Title="Восточная Азия">
-            <ShellContent Title="Китай">
-                <ContentPage Title="Китай">
-                    <StackLayout>
-                        <Label Text="Пекин" />
-                    </StackLayout>
-                </ContentPage>
-            </ShellContent>
-            <ShellContent Title="Япония">
-                <ContentPage Title="Япония">
-                    <StackLayout>
-                        <Label Text="Токио" />
                     </StackLayout>
                 </ContentPage>
             </ShellContent>

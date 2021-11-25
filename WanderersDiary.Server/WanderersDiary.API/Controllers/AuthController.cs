@@ -81,7 +81,9 @@ namespace WanderersDiary.API.Controllers
                 { 
                     IsSuccess = true,
                     Token = tokenResult.Token, 
-                    RefreshToken = tokenResult.RefreshToken 
+                    TokenExpirationUtcDate = tokenResult.TokenExpirationUtcDate,
+                    RefreshToken = tokenResult.RefreshToken,
+                    RefreshTokenExpirationUtcDate = tokenResult.RefreshTokenExpirationUtcDate
                 };
             }
             else

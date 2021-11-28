@@ -2,16 +2,42 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="WanderersDiary.Client.Views.Main.MainPage"
-       BackgroundColor="{StaticResource PageBackgroundColor}">
+       BackgroundColor="{DynamicResource PageBackgroundColor}"
+       Shell.PresentationMode="Animated">
+    <Shell.FlyoutBackground>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,1">
+            <!--<GradientStop Color="{DynamicResource PageBackgroundColor}" Offset="0.0" />
+            <GradientStop Color="Transparent" Offset="1.0" />-->
+            <GradientStop Color="Gainsboro" Offset="0.0" />
+            <GradientStop Color="Gainsboro" Offset="1.0" />
+        </LinearGradientBrush>
+    </Shell.FlyoutBackground>
+    <FlyoutItem Title="Тест">
+        <ShellContent Title="Первый шелл">
+            <ContentPage Title="Первый шелл" BackgroundColor="{StaticResource PageBackgroundColor}" Shell.NavBarIsVisible="False">
+                <StackLayout Spacing="20">
+                    <Label Text="111111" />
+                </StackLayout>
+            </ContentPage>
+        </ShellContent>
+        <ShellContent Title="Второй шелл" >
+            <ContentPage Title="Второй шелл" BackgroundColor="{StaticResource PageBackgroundColor}" Shell.NavBarHasShadow="false">
+                <StackLayout>
+                    <Label Text="222222" />
+                </StackLayout>
+            </ContentPage>
+        </ShellContent>
+    </FlyoutItem>
     <FlyoutItem Title="Азия">
         <Tab Title="Ближний Восток">
-            <ContentPage Title="Турция">
+            <ContentPage Title="Турция" BackgroundColor="{StaticResource PageBackgroundColor}">
                 <StackLayout Spacing="20">
                     <Label Text="Анкара" />
                 </StackLayout>
             </ContentPage>
         </Tab>
-        <Tab Title="Восточная Азия">
+        <Tab Title="Восточная Азия" >
             <ContentPage Title="Китай">
                 <StackLayout>
                     <Label Text="Пекин" />

@@ -16,9 +16,9 @@ namespace WanderersDiary.Client.Navigation
         public static async Task<INavigationResult> TryNavigateAsync(this INavigationService navigation, 
             string path, 
             NavigationParameters parameters = null, 
-            bool? IsModal = null)
+            bool? isModal = null)
         {
-            INavigationResult result = await navigation.NavigateAsync(path, parameters, IsModal);
+            INavigationResult result = await navigation.NavigateAsync(path, parameters, isModal);
 
             if(!result.Success)
             {
@@ -30,5 +30,7 @@ namespace WanderersDiary.Client.Navigation
 
             return result;
         }
+
+        public static string ToAbsolutePath(this string path) => $"/{path}";
     }
 }

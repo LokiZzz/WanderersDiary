@@ -57,7 +57,10 @@ namespace WanderersDiary.Client.ViewModels.Auth
 
             if (response?.IsSuccess == true)
             {
-                await Navigation.TryNavigateAsync(NavigationNames.Common.Main);
+                await Navigation.TryNavigateAsync(
+                    path: NavigationNames.Common.Main.ToAbsolutePath(),
+                    isModal: true
+                );
             }
             else if(response?.IsSuccess == false)
             {

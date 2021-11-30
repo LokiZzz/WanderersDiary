@@ -1,20 +1,52 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using WanderersDiary.Entities.Models.User;
+using WanderersDiary.Entities.Models;
+using WanderersDiary.Entities.Models.Character;
 
-namespace WanderersDiary.Entities.Models
+namespace WanderersDiary.Entities.Character
 {
     public class Character : EntityBase
     {
         public string Name { get; set; }
 
-        public Wanderer Wanderer { get; set; }
+        public Appearance Appearance { get; set; }
 
-        public class Config : EntityTypeConfiguration<Character> { }
+        public Personality Personality { get; set; }
+
+        public Attributes Attributes { get; set; }
+
+        public ICollection<SkillProficiency> Skills { get; set; }
+        public ArmouryProficiencies ArmouryProficiencies { get; set; }
+        public ICollection<CommonProficiency> Tools { get; set; }
+        public ICollection<CommonProficiency> Languages { get; set; }
+        public ICollection<CommonProficiency> OtherProficiencies { get; set; }
+
+        /// <summary>
+        /// Gained  from race and modified later
+        /// </summary>
+        public Speed Speed { get; set; }
+
+        /// <summary>
+        /// Gained  from race and modified later
+        /// </summary>
+        public Senses Senses { get; set; }
+
+        public int Experience { get; set; }
+
+        public Background Background { get; set; }
+
+        public Race Race { get; set; }
+
+        public ICollection<CharacterClass> Classes { get; set; }
+
+        public ICollection<SpellSlot> SpellSlots { get; set; }
+
+        /// <summary>
+        /// By default have main conatiner named as "Other"
+        /// </summary>
+        public ICollection<InventoryContainer> Inventory { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace WanderersDiary.Entities
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
-        public DbSet<Character> Characters { get; set; }
+        public DbSet<Character.Character> Characters { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

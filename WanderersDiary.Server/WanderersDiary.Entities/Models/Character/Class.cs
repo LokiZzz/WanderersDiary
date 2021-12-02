@@ -21,13 +21,18 @@ namespace WanderersDiary.Entities.Character
 
         public ICollection<Feature> Features { get; set; }
 
-        public Archetype Archetype { get; set; }
+        public int AvailiableSkillNumber { get; set; }
+        public ICollection<ESkill> Skills { get; set; }
 
-        public ICollection<ESkill> AvailiableSkills { get; set; }
+        public ICollection<CommonProficiency> Tools { get; set; }
 
-        //REWORK TO DISCRETE TOOLS
-        public ICollection<CommonProficiency> AvailiableTools { get; set; }
+        public ArmouryProficiencies ArmouryProficiencies { get; set; }
 
-        public ICollection<ArmouryProficiencies> AvailiableArmouryProficiencies { get; set; }
+        public bool StrenghtSave { get; set; }
+        public bool DexteritySave { get; set; }
+        public bool ConstitutionSave { get; set; }
+        public bool IntelligenceSave { get; set; }
+        public bool WisdomSave { get; set; }
+        public bool CharismaSave { get; set; }
     }
 }

@@ -21,5 +21,9 @@ namespace WanderersDiary.Entities.Models.Character
         public Senses Senses { get; set; }
 
         public ICollection<Feature> Features { get; set; }
+
+        public AttributeBonus AttributeBonus { get; set; }
+
+        public Race Subrace { get; set; }
     }
 }

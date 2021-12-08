@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using WanderersDiary.Contracts.Game;
+using WanderersDiary.Shared.Game;
 
-namespace WanderersDiary.Entities.Models.Character
+namespace WanderersDiary.Entities.Models
 {
     public class SkillProficiency : EntityBase
     {

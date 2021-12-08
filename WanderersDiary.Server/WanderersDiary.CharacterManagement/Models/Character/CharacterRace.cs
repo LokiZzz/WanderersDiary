@@ -1,0 +1,15 @@
+﻿using System.Collections.Generic;
+using WanderersDiary.Shared.Game.Enums;
+
+namespace WanderersDiary.CharacterManagement.Models
+{
+    public class CharacterRace
+    {
+        public ERace Race { get; set; }
+
+        /// <summary>
+        /// Subrace is another feature specified in race business logic.
+        /// </summary>
+        public ICollection<Feature> Features { get; set; }
+    }
+}

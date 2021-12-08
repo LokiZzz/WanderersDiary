@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WanderersDiary.Contracts.Auth
+namespace WanderersDiary.Shared.Auth
 {
     public class ResetPasswordRequest
     {

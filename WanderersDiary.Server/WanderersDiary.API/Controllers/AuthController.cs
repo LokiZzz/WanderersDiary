@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WanderersDiary.API.Services.Auth;
 using WanderersDiary.API.Services.Email;
-using WanderersDiary.Contracts.Auth;
+using WanderersDiary.Shared.Auth;
 using WanderersDiary.Entities.Models.User;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 

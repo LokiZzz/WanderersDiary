@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WanderersDiary.Contracts.Character;
+using WanderersDiary.Shared;
 
-namespace WanderersDiary.Entities.Models.Character
+namespace WanderersDiary.Entities.Models
 {
     public class Appearance : EntityBase
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WanderersDiary.Entities.Models.Spell
+namespace WanderersDiary.Entities.Models
 {
     public class SpellDuration : EntityBase
     {

@@ -4,14 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WanderersDiary.Entities.Models;
-using WanderersDiary.Entities.Models.Character;
-using WanderersDiary.Entities.Models.Spell;
 
 namespace WanderersDiary.Entities.Character
 {
     public class Character : EntityBase
     {
         public string Name { get; set; }
+
+        public int CurrentHitPoints { get; set; }
+
+        public int MaxHitPoints { get; set; }
+
+        public ICollection<HitDice> HitDices { get; set; }
 
         public Appearance Appearance { get; set; }
 
@@ -41,7 +45,7 @@ namespace WanderersDiary.Entities.Character
 
         public Background Background { get; set; }
 
-        public Race Race { get; set; }
+        public CharacterRace Race { get; set; }
 
         public ICollection<CharacterClass> Classes { get; set; }
 
@@ -50,6 +54,8 @@ namespace WanderersDiary.Entities.Character
         public ICollection<SpellSlot> SpellSlots { get; set; }
 
         public ICollection<Spell> PreparedSpells { get; set; }
+
+        public int MaxPreparedSpellsCount { get; set; }
 
         /// <summary>
         /// By default have main conatiner named as "Other"
@@ -68,7 +74,7 @@ namespace WanderersDiary.Entities.Character
 
         //Magic items and eqipped magic items
 
-        //Equipped Immunity, Resistance & Vulnerability
+        //Immunity, Resistance & Vulnerability
 
         //Currency
 

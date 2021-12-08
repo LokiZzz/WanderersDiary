@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using WanderersDiary.Contracts.Auth;
+using WanderersDiary.Shared.Auth;
 using WanderersDiary.Entities.Models.User;
 
 namespace WanderersDiary.API.Services.Auth

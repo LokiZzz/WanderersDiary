@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WanderersDiary.Server\WanderersDiary.Contracts\WanderersDiary.Contracts.csproj" />
+    <ProjectReference Include="..\..\WanderersDiary.Server\WanderersDiary.Shared\WanderersDiary.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

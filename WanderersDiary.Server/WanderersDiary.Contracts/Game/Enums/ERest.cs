@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WanderersDiary.Contracts.Game
+namespace WanderersDiary.Shared.Game
 {
     public enum ERest
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WanderersDiary.Contracts.Game
+namespace WanderersDiary.Shared.Game
 {
     public enum ESkill
     {

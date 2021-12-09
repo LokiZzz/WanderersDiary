@@ -7,6 +7,7 @@ namespace WanderersDiary.Shared.Game
     public enum EProficiency
     {
         Proficient = 1,
-        Expert = 2
+        Expert = 2,
+        JackOfAllTrades = 3
     }
 }

@@ -20,7 +20,7 @@
 
 //        public Senses Senses { get; set; }
 
-//        public ICollection<Feature> Features { get; set; }
+//        public List<Feature> Features { get; set; }
 
 //        public AttributeBonus AttributeBonus { get; set; }
 

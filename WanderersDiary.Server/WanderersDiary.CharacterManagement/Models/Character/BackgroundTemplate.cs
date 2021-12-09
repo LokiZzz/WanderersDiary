@@ -13,6 +13,6 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public string Description { get; set; }
 
-        public ICollection<ESkill> AvailiableSkills { get; set; }
+        public List<ESkill> AvailiableSkills { get; set; }
     }
 }

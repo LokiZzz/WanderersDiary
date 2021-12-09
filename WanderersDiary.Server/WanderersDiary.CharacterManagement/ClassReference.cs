@@ -19,12 +19,12 @@
 
 //        public EDice HitDice { get; set; }
 
-//        public ICollection<Feature> Features { get; set; }
+//        public List<Feature> Features { get; set; }
 
 //        public int AvailiableSkillNumber { get; set; }
-//        public ICollection<ESkill> Skills { get; set; }
+//        public List<ESkill> Skills { get; set; }
 
-//        public ICollection<CommonProficiency> Tools { get; set; }
+//        public List<CommonProficiency> Tools { get; set; }
 
 //        public ArmouryProficiencies ArmouryProficiencies { get; set; }
 

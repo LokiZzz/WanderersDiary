@@ -6,6 +6,6 @@ namespace WanderersDiary.CharacterManagement.Models
     {
         public string Name { get; set; }
 
-        public ICollection<InventoryItem> Items { get; set; }
+        public List<InventoryItem> Items { get; set; }
     }
 }

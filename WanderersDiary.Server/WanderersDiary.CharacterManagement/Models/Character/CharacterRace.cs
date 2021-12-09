@@ -10,6 +10,6 @@ namespace WanderersDiary.CharacterManagement.Models
         /// <summary>
         /// Subrace is another feature specified in race business logic.
         /// </summary>
-        public ICollection<Feature> Features { get; set; }
+        public List<Feature> Features { get; set; }
     }
 }

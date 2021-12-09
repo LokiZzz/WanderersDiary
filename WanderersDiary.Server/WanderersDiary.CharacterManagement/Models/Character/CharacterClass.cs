@@ -15,6 +15,12 @@ namespace WanderersDiary.CharacterManagement.Models
         /// <summary>
         /// Features that are selected from those available. Properties like uses count can by changed during level up.
         /// </summary>
-        public ICollection<Feature> Features { get; set; }
+        public List<Feature> Features { get; set; } = new List<Feature>();
+
+        /// <summary>
+        /// Exists only during leveling up, contains groups of features that user have to select from.
+        /// If user select feature, its group will be deleted instantly.
+        /// </summary>
+        public List<List<Feature>> FeatureGroupToSelectFrom { get; set; } = new List<List<Feature>>();
     }
 }

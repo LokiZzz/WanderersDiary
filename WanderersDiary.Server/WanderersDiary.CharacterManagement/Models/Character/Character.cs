@@ -11,7 +11,7 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public int MaxHitPoints { get; set; }
 
-        public ICollection<HitDice> HitDices { get; set; }
+        public List<HitDice> HitDices { get; set; } = new List<HitDice>();
 
         public Appearance Appearance { get; set; }
 
@@ -19,15 +19,15 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public Attributes Attributes { get; set; }
 
-        public ICollection<SkillProficiency> Skills { get; set; }
+        public List<SkillProficiency> Skills { get; set; } = new List<SkillProficiency>();
 
         public ArmouryProficiencies ArmouryProficiencies { get; set; }
 
-        public ICollection<CommonProficiency> Tools { get; set; }
+        public List<CommonProficiency> Tools { get; set; } = new List<CommonProficiency>();
 
-        public ICollection<CommonProficiency> Languages { get; set; }
+        public List<CommonProficiency> Languages { get; set; } = new List<CommonProficiency>();
 
-        public ICollection<CommonProficiency> OtherProficiencies { get; set; }
+        public List<CommonProficiency> OtherProficiencies { get; set; } = new List<CommonProficiency>();
 
         /// <summary>
         /// Gained  from race and modified later
@@ -43,20 +43,20 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public CharacterRace Race { get; set; }
 
-        public ICollection<CharacterClass> Classes { get; set; }
+        public List<CharacterClass> Classes { get; set; } = new List<CharacterClass>();
 
         public int Experience { get; set; }
 
-        public ICollection<SpellSlot> SpellSlots { get; set; }
+        public List<SpellSlot> SpellSlots { get; set; } = new List<SpellSlot>();
 
-        public ICollection<Spell> PreparedSpells { get; set; }
+        public List<Spell> PreparedSpells { get; set; } = new List<Spell>();
 
         public int MaxPreparedSpellsCount { get; set; }
 
         /// <summary>
         /// By default have main conatiner named as "Other"
         /// </summary>
-        public ICollection<InventoryContainer> Inventory { get; set; }
+        public List<InventoryContainer> Inventory { get; set; } = new List<InventoryContainer>();
 
         public int SuccessfullDeathSaves { get; set; }
         

@@ -28,7 +28,7 @@ namespace WanderersDiary.CharacterManagement.Models
         /// <summary>
         /// -1 for not limited uses.
         /// </summary>
-        public int MaxUses { get; set; }
+        public int MaxUses { get; set; } = -1;
 
         public int MinimumOfMaxUses { get; set; } = 0;
 

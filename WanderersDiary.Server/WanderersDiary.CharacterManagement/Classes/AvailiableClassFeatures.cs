@@ -5,7 +5,7 @@ using WanderersDiary.CharacterManagement.Models;
 
 namespace WanderersDiary.CharacterManagement.Classes
 {
-    public class LevelClassFeatures
+    public class ClassLevelFeatures
     {
         public int Level { get; set; }
 

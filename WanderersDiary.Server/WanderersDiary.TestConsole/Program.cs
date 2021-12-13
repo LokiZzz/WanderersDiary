@@ -11,10 +11,13 @@ namespace WanderersDiary.TestConsole
         {
             Character character = CharacterManager.Create();
 
-            character.Attributes = new Attributes { Charisma = 6 };
-            character.AddLevels(EClass.Bard, 1);
+            character.Skills = new System.Collections.Generic.List<SkillProficiency>
+            {
+                new SkillProficiency { Skill = ESkill.Acrobatics, Proficiency = EProficiency.Proficient },
+                new SkillProficiency { Skill = ESkill.Performance, Proficiency = EProficiency.Proficient },
+                new SkillProficiency { Skill = ESkill.Persuasion, Proficiency = EProficiency.Proficient },
+            };
 
-            character.Attributes = new Attributes { Charisma = 17 };
             character.AddLevels(EClass.Bard, 2);
         }
     }

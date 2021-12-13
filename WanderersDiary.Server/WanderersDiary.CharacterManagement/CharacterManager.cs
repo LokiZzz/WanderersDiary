@@ -11,7 +11,14 @@ namespace WanderersDiary.CharacterManagement
     {
         public static Character Create()
         {
-            return new Character();
+            Character initialCharacter = new Character();
+            initialCharacter.Attributes = new Attributes
+            {
+                Strenght = 8, Dexterity = 8, Constitution = 8,
+                Intelligence = 8, Wisdom = 8, Charisma = 8
+            };
+
+            return initialCharacter;
         }
 
         public static void AddLevels(this Character character, EClass characterClass, int levels)
@@ -19,7 +26,7 @@ namespace WanderersDiary.CharacterManagement
             switch(characterClass)
             {
                 case EClass.Bard:
-                    Bard.AddLevel(character, levels);
+                    Bard.AddLevels(character, levels);
                     break;
             }
         }

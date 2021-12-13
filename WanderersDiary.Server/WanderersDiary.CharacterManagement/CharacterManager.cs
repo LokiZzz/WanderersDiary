@@ -26,7 +26,7 @@ namespace WanderersDiary.CharacterManagement
             switch(characterClass)
             {
                 case EClass.Bard:
-                    Bard.AddLevels(character, levels);
+                    new Bard().AddLevels(character, levels);
                     break;
             }
         }

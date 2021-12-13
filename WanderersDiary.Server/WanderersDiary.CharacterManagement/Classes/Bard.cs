@@ -9,32 +9,14 @@ using WanderersDiary.Shared.Game.Enums;
 
 namespace WanderersDiary.CharacterManagement.Classes
 {
-    public class Bard
+    public class Bard : ClassBase
     {
-        public static void AddLevels(Character character, int levelsToAdd)
+        public override void HandleSpecificClassFeatures(Character character, int targetLevel)
         {
-            //Common part
-            
-            if (!character.Classes.Any(c => c.Class == AccosiatedEClass))
-            {
-                character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Archetype = 0, Level = 1 });
-                levelsToAdd--;
-            }
-
-            int currentLevel = character.ConcreteClass(AccosiatedEClass).Level;
-            int targetLevel = currentLevel + levelsToAdd;
-
-            character.ConcreteClass(AccosiatedEClass).Level += levelsToAdd;
-            AddFeatures(character, currentLevel, targetLevel);
-
-            character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
-
-            //Specific part
-
             if (targetLevel >= 2) AddJackOfAllTradesSkills(character);
         }
 
-        private static void AddJackOfAllTradesSkills(Character character)
+        private void AddJackOfAllTradesSkills(Character character)
         {
             IEnumerable<ESkill> allSkills = Enum.GetValues(typeof(ESkill)).Cast<ESkill>();
             IEnumerable<ESkill> missingSkills = allSkills.Where(s => !character.Skills.Any(cs => cs.Skill == s));
@@ -43,28 +25,18 @@ namespace WanderersDiary.CharacterManagement.Classes
             );
         }
 
-        private static void AddFeatures(Character character, int fromLevel, int toLevel)
-        {
-            List<ClassLevelFeatures> levels = Features.Where(f => f.Level >= fromLevel && f.Level <= toLevel).ToList();
+        public override EClass AccosiatedEClass => EClass.Bard;
 
-            foreach(ClassLevelFeatures level in levels)
-            {
-                character.ConcreteClass(AccosiatedEClass).Features.AddRange(level.Features);
-            }
-        }
+        public override EDice HitDice => EDice.D8;
 
-        public static EClass AccosiatedEClass => EClass.Bard;
-
-        public static EDice HitDice = EDice.D8;
-
-        public static int AvailiableNumberOfSkills = 3;
+        public override int AvailiableNumberOfSkills => 3;
 
         //All skills!
-        public static List<ESkill> AvailiableSkills = new List<ESkill> { ESkill.Athletics, ESkill.Acrobatics, ESkill.SleightOfHand, 
+        public override List<ESkill> AvailiableSkills => new List<ESkill> { ESkill.Athletics, ESkill.Acrobatics, ESkill.SleightOfHand, 
             ESkill.Stealth, ESkill.Arcana, ESkill.History, ESkill.Investigation, ESkill.Nature, ESkill.Religion, ESkill.AnimalHandling, 
             ESkill.Insight, ESkill.Medicine, ESkill.Perception, ESkill.Survival, ESkill.Deception, ESkill.Intimidation, ESkill.Performance, ESkill.Persuasion };
 
-        public static List<ClassLevelFeatures> Features => new List<ClassLevelFeatures>
+        public override List<ClassLevelFeatures> Features => new List<ClassLevelFeatures>
         {
             new ClassLevelFeatures { Level = 1, Features = new List<Feature>
             {

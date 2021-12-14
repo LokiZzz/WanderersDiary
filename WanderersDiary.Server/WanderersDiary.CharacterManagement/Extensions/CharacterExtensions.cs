@@ -13,5 +13,15 @@ namespace WanderersDiary.CharacterManagement.Extensions
         {
             return character.Classes.First(c => c.Class == characterClass);
         }
+
+        public static void Spend(this List<SpellSlot> spellSlots, int slotLevel)
+        {
+            SpellSlot slot = spellSlots.FirstOrDefault(ss => ss.Level == slotLevel);
+
+            if(slot != null && slot.Spent < slot.Max)
+            {
+                slot.Spent++;
+            }
+        }
     }
 }

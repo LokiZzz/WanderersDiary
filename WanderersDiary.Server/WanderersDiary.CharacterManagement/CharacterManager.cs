@@ -21,12 +21,12 @@ namespace WanderersDiary.CharacterManagement
             return initialCharacter;
         }
 
-        public static void AddLevels(this Character character, EClass characterClass, int levels)
+        public static void SetLevel(this Character character, EClass characterClass, int level)
         {
             switch(characterClass)
             {
                 case EClass.Bard:
-                    new Bard().AddLevels(character, levels);
+                    new Bard().AddLevels(character, level);
                     break;
             }
         }

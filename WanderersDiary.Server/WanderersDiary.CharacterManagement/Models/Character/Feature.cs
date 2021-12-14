@@ -23,7 +23,7 @@ namespace WanderersDiary.CharacterManagement.Models
         /// <summary>
         /// -1 for not not limited uses, if equal to Max, then is over.
         /// </summary>
-        public int CurrentUses { get; set; }
+        public int SpentUses { get; set; }
 
         /// <summary>
         /// -1 for not limited uses.

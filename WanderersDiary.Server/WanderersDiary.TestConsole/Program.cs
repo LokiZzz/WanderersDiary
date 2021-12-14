@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using WanderersDiary.CharacterManagement;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.Shared.Game;
+using WanderersDiary.CharacterManagement.Extensions;
 
 namespace WanderersDiary.TestConsole
 {
@@ -11,14 +13,12 @@ namespace WanderersDiary.TestConsole
         {
             Character character = CharacterManager.Create();
 
-            character.Skills = new System.Collections.Generic.List<SkillProficiency>
-            {
-                new SkillProficiency { Skill = ESkill.Acrobatics, Proficiency = EProficiency.Proficient },
-                new SkillProficiency { Skill = ESkill.Performance, Proficiency = EProficiency.Proficient },
-                new SkillProficiency { Skill = ESkill.Persuasion, Proficiency = EProficiency.Proficient },
-            };
+            character.SetLevel(EClass.Bard, 3);
 
-            character.AddLevels(EClass.Bard, 2);
+            character.SpellSlots.Spend(1);
+            character.SpellSlots.Spend(2);
+
+            character.SetLevel(EClass.Bard, 5);
         }
     }
 }

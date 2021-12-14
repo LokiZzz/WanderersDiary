@@ -20,25 +20,16 @@ namespace WanderersDiary.CharacterManagement.Classes
         {
             IEnumerable<ESkill> allSkills = Enum.GetValues(typeof(ESkill)).Cast<ESkill>();
             IEnumerable<ESkill> missingSkills = allSkills.Where(s => !character.Skills.Any(cs => cs.Skill == s));
-            character.Skills.AddRange(
-                missingSkills.Select(s => new SkillProficiency { Skill = s, Proficiency = EProficiency.JackOfAllTrades } )
+            IEnumerable<SkillProficiency> skillsToAdd = missingSkills.Select(s => 
+                new SkillProficiency { Skill = s, Proficiency = EProficiency.JackOfAllTrades }
             );
+
+            character.Skills.AddRange(skillsToAdd);
         }
 
-        public override EClass AccosiatedEClass => EClass.Bard;
-
-        public override EDice HitDice => EDice.D8;
-
-        public override int AvailiableNumberOfSkills => 3;
-
-        //All skills!
-        public override List<ESkill> AvailiableSkills => new List<ESkill> { ESkill.Athletics, ESkill.Acrobatics, ESkill.SleightOfHand, 
-            ESkill.Stealth, ESkill.Arcana, ESkill.History, ESkill.Investigation, ESkill.Nature, ESkill.Religion, ESkill.AnimalHandling, 
-            ESkill.Insight, ESkill.Medicine, ESkill.Perception, ESkill.Survival, ESkill.Deception, ESkill.Intimidation, ESkill.Performance, ESkill.Persuasion };
-
-        public override List<ClassLevelFeatures> Features => new List<ClassLevelFeatures>
+        public override List<ClassFeatures> Features => new List<ClassFeatures>
         {
-            new ClassLevelFeatures { Level = 1, Features = new List<Feature>
+            new ClassFeatures { Level = 1, Features = new List<Feature>
             {
                 new Feature 
                 {
@@ -54,7 +45,7 @@ namespace WanderersDiary.CharacterManagement.Classes
                     GetMaxUses = c => c.Attributes.Charisma.Modifier(), MinimumOfMaxUses = 1, ResetAfter = ERest.Long
                 },
             }},
-            new ClassLevelFeatures { Level = 2, Features = new List<Feature>
+            new ClassFeatures { Level = 2, Features = new List<Feature>
             {
                 new Feature
                 {
@@ -69,6 +60,46 @@ namespace WanderersDiary.CharacterManagement.Classes
                     Description_EN = "Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance spend one or more Hit Dice to regain hit points at the end of the short rest, each of those creatures regains an extra 1d6 hit points. The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.",
                 }
             }},
+        };
+
+        public override EClass AccosiatedEClass => EClass.Bard;
+
+        public override EDice HitDice => EDice.D8;
+
+        public override int AvailiableNumberOfSkills => 3;
+
+        //All skills!
+        public override List<ESkill> AvailiableSkills => new List<ESkill> { 
+            ESkill.Athletics,       ESkill.Acrobatics,      ESkill.SleightOfHand,   ESkill.Stealth,         ESkill.Arcana,      ESkill.History,         
+            ESkill.Investigation,   ESkill.Nature,          ESkill.Religion,        ESkill.AnimalHandling,  ESkill.Insight,     ESkill.Medicine,        
+            ESkill.Perception,      ESkill.Survival,        ESkill.Deception,       ESkill.Intimidation,    ESkill.Performance, ESkill.Persuasion 
+        };
+
+        public override List<ClassSpellSlots> SpellSlots => new List<ClassSpellSlots>
+        {
+            //----------------------1--2--3--4--5--6--7--8--9
+            new ClassSpellSlots(1,  2),
+            new ClassSpellSlots(2,  3),
+            new ClassSpellSlots(3,  4, 2),
+            new ClassSpellSlots(4,  4, 3),
+            new ClassSpellSlots(5,  4, 3, 2),
+            new ClassSpellSlots(6,  4, 3, 3),
+            new ClassSpellSlots(7,  4, 3, 3, 1),
+            new ClassSpellSlots(8,  4, 3, 3, 2),
+            new ClassSpellSlots(9,  4, 3, 3, 3, 1),
+            new ClassSpellSlots(10, 4, 3, 3, 3, 2),
+            //----------------------1--2--3--4--5--6--7--8--9
+            new ClassSpellSlots(11, 4, 3, 3, 3, 2, 1),
+            new ClassSpellSlots(12, 4, 3, 3, 3, 2, 1),
+            new ClassSpellSlots(13, 4, 3, 3, 3, 2, 1, 1),
+            new ClassSpellSlots(14, 4, 3, 3, 3, 2, 1, 1),
+            new ClassSpellSlots(15, 4, 3, 3, 3, 2, 1, 1, 1),
+            new ClassSpellSlots(16, 4, 3, 3, 3, 2, 1, 1, 1),
+            new ClassSpellSlots(17, 4, 3, 3, 3, 2, 1, 1, 1, 1),
+            new ClassSpellSlots(18, 4, 3, 3, 3, 2, 1, 1, 1, 1),
+            new ClassSpellSlots(19, 4, 3, 3, 3, 2, 2, 1, 1, 1),
+            new ClassSpellSlots(20, 4, 3, 3, 3, 2, 2, 2, 1, 1),
+
         };
     }
 }

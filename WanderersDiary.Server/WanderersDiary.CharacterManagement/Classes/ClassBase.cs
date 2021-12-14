@@ -22,9 +22,11 @@ namespace WanderersDiary.CharacterManagement.Classes
             if (currentLevel < targetLevel)
             {
                 character.ConcreteClass(AccosiatedEClass).Level = targetLevel;
-                AddFeatures(character, currentLevel, targetLevel);
 
+                AddFeatures(character, currentLevel, targetLevel);
                 character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
+
+                SetSpellSlots(character, targetLevel);
 
                 HandleSpecificClassFeatures(character, targetLevel);
             }
@@ -32,11 +34,30 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         private void AddFeatures(Character character, int fromLevel, int toLevel)
         {
-            List<ClassLevelFeatures> levels = Features.Where(f => f.Level >= fromLevel && f.Level <= toLevel).ToList();
+            List<ClassFeatures> levels = Features.Where(f => f.Level >= fromLevel && f.Level <= toLevel).ToList();
 
-            foreach(ClassLevelFeatures level in levels)
+            foreach(ClassFeatures level in levels)
             {
                 character.ConcreteClass(AccosiatedEClass).Features.AddRange(level.Features);
+            }
+        }
+
+        private void SetSpellSlots(Character character, int targetLevel)
+        {
+            ClassSpellSlots targetLevelSpellSlots = SpellSlots.First(f => f.Level == targetLevel);
+
+            foreach(SpellSlot spellSlotToSet in targetLevelSpellSlots.SpellSlotSet)
+            {
+                SpellSlot spellSlot = character.SpellSlots.FirstOrDefault(s => s.Level == spellSlotToSet.Level);
+
+                if(spellSlot == null)
+                {
+                    character.SpellSlots.Add(spellSlotToSet);
+                }
+                else
+                {
+                    spellSlot.Max = spellSlotToSet.Max;
+                }
             }
         }
 
@@ -48,8 +69,37 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<ESkill> AvailiableSkills { get; }
 
-        public abstract List<ClassLevelFeatures> Features { get; }
+        public abstract List<ClassFeatures> Features { get; }
+
+        public abstract List<ClassSpellSlots> SpellSlots { get; }
 
         public abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
+    }
+
+    public class ClassFeatures
+    {
+        public int Level { get; set; }
+
+        public List<Feature> Features { get; set; }
+    }
+
+    public class ClassSpellSlots
+    {
+        public ClassSpellSlots(int characterLevel, params int[] slotsCount)
+        {
+            Level = characterLevel;
+            SpellSlotSet = new List<SpellSlot>();
+
+            int slotLevel = 1;
+            foreach(int count in slotsCount)
+            {
+                SpellSlotSet.Add(new SpellSlot(slotLevel, count));
+                slotLevel++;
+            }
+        }
+
+        public int Level { get; set; }
+
+        public List<SpellSlot> SpellSlotSet { get; set; }
     }
 }

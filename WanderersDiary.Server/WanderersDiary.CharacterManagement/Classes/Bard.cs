@@ -88,6 +88,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             new ClassSpellSlots(8,  4, 3, 3, 2),
             new ClassSpellSlots(9,  4, 3, 3, 3, 1),
             new ClassSpellSlots(10, 4, 3, 3, 3, 2),
+
             //----------------------1--2--3--4--5--6--7--8--9
             new ClassSpellSlots(11, 4, 3, 3, 3, 2, 1),
             new ClassSpellSlots(12, 4, 3, 3, 3, 2, 1),
@@ -99,7 +100,6 @@ namespace WanderersDiary.CharacterManagement.Classes
             new ClassSpellSlots(18, 4, 3, 3, 3, 2, 1, 1, 1, 1),
             new ClassSpellSlots(19, 4, 3, 3, 3, 2, 2, 1, 1, 1),
             new ClassSpellSlots(20, 4, 3, 3, 3, 2, 2, 2, 1, 1),
-
         };
     }
 }

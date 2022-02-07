@@ -45,7 +45,7 @@ namespace WanderersDiary.CharacterManagement
 
         public void SetLevel(EClass characterClass, int level)
         {
-            CharacterClassFactory.GetClass(characterClass).AddLevels(ModifiedCharacter, level);
+            CharacterClassFactory.GetClass(characterClass).SetLevel(ModifiedCharacter, level);
 
             State = ModifiedCharacter.NeedToChooseFeatures() 
                 ? ECharacterState.NeedToChooseFeatures 

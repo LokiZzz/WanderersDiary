@@ -10,7 +10,7 @@ namespace WanderersDiary.CharacterManagement.Classes
 {
     public abstract class ClassBase
     {
-        public void AddLevels(Character character, int targetLevel)
+        public void SetLevel(Character character, int targetLevel)
         {
             if (!character.HasClass(AccosiatedEClass))
             {

@@ -21,6 +21,6 @@ namespace WanderersDiary.CharacterManagement.Models
         /// Exists only during leveling up, contains groups of features that user have to select from.
         /// If user select feature, its group will be deleted instantly.
         /// </summary>
-        public List<List<Feature>> FeatureGroupToSelectFrom { get; set; } = new List<List<Feature>>();
+        public List<List<Feature>> FeatureGroupsToSelectFrom { get; set; } = new List<List<Feature>>();
     }
 }

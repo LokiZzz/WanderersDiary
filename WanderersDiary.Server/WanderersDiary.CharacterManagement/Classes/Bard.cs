@@ -62,6 +62,8 @@ namespace WanderersDiary.CharacterManagement.Classes
             }},
         };
 
+        //public override List<ArchetypeFeatures> ArchetypeFeatures => new List<ClassFeatures>
+
         public override EClass AccosiatedEClass => EClass.Bard;
 
         public override EDice HitDice => EDice.D8;

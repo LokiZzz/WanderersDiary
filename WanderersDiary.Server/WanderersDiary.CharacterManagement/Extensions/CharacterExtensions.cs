@@ -11,7 +11,17 @@ namespace WanderersDiary.CharacterManagement.Extensions
     {
         public static CharacterClass ConcreteClass(this Character character, EClass characterClass)
         {
-            return character.Classes.First(c => c.Class == characterClass);
+            return character.Classes.FirstOrDefault(c => c.Class == characterClass);
+        }
+
+        public static bool HasClass(this Character character, EClass characterClass)
+        {
+            return character.Classes.Any(c => c.Class == characterClass);
+        }
+
+        public static bool NeedToChooseFeatures(this Character character)
+        {
+            return character.Classes.Any(c => c.FeatureGroupsToSelectFrom.Any());
         }
 
         public static void Spend(this List<SpellSlot> spellSlots, int slotLevel)

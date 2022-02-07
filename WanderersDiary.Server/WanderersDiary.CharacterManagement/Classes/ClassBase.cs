@@ -12,7 +12,7 @@ namespace WanderersDiary.CharacterManagement.Classes
     {
         public void AddLevels(Character character, int targetLevel)
         {
-            if (!character.Classes.Any(c => c.Class == AccosiatedEClass))
+            if (!character.HasClass(AccosiatedEClass))
             {
                 character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Archetype = 0, Level = 1 });
             }
@@ -76,11 +76,23 @@ namespace WanderersDiary.CharacterManagement.Classes
         public abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
     }
 
+    public class Archetype
+    {
+        public int Number { get; set; }
+
+        public string Name { get; set; }
+    }
+
     public class ClassFeatures
     {
         public int Level { get; set; }
 
         public List<Feature> Features { get; set; }
+    }
+
+    public class ArchetypeFeatures : ClassFeatures
+    {
+        public Archetype Archetype { get; set; }
     }
 
     public class ClassSpellSlots

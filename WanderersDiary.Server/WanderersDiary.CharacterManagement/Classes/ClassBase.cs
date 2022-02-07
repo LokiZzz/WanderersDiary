@@ -71,6 +71,10 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<ClassFeatures> Features { get; }
 
+        //public abstract List<ArchetypeFeatures> ArchetypeFeatures { get; }
+
+        //public List<Archetypes> AvailiableArchetypes => ArchetypeFeatures.SelectDisctinctArchetypes
+
         public abstract List<ClassSpellSlots> SpellSlots { get; }
 
         public abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
@@ -80,7 +84,9 @@ namespace WanderersDiary.CharacterManagement.Classes
     {
         public int Number { get; set; }
 
-        public string Name { get; set; }
+        public string Name_RU { get; set; }
+
+        public string Name_EN { get; set; }
     }
 
     public class ClassFeatures

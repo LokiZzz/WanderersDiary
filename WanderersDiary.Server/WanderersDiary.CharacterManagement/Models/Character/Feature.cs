@@ -1,17 +1,19 @@
 ﻿using System;
+using WanderersDiary.CharacterManagement.Models.Utility;
 using WanderersDiary.Shared.Game;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
     public class Feature
     {
-        public string Name_EN { get; set; }
+        /// <summary>
+        /// Id, unique for class, using to bind DB data to business logic classes.
+        /// </summary>
+        public int Index { get; set; }
 
-        public string Name_RU { get; set; }
+        public LocalizedString Name { get; set; }
 
-        public string Description_EN { get; set; }
-
-        public string Description_RU { get; set; }
+        public LocalizedString Description { get; set; }
 
         public ERest ResetAfter { get; set; }
 

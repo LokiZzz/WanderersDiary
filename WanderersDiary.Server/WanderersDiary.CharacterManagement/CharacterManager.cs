@@ -15,7 +15,7 @@ namespace WanderersDiary.CharacterManagement
 
         public Character ModifiedCharacter { get; private set; }
 
-        public ECharacterState State { get; private set; } = ECharacterState.NotInitialized;
+        public ManagingCharacterState State { get; private set; } = new ManagingCharacterState();
 
         public CharacterManager(Character character = null)
         {
@@ -40,16 +40,17 @@ namespace WanderersDiary.CharacterManagement
             }
 
             ModifiedCharacter = Character.Copy();
-            State = ECharacterState.Saved;
+            State.ChangesState = ECharacterChangesState.Saved;
         }
 
-        public void SetLevel(EClass characterClass, int level)
+        public void SetLevel(EClass eClass, int levelToSet)
         {
-            CharacterClassFactory.GetClass(characterClass).SetLevel(ModifiedCharacter, level);
+            ClassBase blClass = CharacterClassFactory.GetClass(eClass);
+            blClass.SetLevelToCharacter(ModifiedCharacter, levelToSet);
+            CharacterClass characterClass = Character.ConcreteClass(eClass);
 
-            State = ModifiedCharacter.NeedToChooseFeatures() 
-                ? ECharacterState.NeedToChooseFeatures 
-                : ECharacterState.Modified;
+            State.NeedToChooseArchetype = characterClass.Archetype == null && levelToSet >= blClass.LevelToGainArchetype;
+            State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures(); 
         }
 
         public void ChooseFeatures(params Feature[] features)
@@ -70,39 +71,57 @@ namespace WanderersDiary.CharacterManagement
                     {
                         characterClass.Features.Add(feature);
                         characterClass.FeatureGroupsToSelectFrom.Remove(groupToSelectFrom);
+                        State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures();
+
+                        return;
                     }
                 }
             }
 
-            if(!ModifiedCharacter.NeedToChooseFeatures())
-            {
-                State = ECharacterState.Modified;
-            }
         }
 
-        private Character GetNewCharacter()
+        public void ChooseArchetype(Archetype archetypeToSet)
         {
-            return ;
+            foreach(CharacterClass charClass in ModifiedCharacter.Classes)
+            {
+                ClassBase blClass = CharacterClassFactory.GetClass(charClass.Class);
+                
+                if(blClass.AvailiableArchetypes.Contains(archetypeToSet))
+                {
+                    charClass.Archetype = archetypeToSet;
+                    State.NeedToChooseArchetype = false;
+
+                    break;
+                }
+            }
         }
 
         public void Save()
         {
             Character = ModifiedCharacter.Copy();
-            State = ECharacterState.Saved;
+            State.ChangesState = ECharacterChangesState.Saved;
         }
 
         public void ClearChanges()
         {
             ModifiedCharacter = Character.Copy();
-            State = ECharacterState.Saved;
+            State.ChangesState = ECharacterChangesState.Saved;
         }
     }
 
-    public enum ECharacterState
+    public class ManagingCharacterState
     {
-        NotInitialized = 1,
-        Saved = 2,
-        Modified = 3,
-        NeedToChooseFeatures = 4
+        public ECharacterChangesState ChangesState { get; set; } = ECharacterChangesState.NotInitialized;
+
+        public bool NeedToChooseFeatures { get; set; }
+
+        public bool NeedToChooseArchetype { get; set; }
+    }
+
+    public enum ECharacterChangesState
+    {
+        NotInitialized = 0,
+        Saved = 1,
+        Modified = 2,
     }
 }

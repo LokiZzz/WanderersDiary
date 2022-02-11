@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WanderersDiary.CharacterManagement.Classes;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.Shared.Game;
 
@@ -32,6 +33,11 @@ namespace WanderersDiary.CharacterManagement.Extensions
             {
                 slot.Spent++;
             }
+        }
+
+        public static Archetype Get(this List<Archetype> archetypesToSelectFrom, int index)
+        {
+            return archetypesToSelectFrom.FirstOrDefault(a => a.Index == index);
         }
     }
 }

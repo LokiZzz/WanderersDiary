@@ -4,27 +4,34 @@ using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
+using WanderersDiary.CharacterManagement.Models.Utility;
 using WanderersDiary.Shared.Game;
+using WanderersDiary.Shared.Game.Enums;
 
 namespace WanderersDiary.CharacterManagement.Classes
 {
     public abstract class ClassBase
     {
-        public void SetLevel(Character character, int targetLevel)
+        public void SetLevelToCharacter(Character character, int targetLevel)
         {
             if (!character.HasClass(AccosiatedEClass))
             {
                 character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Archetype = 0, Level = 1 });
             }
 
-            int currentLevel = character.ConcreteClass(AccosiatedEClass).Level;
+            CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
+            int currentLevel = charClass.Level;
 
             if (currentLevel < targetLevel)
             {
-                character.ConcreteClass(AccosiatedEClass).Level = targetLevel;
+                charClass.Level = targetLevel;
 
                 AddFeatures(character, currentLevel, targetLevel);
-                character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
+
+                if(charClass.Archetype != null)
+                {
+                    AddArchetypeFeatures(character, currentLevel, targetLevel);
+                }
 
                 SetSpellSlots(character, targetLevel);
 
@@ -36,21 +43,41 @@ namespace WanderersDiary.CharacterManagement.Classes
         {
             List<ClassFeatures> levels = Features.Where(f => f.Level >= fromLevel && f.Level <= toLevel).ToList();
 
-            foreach(ClassFeatures level in levels)
+            foreach (ClassFeatures level in levels)
             {
                 character.ConcreteClass(AccosiatedEClass).Features.AddRange(level.Features);
             }
+
+            character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
+        }
+
+        private void AddArchetypeFeatures(Character character, int fromLevel, int toLevel)
+        {
+            CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
+            Archetype archetype = charClass.Archetype;
+            List<ArchetypeFeatures> levels = ArchetypeFeatures.Where(f => 
+                f.Level >= fromLevel && 
+                f.Level <= toLevel &&
+                f.Archetype.Index == archetype.Index)
+                .ToList();
+
+            foreach (ArchetypeFeatures level in levels)
+            {
+                character.ConcreteClass(AccosiatedEClass).Features.AddRange(level.Features);
+            }
+
+            character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
         }
 
         private void SetSpellSlots(Character character, int targetLevel)
         {
             ClassSpellSlots targetLevelSpellSlots = SpellSlots.First(f => f.Level == targetLevel);
 
-            foreach(SpellSlot spellSlotToSet in targetLevelSpellSlots.SpellSlotSet)
+            foreach (SpellSlot spellSlotToSet in targetLevelSpellSlots.SpellSlotSet)
             {
                 SpellSlot spellSlot = character.SpellSlots.FirstOrDefault(s => s.Level == spellSlotToSet.Level);
 
-                if(spellSlot == null)
+                if (spellSlot == null)
                 {
                     character.SpellSlots.Add(spellSlotToSet);
                 }
@@ -60,6 +87,10 @@ namespace WanderersDiary.CharacterManagement.Classes
                 }
             }
         }
+
+        public abstract LocalizedString Name { get; }
+
+        public abstract ESource Source { get; }
 
         public abstract EClass AccosiatedEClass { get; }
 
@@ -71,22 +102,17 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<ClassFeatures> Features { get; }
 
-        //public abstract List<ArchetypeFeatures> ArchetypeFeatures { get; }
+        public abstract int LevelToGainArchetype { get; }
 
-        //public List<Archetypes> AvailiableArchetypes => ArchetypeFeatures.SelectDisctinctArchetypes
+        public abstract List<ArchetypeFeatures> ArchetypeFeatures { get; }
+
+        public abstract LocalizedString ArchetypeCrunchName { get; }
+
+        public abstract List<Archetype> AvailiableArchetypes { get; }
 
         public abstract List<ClassSpellSlots> SpellSlots { get; }
 
         public abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
-    }
-
-    public class Archetype
-    {
-        public int Number { get; set; }
-
-        public string Name_RU { get; set; }
-
-        public string Name_EN { get; set; }
     }
 
     public class ClassFeatures
@@ -94,12 +120,7 @@ namespace WanderersDiary.CharacterManagement.Classes
         public int Level { get; set; }
 
         public List<Feature> Features { get; set; }
-    }
-
-    public class ArchetypeFeatures : ClassFeatures
-    {
-        public Archetype Archetype { get; set; }
-    }
+    } 
 
     public class ClassSpellSlots
     {

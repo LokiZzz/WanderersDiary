@@ -113,6 +113,8 @@ namespace WanderersDiary.CharacterManagement
         public bool NeedToChooseFeatures { get; set; }
 
         public bool NeedToChooseArchetype { get; set; }
+
+        public bool NeedToChooseSkills { get; set; }
     }
 
     public enum ECharacterChangesState

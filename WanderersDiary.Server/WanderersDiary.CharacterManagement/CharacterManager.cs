@@ -46,7 +46,7 @@ namespace WanderersDiary.CharacterManagement
         public void SetLevel(EClass eClass, int levelToSet)
         {
             ClassBase blClass = CharacterClassFactory.GetClass(eClass);
-            blClass.SetLevelToCharacter(ModifiedCharacter, levelToSet);
+            blClass.SetLevel(ModifiedCharacter, levelToSet);
             CharacterClass characterClass = Character.ConcreteClass(eClass);
 
             State.NeedToChooseArchetype = characterClass.Archetype == null && levelToSet >= blClass.LevelToGainArchetype;
@@ -80,19 +80,16 @@ namespace WanderersDiary.CharacterManagement
 
         }
 
-        public void ChooseArchetype(Archetype archetypeToSet)
+        public void ChooseArchetype(EClass eClass, int archetypeIndex)
         {
-            foreach(CharacterClass charClass in ModifiedCharacter.Classes)
-            {
-                ClassBase blClass = CharacterClassFactory.GetClass(charClass.Class);
-                
-                if(blClass.AvailiableArchetypes.Contains(archetypeToSet))
-                {
-                    charClass.Archetype = archetypeToSet;
-                    State.NeedToChooseArchetype = false;
+            CharacterClass characterClass = Character.ConcreteClass(eClass);
 
-                    break;
-                }
+            if (characterClass != null)
+            {
+                ClassBase blClass = CharacterClassFactory.GetClass(eClass);
+                blClass.SetArchetype(ModifiedCharacter, archetypeIndex);
+                characterClass.ArchetypesToSelectFrom.Clear();
+                State.NeedToChooseArchetype = false;
             }
         }
 

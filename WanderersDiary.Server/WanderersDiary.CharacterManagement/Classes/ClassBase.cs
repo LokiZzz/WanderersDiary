@@ -12,11 +12,11 @@ namespace WanderersDiary.CharacterManagement.Classes
 {
     public abstract class ClassBase
     {
-        public void SetLevelToCharacter(Character character, int targetLevel)
+        public void SetLevel(Character character, int targetLevel)
         {
             if (!character.HasClass(AccosiatedEClass))
             {
-                character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Archetype = 0, Level = 1 });
+                character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 1 });
             }
 
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
@@ -25,8 +25,12 @@ namespace WanderersDiary.CharacterManagement.Classes
             if (currentLevel < targetLevel)
             {
                 charClass.Level = targetLevel;
-
                 AddFeatures(character, currentLevel, targetLevel);
+
+                if(targetLevel >= LevelToGainArchetype)
+                {
+                    charClass.ArchetypesToSelectFrom = AvailiableArchetypes;
+                }
 
                 if(charClass.Archetype != null)
                 {
@@ -34,8 +38,18 @@ namespace WanderersDiary.CharacterManagement.Classes
                 }
 
                 SetSpellSlots(character, targetLevel);
-
                 HandleSpecificClassFeatures(character, targetLevel);
+            }
+        }
+
+        public void SetArchetype(Character character, int archetypeIndex)
+        {
+            CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
+
+            if (charClass.Archetype == null)
+            {
+                charClass.Archetype = AvailiableArchetypes.First(a => a.Index == archetypeIndex);
+                AddArchetypeFeatures(character, fromLevel: LevelToGainArchetype, toLevel: charClass.Level);
             }
         }
 

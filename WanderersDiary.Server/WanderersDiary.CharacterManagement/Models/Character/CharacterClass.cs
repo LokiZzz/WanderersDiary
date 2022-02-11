@@ -12,6 +12,8 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public Archetype Archetype { get; set; }
 
+        public List<Archetype> ArchetypesToSelectFrom { get; set; }
+
         public List<Feature> Features { get; set; } = new List<Feature>();
 
         /// <summary>

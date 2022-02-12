@@ -50,8 +50,14 @@ namespace WanderersDiary.CharacterManagement
             CharacterClass characterClass = Character.ConcreteClass(eClass);
 
             State.NeedToChooseArchetype = characterClass.Archetype == null && levelToSet >= blClass.LevelToGainArchetype;
-            State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures(); 
+            State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures();
         }
+
+        //ChooseSkill
+
+        //ChooseAttributeImprovement
+
+        //ChooseFeat
 
         public void ChooseFeatures(params Feature[] features)
         {

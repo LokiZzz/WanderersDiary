@@ -90,6 +90,8 @@ namespace WanderersDiary.CharacterManagement.Classes
             ESkill.Perception,      ESkill.Survival,        ESkill.Deception,       ESkill.Intimidation,    ESkill.Performance, ESkill.Persuasion 
         };
 
+        public override List<int> AttributesImprovementLevels => new List<int> { 4, 8, 12, 16, 19 };
+
         public override List<ClassSpellSlots> SpellSlots => new List<ClassSpellSlots>
         {
             //----------------------1--2--3--4--5--6--7--8--9

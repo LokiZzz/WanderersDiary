@@ -17,6 +17,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             if (!character.HasClass(AccosiatedEClass))
             {
                 character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 1 });
+                AddSkills(character);
             }
 
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
@@ -25,14 +26,15 @@ namespace WanderersDiary.CharacterManagement.Classes
             if (currentLevel < targetLevel)
             {
                 charClass.Level = targetLevel;
+                AddAttributesImprovements(character, targetLevel, currentLevel);
                 AddFeatures(character, currentLevel, targetLevel);
 
-                if(targetLevel >= LevelToGainArchetype)
+                if (targetLevel >= LevelToGainArchetype)
                 {
                     charClass.ArchetypesToSelectFrom = AvailiableArchetypes;
                 }
 
-                if(charClass.Archetype != null)
+                if (charClass.Archetype != null)
                 {
                     AddArchetypeFeatures(character, currentLevel, targetLevel);
                 }
@@ -51,6 +53,23 @@ namespace WanderersDiary.CharacterManagement.Classes
                 charClass.Archetype = AvailiableArchetypes.First(a => a.Index == archetypeIndex);
                 AddArchetypeFeatures(character, fromLevel: LevelToGainArchetype, toLevel: charClass.Level);
             }
+        }
+
+        private void AddSkills(Character character)
+        {
+            character.SkillsToChoose = AvailiableSkills.Select(s => 
+                new SkillProficiency 
+                { 
+                    Skill = s, 
+                    Proficiency = EProficiency.Proficient 
+                }).ToList();
+        }
+
+        private void AddAttributesImprovements(Character character, int targetLevel, int currentLevel)
+        {
+            character.Attributes.AvailiableImprovements = AttributesImprovementLevels.Count(
+                l => l >= currentLevel && l <= targetLevel
+            );
         }
 
         private void AddFeatures(Character character, int fromLevel, int toLevel)
@@ -113,6 +132,8 @@ namespace WanderersDiary.CharacterManagement.Classes
         public abstract int AvailiableNumberOfSkills { get; }
 
         public abstract List<ESkill> AvailiableSkills { get; }
+
+        public abstract List<int> AttributesImprovementLevels { get; }
 
         public abstract List<ClassFeatures> Features { get; }
 

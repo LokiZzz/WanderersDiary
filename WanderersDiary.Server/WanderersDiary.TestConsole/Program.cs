@@ -11,14 +11,18 @@ namespace WanderersDiary.TestConsole
     {
         static void Main(string[] args)
         {
-            Character character = CharacterManager.Create();
+            CharacterContext context = new CharacterContext();
 
-            character.SetLevel(EClass.Bard, 3);
+            Character character = context.Character;
+            character.Attributes.Strenght = 15;
+            character.Attributes.Constitution = 17;
+            character.Attributes.StrenghtSave = true;
 
-            character.SpellSlots.Spend(1);
-            character.SpellSlots.Spend(2);
+            bool hasChanges = context.HasChanges;
 
-            character.SetLevel(EClass.Bard, 5);
+            context.Save();
+
+            hasChanges = context.HasChanges;
         }
     }
 }

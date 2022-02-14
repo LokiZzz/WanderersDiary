@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WanderersDiary.CharacterManagement.Models;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
-    public class Character
+    public class Character : IEquatable<Character>
     {
         public string Name { get; set; }
 
@@ -81,5 +82,10 @@ namespace WanderersDiary.CharacterManagement.Models
         //Currency
 
         //Referenced Monster (companion or wild shape)
+
+        public bool Equals(Character other)
+        {
+            return CharacterManagement.Utility.IsEqual(this, other);
+        }
     }
 }

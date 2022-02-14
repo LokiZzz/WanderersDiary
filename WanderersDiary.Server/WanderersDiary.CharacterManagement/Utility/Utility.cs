@@ -13,5 +13,13 @@ namespace WanderersDiary.CharacterManagement
 
             return JsonConvert.DeserializeObject<T>(serilizedString);
         }
+
+        public static bool IsEqual<T>(T thisObject, T otherObject) where T : class
+        {
+            string serilizedThis = JsonConvert.SerializeObject(thisObject);
+            string serializedOther = JsonConvert.SerializeObject(otherObject);
+
+            return serilizedThis.Equals(serializedOther);
+        }
     }
 }

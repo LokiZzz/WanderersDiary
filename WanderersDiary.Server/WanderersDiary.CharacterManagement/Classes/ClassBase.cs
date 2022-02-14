@@ -57,17 +57,16 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         private void AddSkills(Character character)
         {
-            character.SkillsToChoose = AvailiableSkills.Select(s => 
-                new SkillProficiency 
-                { 
-                    Skill = s, 
-                    Proficiency = EProficiency.Proficient 
-                }).ToList();
+            character.SkillsToChoose = AvailiableSkills
+                .Select(s => new SkillProficiency { Skill = s, Proficiency = EProficiency.Proficient })
+                .Where(s => !character.SkillsToChoose.Any(stc => stc.Skill == s.Skill))
+                .ToList();
+            character.AvailiableNumberOfSkillsToChoose = AvailiableNumberOfSkills;
         }
 
         private void AddAttributesImprovements(Character character, int targetLevel, int currentLevel)
         {
-            character.Attributes.AvailiableImprovements = AttributesImprovementLevels.Count(
+            character.Attributes.FreeImprovementPoints = AttributesImprovementLevels.Count(
                 l => l >= currentLevel && l <= targetLevel
             );
         }

@@ -19,7 +19,11 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public Attributes Attributes { get; set; }
 
+        public List<Feat> Feats { get; set; }
+
         public List<SkillProficiency> Skills { get; set; } = new List<SkillProficiency>();
+
+        public int AvailiableNumberOfSkillsToChoose { get; set; }
 
         public List<SkillProficiency> SkillsToChoose { get; set; } = new List<SkillProficiency>();
 

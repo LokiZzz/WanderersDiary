@@ -20,6 +20,6 @@
         public int Charisma { get; set; }
         public bool CharismaSave { get; set; }
 
-        public int AvailiableImprovements { get; set; }
+        public int FreeImprovementPoints { get; set; }
     }
 }

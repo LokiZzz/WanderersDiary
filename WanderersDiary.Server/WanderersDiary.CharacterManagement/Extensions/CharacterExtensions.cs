@@ -5,6 +5,7 @@ using System.Text;
 using WanderersDiary.CharacterManagement.Classes;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.Shared.Game;
+using WanderersDiary.Shared.Game.Enums;
 
 namespace WanderersDiary.CharacterManagement.Extensions
 {
@@ -38,6 +39,31 @@ namespace WanderersDiary.CharacterManagement.Extensions
         public static Archetype Get(this List<Archetype> archetypesToSelectFrom, int index)
         {
             return archetypesToSelectFrom.FirstOrDefault(a => a.Index == index);
+        }
+
+        public static void ImproveAttribute(this Character character, EAttribute attributeToImprove)
+        {
+            switch(attributeToImprove)
+            {
+                case EAttribute.Strenght:
+                    character.Attributes.Strenght++;
+                    break;
+                case EAttribute.Dexterity:
+                    character.Attributes.Dexterity++;
+                    break;
+                case EAttribute.Constitution:
+                    character.Attributes.Constitution++;
+                    break;
+                case EAttribute.Intelligence:
+                    character.Attributes.Intelligence++;
+                    break;
+                case EAttribute.Wisdom:
+                    character.Attributes.Wisdom++;
+                    break;
+                case EAttribute.Charisma:
+                    character.Attributes.Charisma++;
+                    break;
+            }
         }
     }
 }

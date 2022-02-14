@@ -6,6 +6,7 @@ using WanderersDiary.CharacterManagement.Classes;
 using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.Shared.Game;
+using WanderersDiary.Shared.Game.Enums;
 
 namespace WanderersDiary.CharacterManagement
 {
@@ -47,43 +48,64 @@ namespace WanderersDiary.CharacterManagement
         {
             ClassBase blClass = CharacterClassFactory.GetClass(eClass);
             blClass.SetLevel(ModifiedCharacter, levelToSet);
-            CharacterClass characterClass = Character.ConcreteClass(eClass);
+            CharacterClass characterClass = ModifiedCharacter.ConcreteClass(eClass);
 
             State.NeedToChooseArchetype = characterClass.Archetype == null && levelToSet >= blClass.LevelToGainArchetype;
             State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures();
+            State.NeedToChooseSkills = ModifiedCharacter.AvailiableNumberOfSkillsToChoose > 0;
+            State.NeedToImproveAttributes = ModifiedCharacter.Attributes.FreeImprovementPoints > 0;
         }
 
-        //ChooseSkill
-
-        //ChooseAttributeImprovement
-
-        //ChooseFeat
-
-        public void ChooseFeatures(params Feature[] features)
+        public void ChooseSkill(SkillProficiency skillProf)
         {
-            foreach(Feature feature in features)
+            SkillProficiency skillProfToChoose = ModifiedCharacter.SkillsToChoose
+                .FirstOrDefault(s => s.Skill == skillProf.Skill);
+
+            if (skillProfToChoose != null && !ModifiedCharacter.Skills.Any(s => s.Skill == skillProf.Skill))
             {
-                ChooseFeature(feature);
+                ModifiedCharacter.Skills.Add(skillProfToChoose);
+                ModifiedCharacter.SkillsToChoose.Remove(skillProfToChoose);
+                ModifiedCharacter.AvailiableNumberOfSkillsToChoose--;
+                State.NeedToChooseSkills = ModifiedCharacter.AvailiableNumberOfSkillsToChoose > 0;
             }
         }
 
-        public void ChooseFeature(Feature feature)
+        public void ChooseAttributeImprovement(EAttribute attribute)
         {
-            foreach(CharacterClass characterClass in ModifiedCharacter.Classes)
+            if(ModifiedCharacter.Attributes.FreeImprovementPoints > 0)
             {
-                foreach(List<Feature> groupToSelectFrom in characterClass.FeatureGroupsToSelectFrom.ToList())
-                {
-                    if(groupToSelectFrom.Contains(feature))
-                    {
-                        characterClass.Features.Add(feature);
-                        characterClass.FeatureGroupsToSelectFrom.Remove(groupToSelectFrom);
-                        State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures();
+                ModifiedCharacter.ImproveAttribute(attribute);
+                ModifiedCharacter.Attributes.FreeImprovementPoints--;
+                State.NeedToImproveAttributes = ModifiedCharacter.Attributes.FreeImprovementPoints > 0;
+            }
+        }
 
-                        return;
-                    }
+        public void ChooseFeat(Feat feat)
+        {
+            if (ModifiedCharacter.Attributes.FreeImprovementPoints >= 2)
+            {
+                ModifiedCharacter.Feats.Add(feat);
+                ModifiedCharacter.Attributes.FreeImprovementPoints -= 2;
+                State.NeedToImproveAttributes = ModifiedCharacter.Attributes.FreeImprovementPoints > 0;
+            }
+        }
+
+        public void ChooseClassFeature(EClass featureClass, int featureIndex)
+        {
+            CharacterClass processingClass = ModifiedCharacter.ConcreteClass(featureClass);
+
+            if (processingClass != null && processingClass.FeatureGroupsToSelectFrom.Any())
+            {
+                List<Feature> group = processingClass.FeatureGroupsToSelectFrom
+                    .FirstOrDefault(fg => fg.Any(f => f.Index == featureIndex));
+
+                if(group != null)
+                {
+                    processingClass.Features.Add(group.FirstOrDefault(f => f.Index == featureIndex));
+                    processingClass.FeatureGroupsToSelectFrom.Remove(group);
+                    State.NeedToChooseFeatures = ModifiedCharacter.NeedToChooseFeatures();
                 }
             }
-
         }
 
         public void ChooseArchetype(EClass eClass, int archetypeIndex)
@@ -121,6 +143,8 @@ namespace WanderersDiary.CharacterManagement
         public bool NeedToChooseArchetype { get; set; }
 
         public bool NeedToChooseSkills { get; set; }
+
+        public bool NeedToImproveAttributes { get; set; }
     }
 
     public enum ECharacterChangesState

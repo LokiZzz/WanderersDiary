@@ -51,7 +51,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             if (charClass.Archetype == null)
             {
                 charClass.Archetype = AvailiableArchetypes.First(a => a.Index == archetypeIndex);
-                AddArchetypeFeatures(character, fromLevel: LevelToGainArchetype, toLevel: charClass.Level);
+                AddArchetypeFeatures(character, fromLevel: LevelToGainArchetype - 1, toLevel: charClass.Level);
             }
         }
 
@@ -66,14 +66,13 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         private void AddAttributesImprovements(Character character, int targetLevel, int currentLevel)
         {
-            character.Attributes.FreeImprovementPoints = AttributesImprovementLevels.Count(
-                l => l >= currentLevel && l <= targetLevel
-            );
+            int improvementCount = AttributesImprovementLevels.Count(l => l >= currentLevel && l <= targetLevel);
+            character.Attributes.FreeImprovementPoints += improvementCount * 2;
         }
 
         private void AddFeatures(Character character, int fromLevel, int toLevel)
         {
-            List<ClassFeatures> levels = Features.Where(f => f.Level >= fromLevel && f.Level <= toLevel).ToList();
+            List<ClassFeatures> levels = Features.Where(f => f.Level > fromLevel && f.Level <= toLevel).ToList();
 
             foreach (ClassFeatures level in levels)
             {
@@ -88,7 +87,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
             Archetype archetype = charClass.Archetype;
             List<ArchetypeFeatures> levels = ArchetypeFeatures.Where(f => 
-                f.Level >= fromLevel && 
+                f.Level > fromLevel && 
                 f.Level <= toLevel &&
                 f.Archetype.Index == archetype.Index)
                 .ToList();

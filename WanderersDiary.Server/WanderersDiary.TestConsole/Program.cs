@@ -17,10 +17,13 @@ namespace WanderersDiary.TestConsole
             context.Character.Attributes.Strenght = 15;
 
             context.SetLevel(EClass.Bard, 1);
-            var countOfSkillsToChoose = context.Character.AvailiableNumberOfSkillsToChoose;
-            var availiableSkills = context.Character.SkillsToChoose;
-            context.ChooseSkill(ESkill.Performance);
-            context.ChooseSkills(new List<ESkill> { ESkill.Acrobatics, ESkill.SleightOfHand });
+            context.ChooseSkills(new List<ESkill> { ESkill.Performance, ESkill.Acrobatics, ESkill.SleightOfHand });
+
+            context.SetLevel(EClass.Bard, 4);
+            var archetypes = context.Character.ConcreteClass(EClass.Bard).ArchetypesToSelectFrom;
+            context.ChooseArchetype(EClass.Bard, archetypes.First().Index);
+
+            bool hasChanges = context.HasChanges;
 
             context.ClearChanges();
         }

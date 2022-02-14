@@ -106,7 +106,7 @@ namespace WanderersDiary.CharacterManagement
 
         public void ChooseArchetype(EClass eClass, int archetypeIndex)
         {
-            CharacterClass characterClass = SavedCharacter.ConcreteClass(eClass);
+            CharacterClass characterClass = Character.ConcreteClass(eClass);
 
             if (characterClass != null)
             {

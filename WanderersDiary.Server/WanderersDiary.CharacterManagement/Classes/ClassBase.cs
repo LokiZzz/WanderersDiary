@@ -16,7 +16,7 @@ namespace WanderersDiary.CharacterManagement.Classes
         {
             if (!character.HasClass(AccosiatedEClass))
             {
-                character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 1 });
+                character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 0 });
                 AddSkills(character);
             }
 

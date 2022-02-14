@@ -46,18 +46,20 @@ namespace WanderersDiary.CharacterManagement
             CharacterClassFactory.GetClass(eClass).SetLevel(Character, levelToSet);
         }
 
-        public void ChooseSkill(SkillProficiency skillProf)
+        public void ChooseSkill(ESkill skill)
         {
             SkillProficiency skillProfToChoose = Character.SkillsToChoose
-                .FirstOrDefault(s => s.Skill == skillProf.Skill);
+                .FirstOrDefault(s => s.Skill == skill);
 
-            if (skillProfToChoose != null && !Character.Skills.Any(s => s.Skill == skillProf.Skill))
+            if (skillProfToChoose != null && !Character.Skills.Any(s => s.Skill == skill))
             {
                 Character.Skills.Add(skillProfToChoose);
                 Character.SkillsToChoose.Remove(skillProfToChoose);
                 Character.AvailiableNumberOfSkillsToChoose--;
             }
         }
+
+        public void ChooseSkills(List<ESkill> skills) => skills.ForEach(s => ChooseSkill(s));
 
         public void ChooseAttributeImprovement(EAttribute attribute)
         {
@@ -91,6 +93,14 @@ namespace WanderersDiary.CharacterManagement
                     processingClass.Features.Add(group.FirstOrDefault(f => f.Index == featureIndex));
                     processingClass.FeatureGroupsToSelectFrom.Remove(group);
                 }
+            }
+        }
+
+        public void ChooseClassFeatures(Dictionary<EClass, int> features)
+        {
+            foreach(KeyValuePair<EClass, int> feature in features)
+            {
+                ChooseClassFeature(feature.Key, feature.Value);
             }
         }
 

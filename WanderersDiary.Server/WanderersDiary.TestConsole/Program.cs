@@ -4,6 +4,7 @@ using WanderersDiary.CharacterManagement;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.Shared.Game;
 using WanderersDiary.CharacterManagement.Extensions;
+using System.Collections.Generic;
 
 namespace WanderersDiary.TestConsole
 {
@@ -13,16 +14,15 @@ namespace WanderersDiary.TestConsole
         {
             CharacterContext context = new CharacterContext();
 
-            Character character = context.Character;
-            character.Attributes.Strenght = 15;
-            character.Attributes.Constitution = 17;
-            character.Attributes.StrenghtSave = true;
+            context.Character.Attributes.Strenght = 15;
 
-            bool hasChanges = context.HasChanges;
+            context.SetLevel(EClass.Bard, 1);
+            var countOfSkillsToChoose = context.Character.AvailiableNumberOfSkillsToChoose;
+            var availiableSkills = context.Character.SkillsToChoose;
+            context.ChooseSkill(ESkill.Performance);
+            context.ChooseSkills(new List<ESkill> { ESkill.Acrobatics, ESkill.SleightOfHand });
 
-            context.Save();
-
-            hasChanges = context.HasChanges;
+            context.ClearChanges();
         }
     }
 }

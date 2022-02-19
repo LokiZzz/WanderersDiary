@@ -17,6 +17,6 @@ namespace WanderersDiary.CharacterManagement.Classes
 
     public class ArchetypeFeatures : ClassFeatures
     {
-        public Archetype Archetype { get; set; }
+        public int ArchetypeIndex { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace WanderersDiary.CharacterManagement.Classes
                 }
 
                 SetSpellSlots(character, targetLevel);
-                HandleSpecificClassFeatures(character, targetLevel);
+                HandleSpecificClassFeatures(character, currentLevel, targetLevel);
             }
         }
 
@@ -57,11 +57,14 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         private void AddSkills(Character character)
         {
-            character.SkillsToChoose = AvailiableSkills
+            List<SkillProficiency> availiableSkills = AvailiableSkills
                 .Select(s => new SkillProficiency { Skill = s, Proficiency = EProficiency.Proficient })
-                .Where(s => !character.SkillsToChoose.Any(stc => stc.Skill == s.Skill))
                 .ToList();
-            character.AvailiableNumberOfSkillsToChoose = AvailiableNumberOfSkills;
+
+            character.SkillsToChoose.Enqueue(new SkillsToChoose { 
+                AvailiableSkills = availiableSkills,
+                AvailiableNumberOfSkills = this.AvailiableNumberOfSkills
+            });
         }
 
         private void AddAttributesImprovements(Character character, int targetLevel, int currentLevel)
@@ -89,7 +92,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             List<ArchetypeFeatures> levels = ArchetypeFeatures.Where(f => 
                 f.Level > fromLevel && 
                 f.Level <= toLevel &&
-                f.Archetype.Index == archetype.Index)
+                f.ArchetypeIndex == archetype.Index)
                 .ToList();
 
             foreach (ArchetypeFeatures level in levels)
@@ -145,7 +148,7 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<ClassSpellSlots> SpellSlots { get; }
 
-        public abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
+        public abstract void HandleSpecificClassFeatures(Character character, int currentLevel, int targetLevel);
     }
 
     public class ClassFeatures

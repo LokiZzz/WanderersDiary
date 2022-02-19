@@ -24,9 +24,7 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public List<SkillProficiency> Skills { get; set; } = new List<SkillProficiency>();
 
-        public int AvailiableNumberOfSkillsToChoose { get; set; }
-
-        public List<SkillProficiency> SkillsToChoose { get; set; } = new List<SkillProficiency>();
+        public Queue<SkillsToChoose> SkillsToChoose { get; set; } = new Queue<SkillsToChoose>();
 
         public ArmouryProficiencies ArmouryProficiencies { get; set; }
 

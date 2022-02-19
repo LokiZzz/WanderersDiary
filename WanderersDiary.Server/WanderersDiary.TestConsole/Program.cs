@@ -14,18 +14,22 @@ namespace WanderersDiary.TestConsole
         {
             CharacterContext context = new CharacterContext();
 
-            context.Character.Attributes.Strenght = 15;
+            context.SetLevel(EClass.Bard, 5);
 
-            context.SetLevel(EClass.Bard, 1);
-            context.ChooseSkills(new List<ESkill> { ESkill.Performance, ESkill.Acrobatics, ESkill.SleightOfHand });
+            foreach(SkillsToChoose groupOfSkills in context.Character.SkillsToChoose.ToList())
+            {
+                for (int i = groupOfSkills.AvailiableNumberOfSkills; i != 0; i--)
+                {
+                    context.ChooseSkill(groupOfSkills.AvailiableSkills.Skip(i).First());
+                }
+            }
 
-            context.SetLevel(EClass.Bard, 4);
-            var archetypes = context.Character.ConcreteClass(EClass.Bard).ArchetypesToSelectFrom;
-            context.ChooseArchetype(EClass.Bard, archetypes.First().Index);
-
-            bool hasChanges = context.HasChanges;
-
-            context.ClearChanges();
+            context.Character.Skills.ForEach(s => 
+                Console.WriteLine($"{context.Character.Skills.IndexOf(s)}. {s.Skill.ToString("G")}: {s.Proficiency.ToString("G")}")
+            );
+            Console.ReadLine();
         }
+
+        
     }
 }

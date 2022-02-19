@@ -46,20 +46,52 @@ namespace WanderersDiary.CharacterManagement
             CharacterClassFactory.GetClass(eClass).SetLevel(Character, levelToSet);
         }
 
-        public void ChooseSkill(ESkill skill)
+        public void ChooseSkill(ESkill skill, EProficiency proficiency)
         {
-            SkillProficiency skillProfToChoose = Character.SkillsToChoose
-                .FirstOrDefault(s => s.Skill == skill);
+            SkillProficiency skillToChoose = Character.SkillsToChoose
+                .Peek()
+                .AvailiableSkills
+                .FirstOrDefault(s => s.Skill == skill && s.Proficiency == proficiency);
 
-            if (skillProfToChoose != null && !Character.Skills.Any(s => s.Skill == skill))
+            if (skillToChoose != null)
             {
-                Character.Skills.Add(skillProfToChoose);
-                Character.SkillsToChoose.Remove(skillProfToChoose);
-                Character.AvailiableNumberOfSkillsToChoose--;
+                SkillProficiency existingProficiency = Character.Skills.FirstOrDefault(s => s.Skill == skill);
+                bool isProficientToExpertiseUpgrade = existingProficiency?.Proficiency == EProficiency.Proficient 
+                    && skillToChoose.Proficiency == EProficiency.Expert;
+                bool isJoATToProficientUpgrade = existingProficiency?.Proficiency == EProficiency.JackOfAllTrades
+                    && skillToChoose.Proficiency == EProficiency.Proficient;
+                bool canChoose = existingProficiency == null || isProficientToExpertiseUpgrade || isJoATToProficientUpgrade;
+
+                if (canChoose)
+                {
+                    if(isProficientToExpertiseUpgrade || isJoATToProficientUpgrade)
+                    {
+                        Character.Skills.Remove(existingProficiency);
+                    }
+
+                    Character.Skills.Add(skillToChoose);
+                    Character.SkillsToChoose.Peek().AvailiableSkills.RemoveAll(s => s.Skill == skillToChoose.Skill);
+                    Character.SkillsToChoose.Peek().AvailiableNumberOfSkills--;
+
+                    if(Character.SkillsToChoose.Peek().AvailiableNumberOfSkills == 0)
+                    {
+                        Character.SkillsToChoose.Dequeue();
+                    }
+                }
             }
         }
 
-        public void ChooseSkills(List<ESkill> skills) => skills.ForEach(s => ChooseSkill(s));
+        public void ChooseSkills(Dictionary<ESkill, EProficiency> skills)
+        {
+            foreach(KeyValuePair<ESkill, EProficiency> skill in skills)
+            {
+                ChooseSkill(skill.Key, skill.Value);
+            }
+        }
+
+        public void ChooseSkill(SkillProficiency skillProf) => ChooseSkill(skillProf.Skill, skillProf.Proficiency);
+
+        public void ChooseSkills(List<SkillProficiency> skills) => skills.ForEach(s => ChooseSkill(s.Skill, s.Proficiency));
 
         public void ChooseAttributeImprovement(EAttribute attribute)
         {
@@ -133,13 +165,13 @@ namespace WanderersDiary.CharacterManagement
 
         public bool NeedToChooseFeatures => Character.NeedToChooseFeatures();
 
-        public bool NeedToChooseArchetype => GetNeedToChooseSkills();
+        public bool NeedToChooseArchetype => GetNeedToChooseArchetype();
 
-        public bool NeedToChooseSkills => Character.AvailiableNumberOfSkillsToChoose > 0;
+        public bool NeedToChooseSkills => Character.SkillsToChoose.Any();
 
         public bool NeedToImproveAttributes => Character.Attributes.FreeImprovementPoints > 0;
 
-        private bool GetNeedToChooseSkills()
+        private bool GetNeedToChooseArchetype()
         {
             bool needToChooseArchetype = false;
 

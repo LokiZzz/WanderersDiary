@@ -14,22 +14,21 @@ namespace WanderersDiary.TestConsole
         {
             CharacterContext context = new CharacterContext();
 
-            context.SetLevel(EClass.Bard, 5);
+            context.Character.Attributes.Constitution = 15;
 
-            foreach(SkillsToChoose groupOfSkills in context.Character.SkillsToChoose.ToList())
-            {
-                for (int i = groupOfSkills.AvailiableNumberOfSkills; i != 0; i--)
-                {
-                    context.ChooseSkill(groupOfSkills.AvailiableSkills.Skip(i).First());
-                }
-            }
+            context.Character.Race = new CharacterRace { Race = Shared.Game.Enums.ERace.Elf, HitPointsFactor = 2 };
 
-            context.Character.Skills.ForEach(s => 
-                Console.WriteLine($"{context.Character.Skills.IndexOf(s)}. {s.Skill.ToString("G")}: {s.Proficiency.ToString("G")}")
-            );
+            context.AddLevel(EClass.Bard);
+            context.AddLevel(EClass.Bard);
+            context.AddLevel(EClass.Bard);
+            context.AddLevel(EClass.Bard);
+
+            Feat feat = new Feat { HitPointsFactor = 2 };
+            context.ChooseFeat(feat);
+
+            Console.WriteLine(context.Character.HitPoints.Maximum);
+
             Console.ReadLine();
         }
-
-        
     }
 }

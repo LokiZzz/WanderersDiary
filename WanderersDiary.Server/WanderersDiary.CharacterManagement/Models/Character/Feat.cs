@@ -13,5 +13,9 @@ namespace WanderersDiary.CharacterManagement.Models
         public LocalizedString Description { get; set; }
 
         public ESource Source { get; set; }
+
+        public int HitPointsFactor { get; set; }
+
+        //Maybe other factors: AC, Speed
     }
 }

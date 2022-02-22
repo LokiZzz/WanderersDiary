@@ -71,11 +71,11 @@ namespace WanderersDiary.CharacterManagement.Classes
             new Archetype { Index = 2, Name = new LocalizedString { EN = "College of Lore", RU = "Коллегия Знаний" }, Source = ESource.PHB },
         };
 
-        public override void HandleSpecificClassFeatures(Character character, int currentLevel, int targetLevel)
+        public override void HandleSpecificClassFeatures(Character character, int targetLevel)
         {
             if (targetLevel >= 2) UpdateJackOfAllTradesSkills(character);
-            if (currentLevel < 3 && targetLevel >= 3) AddExpertise(character);
-            if (targetLevel >= 5) AddInspirationShortRestReset(character);
+            if (targetLevel == 3) AddExpertise(character);
+            if (targetLevel == 5) AddInspirationShortRestReset(character);
         }
 
         private void UpdateJackOfAllTradesSkills(Character character)

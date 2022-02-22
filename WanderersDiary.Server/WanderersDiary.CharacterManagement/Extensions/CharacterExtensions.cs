@@ -21,6 +21,11 @@ namespace WanderersDiary.CharacterManagement.Extensions
             return character.Classes.Any(c => c.Class == characterClass);
         }
 
+        public static int Level(this Character character)
+        {
+            return character.Classes.Sum(c => c.Level);
+        }
+
         public static bool NeedToChooseFeatures(this Character character)
         {
             return character.Classes.Any(c => c.FeatureGroupsToSelectFrom.Any());

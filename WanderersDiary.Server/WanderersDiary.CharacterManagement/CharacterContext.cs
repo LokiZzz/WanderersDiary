@@ -41,9 +41,49 @@ namespace WanderersDiary.CharacterManagement
             Character = SavedCharacter.Copy();
         }
 
-        public void SetLevel(EClass eClass, int levelToSet)
+        public void AddLevel(EClass eClass)
         {
-            CharacterClassFactory.GetClass(eClass).SetLevel(Character, levelToSet);
+            CharacterClassFactory.GetClass(eClass).AddLevel(Character);
+            UpdateMaxHitPoints();
+        }
+
+        public void UpdateMaxHitPoints()
+        {
+            if (Character.Classes.Any())
+            {
+                List<ClassBase> classes = Character.Classes.Select(c => CharacterClassFactory.GetClass(c.Class)).ToList();
+                ClassBase firstClass = classes.First();
+                CharacterClass firstCharClass = Character.ConcreteClass(firstClass.AccosiatedEClass);
+                int conModifier = Character.Attributes.Constitution.Modifier();
+
+                //First class
+                int firstLevelHP = firstClass.HitDice.Max() + conModifier;
+                int firstClassHP = firstLevelHP + (firstCharClass.Level - 1) * (firstClass.HitDice.Average() + conModifier);
+
+                //Other classes
+                int otherClassesHP = 0;
+
+                foreach(ClassBase charClass in classes.Skip(1))
+                {
+                    otherClassesHP += Character.ConcreteClass(charClass.AccosiatedEClass).Level
+                        * (charClass.HitDice.Average() + conModifier);
+                }
+
+                //Other bonuses (Race, Classes features, Feats)
+                int otherHitPointBonuses = 0;
+
+                if (Character.Race != null)
+                {
+                    otherHitPointBonuses += Character.Race.HitPointsFactor * Character.Level();
+                }
+                if (Character.Feats.Any())
+                {
+                    otherHitPointBonuses += Character.Feats.Sum(f => f.HitPointsFactor) * Character.Level();
+                }
+                otherHitPointBonuses += Character.Classes.Sum(c => c.Level * c.HitPointsFactor);
+
+                Character.HitPoints.Maximum = firstClassHP + otherClassesHP + otherHitPointBonuses;
+            }
         }
 
         public void ChooseSkill(ESkill skill, EProficiency proficiency)
@@ -108,6 +148,7 @@ namespace WanderersDiary.CharacterManagement
             {
                 Character.Feats.Add(feat);
                 Character.Attributes.FreeImprovementPoints -= 2;
+                UpdateMaxHitPoints();
             }
         }
 

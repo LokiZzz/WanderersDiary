@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WanderersDiary.CharacterManagement.Models;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
@@ -8,25 +7,23 @@ namespace WanderersDiary.CharacterManagement.Models
     {
         public string Name { get; set; }
 
-        public int CurrentHitPoints { get; set; }
-
-        public int MaxHitPoints { get; set; }
+        public HitPoints HitPoints { get; set; } = new HitPoints();
 
         public List<HitDice> HitDices { get; set; } = new List<HitDice>();
 
-        public Appearance Appearance { get; set; }
+        public Appearance Appearance { get; set; } = new Appearance();
 
-        public Personality Personality { get; set; }
+        public Personality Personality { get; set; } = new Personality();
 
-        public Attributes Attributes { get; set; }
+        public Attributes Attributes { get; set; } = new Attributes();
 
-        public List<Feat> Feats { get; set; }
+        public List<Feat> Feats { get; set; } = new List<Feat>();
 
         public List<SkillProficiency> Skills { get; set; } = new List<SkillProficiency>();
 
         public Queue<SkillsToChoose> SkillsToChoose { get; set; } = new Queue<SkillsToChoose>();
 
-        public ArmouryProficiencies ArmouryProficiencies { get; set; }
+        public ArmouryProficiencies ArmouryProficiencies { get; set; } = new ArmouryProficiencies();
 
         public List<CommonProficiency> Tools { get; set; } = new List<CommonProficiency>();
 
@@ -37,14 +34,14 @@ namespace WanderersDiary.CharacterManagement.Models
         /// <summary>
         /// Gained  from race and modified later
         /// </summary>
-        public Speed Speed { get; set; }
+        public Speed Speed { get; set; } = new Speed();
 
         /// <summary>
         /// Gained  from race and modified later
         /// </summary>
-        public Senses Senses { get; set; }
+        public Senses Senses { get; set; } = new Senses();
 
-        public Background Background { get; set; }
+        public Background Background { get; set; } = new Background();
 
         public CharacterRace Race { get; set; }
 

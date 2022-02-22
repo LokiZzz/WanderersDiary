@@ -21,5 +21,7 @@ namespace WanderersDiary.CharacterManagement.Models
         /// If user select feature, its group will be deleted instantly.
         /// </summary>
         public List<List<Feature>> FeatureGroupsToSelectFrom { get; set; } = new List<List<Feature>>();
+
+        public int HitPointsFactor { get; set; }
     }
 }

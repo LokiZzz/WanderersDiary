@@ -7,6 +7,8 @@ namespace WanderersDiary.CharacterManagement.Models
     {
         public ERace Race { get; set; }
 
+        public int HitPointsFactor { get; set; }
+
         /// <summary>
         /// Subrace is another feature specified in race business logic.
         /// </summary>

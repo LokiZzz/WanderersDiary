@@ -23,12 +23,13 @@ namespace WanderersDiary.CharacterManagement.Classes
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
             int currentLevel = charClass.Level;
             int targetLevel = currentLevel + 1;
-
             charClass.Level = targetLevel;
 
             AddHitDice(character);
             AddAttributesImprovements(character, targetLevel);
             AddFeatures(character, targetLevel);
+            HandleSpecificClassFeatures(character, targetLevel);
+            SetSpellSlots(character, targetLevel);
 
             if (targetLevel >= LevelToGainArchetype)
             {
@@ -38,10 +39,8 @@ namespace WanderersDiary.CharacterManagement.Classes
             if (charClass.Archetype != null)
             {
                 AddArchetypeFeatures(character, targetLevel);
+                HandleSpecificArchetypeFeatures(character, targetLevel);
             }
-
-            SetSpellSlots(character, targetLevel);
-            HandleSpecificClassFeatures(character, targetLevel);
         }
 
         public void SetArchetype(Character character, int archetypeIndex)
@@ -89,11 +88,11 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         private void AddFeatures(Character character, int targetLevel)
         {
-            ClassFeatures levelFeatures = Features.FirstOrDefault(f => f.Level == targetLevel);
+            List<Feature> features = Features.Where(f => f.LevelToGain == targetLevel).ToList();
 
-            if (levelFeatures != null)
+            if (features.Any())
             {
-                character.ConcreteClass(AccosiatedEClass).Features.AddRange(levelFeatures.Features);
+                character.ConcreteClass(AccosiatedEClass).Features.AddRange(features);
                 character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
             }
         }
@@ -102,9 +101,7 @@ namespace WanderersDiary.CharacterManagement.Classes
         {
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
             Archetype archetype = charClass.Archetype;
-            ArchetypeFeatures archetypeFeatures = ArchetypeFeatures.First(f => 
-                f.Level == targetLevel &&
-                f.ArchetypeIndex == archetype.Index);
+            ArchetypeFeatures archetypeFeatures = ArchetypeFeatures.First(f => f.ArchetypeIndex == archetype.Index);
 
             character.ConcreteClass(AccosiatedEClass).Features.AddRange(archetypeFeatures.Features);
             character.ConcreteClass(AccosiatedEClass).Features.ForEach(f => f.UpdateMaxUses(character));
@@ -143,7 +140,7 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<int> AttributesImprovementLevels { get; }
 
-        public abstract List<ClassFeatures> Features { get; }
+        public abstract List<Feature> Features { get; }
 
         public abstract int LevelToGainArchetype { get; }
 
@@ -155,15 +152,10 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<ClassSpellSlots> SpellSlots { get; }
 
-        public abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
+        protected abstract void HandleSpecificClassFeatures(Character character, int targetLevel);
+
+        protected abstract void HandleSpecificArchetypeFeatures(Character character, int targetLevel);
     }
-
-    public class ClassFeatures
-    {
-        public int Level { get; set; }
-
-        public List<Feature> Features { get; set; }
-    } 
 
     public class ClassSpellSlots
     {

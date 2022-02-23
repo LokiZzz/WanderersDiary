@@ -20,7 +20,7 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public override EDice HitDice => EDice.D8;
 
-        public override List<ClassFeatures> Features => BardFeatures.Features;
+        public override List<Feature> Features => BardFeatures.Features;
 
         public override List<ArchetypeFeatures> ArchetypeFeatures => BardFeatures.ArchetypeFeatures;
 
@@ -67,11 +67,11 @@ namespace WanderersDiary.CharacterManagement.Classes
         public override LocalizedString ArchetypeCrunchName => new LocalizedString { EN = "College", RU = "Коллегия" };
 
         public override List<Archetype> AvailiableArchetypes => new List<Archetype> {
-            new Archetype { Index = 1, Name = new LocalizedString { EN = "College of Valor", RU = "Коллегия Доблести" }, Source = ESource.PHB },
-            new Archetype { Index = 2, Name = new LocalizedString { EN = "College of Lore", RU = "Коллегия Знаний" }, Source = ESource.PHB },
+            new Archetype { Index = (int)EBardArchetypes.Valor, Name = new LocalizedString { EN = "College of Valor", RU = "Коллегия Доблести" }, Source = ESource.PHB },
+            new Archetype { Index = (int)EBardArchetypes.Lore, Name = new LocalizedString { EN = "College of Lore", RU = "Коллегия Знаний" }, Source = ESource.PHB },
         };
 
-        public override void HandleSpecificClassFeatures(Character character, int targetLevel)
+        protected override void HandleSpecificClassFeatures(Character character, int targetLevel)
         {
             if (targetLevel >= 2) UpdateJackOfAllTradesSkills(character);
             if (targetLevel == 3) AddExpertise(character);
@@ -112,5 +112,52 @@ namespace WanderersDiary.CharacterManagement.Classes
 
             inspirationFeature.ResetAfter = ERest.Short;
         }
+
+        protected override void HandleSpecificArchetypeFeatures(Character character, int targetLevel)
+        {
+            if(character.ConcreteClass(AccosiatedEClass).Archetype.Index == (int)EBardArchetypes.Valor)
+            {
+                if (targetLevel == 3) AddValorProficiencies(character);
+            }
+            if (character.ConcreteClass(AccosiatedEClass).Archetype.Index == (int)EBardArchetypes.Lore)
+            {
+                if (targetLevel == 3) AddLoreProficiencies(character);
+            }
+        }
+
+        private void AddValorProficiencies(Character character)
+        {
+            character.ArmouryProficiencies.MediumArmor = true;
+            character.ArmouryProficiencies.Shields = true;
+            character.ArmouryProficiencies.MartialWeapons = true;
+        }
+
+        private void AddLoreProficiencies(Character character)
+        {
+            IEnumerable<ESkill> allSkills = Enum.GetValues(typeof(ESkill)).Cast<ESkill>();
+            IEnumerable<ESkill> missingSkills = allSkills.Where(s => !character.Skills.Any(cs => cs.Skill == s));
+
+            character.SkillsToChoose.Enqueue(new SkillsToChoose 
+            { 
+                AvailiableNumberOfSkills = 3, 
+                AvailiableSkills = missingSkills.Select(s => new SkillProficiency 
+                { 
+                    Skill = s, 
+                    Proficiency = EProficiency.Proficient 
+                }).ToList() 
+            });
+        }
+    }
+
+    public enum EBardArchetypes
+    {
+        Valor = 1,      //Player's Handbook
+        Lore = 2,       //Player's Handbook
+        Glamour = 3,    //Xanathar's Guide to Everything
+        Swords = 4,     //Xanathar's Guide to Everything
+        Whispers = 5,   //Xanathar's Guide to Everything
+        Creation = 6,   //Tasha's Cauldron of Everything
+        Eloquence = 7,  //Tasha's Cauldron of Everything
+        Spirits = 8,    //Van Richten's Guide to Ravenloft
     }
 }

@@ -43,8 +43,11 @@ namespace WanderersDiary.CharacterManagement
 
         public void AddLevel(EClass eClass)
         {
-            CharacterClassFactory.GetClass(eClass).AddLevel(Character);
-            UpdateMaxHitPoints();
+            if(!NeedToChooseOption)
+            {
+                CharacterClassFactory.GetClass(eClass).AddLevel(Character);
+                UpdateMaxHitPoints();
+            }
         }
 
         public void UpdateMaxHitPoints()
@@ -191,7 +194,7 @@ namespace WanderersDiary.CharacterManagement
 
         public void Save()
         {
-            if (CanSave)
+            if (!NeedToChooseOption)
             {
                 SavedCharacter = Character.Copy();
             }
@@ -230,7 +233,8 @@ namespace WanderersDiary.CharacterManagement
             return needToChooseArchetype;
         }
 
-        public bool CanSave => !NeedToChooseFeatures &&
+        public bool NeedToChooseOption => 
+            !NeedToChooseFeatures &&
             !NeedToChooseArchetype &&
             !NeedToChooseSkills &&
             !NeedToImproveAttributes;

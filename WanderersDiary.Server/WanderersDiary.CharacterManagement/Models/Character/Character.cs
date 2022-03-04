@@ -68,6 +68,8 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public CharacterInventory Inventory { get; set; }
 
+        //Immunity, Resistance & Vulnerability
+
         //Referenced Monster (companion or wild shape)
 
         public bool Equals(Character other)

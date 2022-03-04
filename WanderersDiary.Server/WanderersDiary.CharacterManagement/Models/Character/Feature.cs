@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using WanderersDiary.CharacterManagement.Models.Enums;
 using WanderersDiary.CharacterManagement.Models.Utility;
-using WanderersDiary.Shared.Game;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
@@ -21,6 +22,8 @@ namespace WanderersDiary.CharacterManagement.Models
         /// 1 for features and abilities not binded to level.
         /// </summary>
         public int LevelToGain { get; set; }
+
+        public List<int> LevelWhenUpdate { get; set; }
 
         /// <summary>
         /// -1 for not not limited uses, if equal to Max, then is over.

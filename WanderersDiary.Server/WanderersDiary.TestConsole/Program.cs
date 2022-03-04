@@ -2,9 +2,7 @@
 using System.Linq;
 using WanderersDiary.CharacterManagement;
 using WanderersDiary.CharacterManagement.Models;
-using WanderersDiary.Shared.Game;
-using WanderersDiary.CharacterManagement.Extensions;
-using System.Collections.Generic;
+using WanderersDiary.CharacterManagement.Models.Enums;
 
 namespace WanderersDiary.TestConsole
 {
@@ -16,7 +14,7 @@ namespace WanderersDiary.TestConsole
 
             context.Character.Attributes.Constitution = 15;
 
-            context.Character.Race = new CharacterRace { Race = Shared.Game.Enums.ERace.Elf, HitPointsFactor = 2 };
+            context.Character.Race = new CharacterRace { Race = ERace.Elf, HitPointsFactor = 2 };
 
             context.AddLevel(EClass.Bard);
             context.AddLevel(EClass.Bard);

@@ -18,8 +18,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WanderersDiary.Contracts\WanderersDiary.Shared.csproj" />
-  </ItemGroup>
-
 </Project>

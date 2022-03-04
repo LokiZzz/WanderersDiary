@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WanderersDiary.Shared.Game
+namespace WanderersDiary.CharacterManagement.Models.Enums
 {
     public enum ERest
     {

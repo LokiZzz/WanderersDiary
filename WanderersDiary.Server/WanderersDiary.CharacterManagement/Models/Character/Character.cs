@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using WanderersDiary.CharacterManagement.Models.Enums;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
     public class Character : IEquatable<Character>
     {
         public string Name { get; set; }
+
+        public EGender Gender { get; set; }
 
         public HitPoints HitPoints { get; set; } = new HitPoints();
 
@@ -55,26 +58,15 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public int MaxPreparedSpellsCount { get; set; }
 
-        /// <summary>
-        /// By default have main conatiner named as "Other"
-        /// </summary>
-        public List<InventoryContainer> Inventory { get; set; } = new List<InventoryContainer>();
-
         public int SuccessfullDeathSaves { get; set; }
         
         public int FailedDeathSaves { get; set; }
 
-        //Conditions
+        public List<ECondition> Conditions { get; set; } = new List<ECondition>();
 
-        //Equipped weapons
+        public int ExhaustionLevel { get; set; }
 
-        //Equipped armor
-
-        //Magic items and eqipped magic items
-
-        //Immunity, Resistance & Vulnerability
-
-        //Currency
+        public CharacterInventory Inventory { get; set; }
 
         //Referenced Monster (companion or wild shape)
 

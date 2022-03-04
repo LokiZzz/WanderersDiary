@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WanderersDiary.Shared
+namespace WanderersDiary.CharacterManagement.Models.Enums
 {
     public enum EGender
     {

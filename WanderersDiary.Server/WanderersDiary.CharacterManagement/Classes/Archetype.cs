@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models;
+using WanderersDiary.CharacterManagement.Models.Enums;
 using WanderersDiary.CharacterManagement.Models.Utility;
-using WanderersDiary.Shared.Game.Enums;
 
 namespace WanderersDiary.CharacterManagement.Classes
 {

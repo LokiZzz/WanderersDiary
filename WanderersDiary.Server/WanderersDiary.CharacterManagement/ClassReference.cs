@@ -1,7 +1,7 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using WanderersDiary.Shared.Game;
+//using WanderersDiary.CharacterManagement.Models.Enums;
 //using WanderersDiary.Entities.Models;
 //using WanderersDiary.Entities.Models.Character;
 

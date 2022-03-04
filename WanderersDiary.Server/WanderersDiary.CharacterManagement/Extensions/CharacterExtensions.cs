@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Classes;
 using WanderersDiary.CharacterManagement.Models;
-using WanderersDiary.Shared.Game;
-using WanderersDiary.Shared.Game.Enums;
+using WanderersDiary.CharacterManagement.Models.Enums;
 
 namespace WanderersDiary.CharacterManagement.Extensions
 {

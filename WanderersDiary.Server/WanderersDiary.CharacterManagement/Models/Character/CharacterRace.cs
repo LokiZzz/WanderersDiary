@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using WanderersDiary.Shared.Game.Enums;
+using WanderersDiary.CharacterManagement.Models.Enums;
 
 namespace WanderersDiary.CharacterManagement.Models
 {

@@ -1,4 +1,4 @@
-﻿using WanderersDiary.Shared.Game;
+﻿using WanderersDiary.CharacterManagement.Models.Enums;
 
 namespace WanderersDiary.CharacterManagement.Models
 {

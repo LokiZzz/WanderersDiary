@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WanderersDiary.Shared.Game.Enums
+namespace WanderersDiary.CharacterManagement.Models.Enums
 {
     public enum EAttribute
     {

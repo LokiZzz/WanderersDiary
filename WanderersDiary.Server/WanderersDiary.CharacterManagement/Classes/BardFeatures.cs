@@ -5,10 +5,8 @@ using System.Drawing;
 using System.Text;
 using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
+using WanderersDiary.CharacterManagement.Models.Enums;
 using WanderersDiary.CharacterManagement.Models.Utility;
-using WanderersDiary.Shared.Game;
-using WanderersDiary.Shared.Game.Enums;
-using static System.Net.WebRequestMethods;
 
 namespace WanderersDiary.CharacterManagement.Classes
 {
@@ -27,7 +25,7 @@ namespace WanderersDiary.CharacterManagement.Classes
                     RU = "<p>Своими словами или музыкой вы можете вдохновлять других. Для этого вы должны бонусным действием выбрать одно существо, отличное от вас, в пределах 60 футов, которое может вас слышать. Это существо получает кость бардовского вдохновения — к6.</p><p>В течение следующих 10 минут это существо может один раз бросить эту кость и добавить результат к проверке характеристики, броску атаки или спасброску, который оно совершает. Существо может принять решение о броске кости вдохновения уже после броска к20, но должно сделать это прежде, чем Мастер объявит результат броска. Как только кость бардовского вдохновения брошена, она исчезает. Существо может иметь только одну такую кость одновременно.</p><p>Вы можете использовать это умение количество раз, равное модификатору вашей Харизмы, но как минимум один раз. Потраченные использования этого умения восстанавливаются после продолжительного отдыха.</p><p>Ваша кость бардовского вдохновения изменяется с ростом вашего уровня в этом классе. Она становится к8 на 5-м уровне, к10 на 10-м уровне и к12 на 15-м уровне.</p>",
                     EN = "<p>You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.</p><p>Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.</p><p>You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.</p><p>Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.</p>",
                 },
-                GetMaxUses = c => c.Attributes.Charisma.Modifier(), MinimumOfMaxUses = 1, ResetAfter = ERest.Long
+                GetMaxUses = c => c.Attributes.Charisma.Modifier(), MinimumOfMaxUses = 1, ResetAfter = ERest.Long, LevelWhenUpdate = new List<int> { 5, 10, 15 }
             },
             new Feature { Index = 3, LevelToGain = 2, Name = new LocalizedString { RU = "Мастер на Все Руки", EN = "Bardic Inspiration" },
                 Description = new LocalizedString() {
@@ -39,7 +37,8 @@ namespace WanderersDiary.CharacterManagement.Classes
                 Description = new LocalizedString() {
                     RU = "<p>Вы с помощью успокаивающей музыки или речей можете помочь своим раненым союзникам восстановить их силы во время короткого отдыха. Если вы или любые союзные существа, способные слышать ваше исполнение, восстанавливаете хиты в конце короткого отдыха, тратя хотя бы одну Кость Хитов, каждый из вас восстанавливает дополнительно 1к6 хитов.</p><p>Количество дополнительно восстанавливаемых хитов растёт с вашим уровнем в этом классе: 1к8 на 9-м уровне, 1к10 на 13 уровне и 1к12 на 17 уровне.</p>",
                     EN = "<p>Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains an extra 1d6 hit points.</p><p>The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.</p>",
-                }
+                },
+                LevelWhenUpdate = new List<int> { 9, 13, 17 }
             },
             new Feature { Index = 5, LevelToGain = 3, Name = new LocalizedString { RU = "Коллегия Бардов", EN = "Bard College" },
                 Description = new LocalizedString() {
@@ -69,7 +68,8 @@ namespace WanderersDiary.CharacterManagement.Classes
                 Description = new LocalizedString() {
                     RU = "<p>Вы успели набрать знаний из самого широкого спектра магических дисциплин. Выберите два заклинания любых классов, включая ваш собственный. Эти заклинания должны быть того уровня, который вы можете использовать, или являться заговорами.</p><p>Теперь эти заклинания считаются для вас заклинаниями барда, и они уже включены в общее количество известных вам заклинаний согласно таблице «Бард». Ещё по два заклинания других классов вы выучите на 14-м и 18-м уровнях.</p>",
                     EN = "<p>By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.</p><p>The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.</p><p>You learn two additional spells from any classes at 14th level and again at 18th level.</p>",
-                }
+                },
+                LevelWhenUpdate = new List<int> { 14, 18 }
             },
             new Feature { Index = 10, LevelToGain = 20, Name = new LocalizedString { RU = "Превосходное Вдохновение", EN = "Superior Inspiration" },
                 Description = new LocalizedString() {

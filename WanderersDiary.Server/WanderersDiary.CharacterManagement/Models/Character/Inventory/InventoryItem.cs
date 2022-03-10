@@ -1,8 +1,10 @@
-﻿namespace WanderersDiary.CharacterManagement.Models
+﻿using WanderersDiary.CharacterManagement.Models.Utility;
+
+namespace WanderersDiary.CharacterManagement.Models
 { 
     public class InventoryItem
     {
-        public string Name { get; set; }
+        public LocalizedString Name { get; set; }
 
         public int? Price { get; set; }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WanderersDiary.CharacterManagement.Models.Enums
+namespace WanderersDiary.CharacterManagement.Models
 {
     public enum ESkill
     {

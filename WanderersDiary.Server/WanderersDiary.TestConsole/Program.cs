@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using WanderersDiary.CharacterManagement;
 using WanderersDiary.CharacterManagement.Models;
@@ -10,21 +13,10 @@ namespace WanderersDiary.TestConsole
     {
         static void Main(string[] args)
         {
-            CharacterContext context = new CharacterContext();
+            string fileString = File.ReadAllText("EQUIPMENT.dtn");
 
-            context.Character.Attributes.Constitution = 15;
-
-            context.Character.Race = new CharacterRace { Race = ERace.Elf, HitPointsFactor = 2 };
-
-            context.AddLevel(EClass.Bard);
-            context.AddLevel(EClass.Bard);
-            context.AddLevel(EClass.Bard);
-            context.AddLevel(EClass.Bard);
-
-            Feat feat = new Feat { HitPointsFactor = 2 };
-            context.ChooseFeat(feat);
-
-            Console.WriteLine(context.Character.HitPoints.Maximum);
+            Root root = JsonConvert.DeserializeObject<Root>(fileString);
+            List<ItemsList> armor = root.itemsList.Where(i => i.en.type == "Armor").ToList();
 
             Console.ReadLine();
         }

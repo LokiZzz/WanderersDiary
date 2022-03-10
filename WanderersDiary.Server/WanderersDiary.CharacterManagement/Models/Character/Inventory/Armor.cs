@@ -19,4 +19,13 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public bool HaveStealthDisadvantage { get; set; }
     }
+
+    public enum EArmorType
+    {
+        Light = 1,
+        Medium = 2,
+        Heavy = 3,
+        Shield = 4,
+        Additional = 5
+    }
 }

@@ -21,4 +21,9 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public int Max { get; set; }
     }
+
+    public enum EWeaponTags
+    {
+        //Versatile, Light, Heavy, Two-Handed, Reach...
+    }
 }

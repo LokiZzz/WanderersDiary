@@ -17,7 +17,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = true, 
             Weight = 8, 
-            IsMagicalItem = false
         };
 
         public static Armor Leather = new Armor
@@ -28,7 +27,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = false, 
             Weight = 10, 
-            IsMagicalItem = false
         };
 
         public static Armor StuddedLeather = new Armor
@@ -39,7 +37,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = false, 
             Weight = 13, 
-            IsMagicalItem = false
         };
 
         public static Armor Hide = new Armor
@@ -50,7 +47,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = false,
             Weight = 12,
-            IsMagicalItem = false
         };
 
         public static Armor ChainShirt = new Armor
@@ -61,7 +57,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = false,
             Weight = 20,
-            IsMagicalItem = false
         };
 
         public static Armor ScaleMail = new Armor
@@ -72,7 +67,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = true,
             Weight = 45,
-            IsMagicalItem = false
         };
 
         public static Armor Breastplate = new Armor
@@ -83,7 +77,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = false,
             Weight = 20,
-            IsMagicalItem = false
         };
 
         public static Armor HalfPlate = new Armor
@@ -94,7 +87,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = true,
             Weight = 40,
-            IsMagicalItem = false
         };
 
         public static Armor RingMail = new Armor
@@ -105,7 +97,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = null,
             HaveStealthDisadvantage = true,
             Weight = 40,
-            IsMagicalItem = false
         };
 
         public static Armor ChainMail = new Armor
@@ -116,7 +107,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = 13,
             HaveStealthDisadvantage = true,
             Weight = 55,
-            IsMagicalItem = false
         };
 
         public static Armor Splint = new Armor
@@ -127,7 +117,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = 15,
             HaveStealthDisadvantage = true,
             Weight = 60,
-            IsMagicalItem = false
         };
 
         public static Armor Plate = new Armor
@@ -138,7 +127,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = 15,
             HaveStealthDisadvantage = true,
             Weight = 65,
-            IsMagicalItem = false
         };
 
         public static Armor Shield = new Armor
@@ -149,7 +137,6 @@ namespace WanderersDiary.CharacterManagement.Static
             StrenghtRequirement = 0,
             HaveStealthDisadvantage = false,
             Weight = 6,
-            IsMagicalItem = false
         };
     }
 }

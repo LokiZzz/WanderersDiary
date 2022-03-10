@@ -18,6 +18,7 @@ namespace WanderersDiary.TestConsole
             Root root = JsonConvert.DeserializeObject<Root>(fileString);
             List<ItemsList> armor = root.itemsList.Where(i => i.en.type == "Armor").ToList();
 
+
             Console.ReadLine();
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WanderersDiary.CharacterManagement.Classes;
-using WanderersDiary.CharacterManagement.Models.Enums;
+using WanderersDiary.CharacterManagement.Models;
 
 namespace WanderersDiary.CharacterManagement
 {

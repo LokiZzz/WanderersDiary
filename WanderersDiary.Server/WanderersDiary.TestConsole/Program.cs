@@ -16,8 +16,8 @@ namespace WanderersDiary.TestConsole
             string fileString = File.ReadAllText("EQUIPMENT.dtn");
 
             Root root = JsonConvert.DeserializeObject<Root>(fileString);
-            List<ItemsList> armor = root.itemsList.Where(i => i.en.type == "Armor").ToList();
-
+            List<ItemsList> items = root.itemsList.Where(i => i.en.type != "Armor" && i.en.type != "weapon").ToList();
+            List<string> itemsNames = items.Select(i => i.ru.name).ToList();
 
             Console.ReadLine();
         }

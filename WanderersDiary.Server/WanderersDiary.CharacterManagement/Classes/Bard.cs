@@ -33,9 +33,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             ESkill.Perception,      ESkill.Survival,        ESkill.Deception,       ESkill.Intimidation,    ESkill.Performance, ESkill.Persuasion
         };
 
-        public override List<EAttribute> SavingThrows => new List<EAttribute> {
-            EAttribute.Dexterity, EAttribute.Charisma
-        };
+        public override List<EAttribute> SavingThrows => new List<EAttribute> { EAttribute.Dexterity, EAttribute.Charisma };
 
         public override List<int> AttributesImprovementLevels => new List<int> { 4, 8, 12, 16, 19 };
 

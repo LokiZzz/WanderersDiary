@@ -17,6 +17,7 @@ namespace WanderersDiary.CharacterManagement.Classes
             {
                 character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 0 });
                 AddSkills(character);
+                AddSavingThrows(character);
             }
 
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
@@ -40,7 +41,7 @@ namespace WanderersDiary.CharacterManagement.Classes
                 AddArchetypeFeatures(character, targetLevel);
                 HandleSpecificArchetypeFeatures(character, targetLevel);
             }
-        }
+        }  
 
         public void SetArchetype(Character character, int archetypeIndex)
         {
@@ -63,6 +64,34 @@ namespace WanderersDiary.CharacterManagement.Classes
                 AvailiableSkills = availiableSkills,
                 AvailiableNumberOfSkills = this.AvailiableNumberOfSkills
             });
+        }
+
+        private void AddSavingThrows(Character character)
+        {
+            foreach(EAttribute st in SavingThrows)
+            {
+                switch(st)
+                {
+                    case EAttribute.Strenght:
+                        character.Attributes.StrenghtSave = true;
+                        break;
+                    case EAttribute.Dexterity:
+                        character.Attributes.DexteritySave = true;
+                        break;
+                    case EAttribute.Constitution:
+                        character.Attributes.ConstitutionSave = true;
+                        break;
+                    case EAttribute.Intelligence:
+                        character.Attributes.IntelligenceSave = true;
+                        break;
+                    case EAttribute.Wisdom:
+                        character.Attributes.WisdomSave = true;
+                        break;
+                    case EAttribute.Charisma:
+                        character.Attributes.CharismaSave = true;
+                        break;
+                }
+            }
         }
 
         private void AddHitDice(Character character)
@@ -136,6 +165,8 @@ namespace WanderersDiary.CharacterManagement.Classes
         public abstract int AvailiableNumberOfSkills { get; }
 
         public abstract List<ESkill> AvailiableSkills { get; }
+
+        public abstract List<EAttribute> SavingThrows { get; }
 
         public abstract List<int> AttributesImprovementLevels { get; }
 

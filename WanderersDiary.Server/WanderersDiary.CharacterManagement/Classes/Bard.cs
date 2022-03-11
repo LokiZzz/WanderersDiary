@@ -6,6 +6,7 @@ using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
 using WanderersDiary.CharacterManagement.Models.Utility;
+using WanderersDiary.CharacterManagement.Static;
 
 namespace WanderersDiary.CharacterManagement.Classes
 {
@@ -26,10 +27,14 @@ namespace WanderersDiary.CharacterManagement.Classes
         public override int AvailiableNumberOfSkills => 3;
 
         //All skills!
-        public override List<ESkill> AvailiableSkills => new List<ESkill> { 
-            ESkill.Athletics,       ESkill.Acrobatics,      ESkill.SleightOfHand,   ESkill.Stealth,         ESkill.Arcana,      ESkill.History,         
-            ESkill.Investigation,   ESkill.Nature,          ESkill.Religion,        ESkill.AnimalHandling,  ESkill.Insight,     ESkill.Medicine,        
-            ESkill.Perception,      ESkill.Survival,        ESkill.Deception,       ESkill.Intimidation,    ESkill.Performance, ESkill.Persuasion 
+        public override List<ESkill> AvailiableSkills => new List<ESkill> {
+            ESkill.Athletics,       ESkill.Acrobatics,      ESkill.SleightOfHand,   ESkill.Stealth,         ESkill.Arcana,      ESkill.History,
+            ESkill.Investigation,   ESkill.Nature,          ESkill.Religion,        ESkill.AnimalHandling,  ESkill.Insight,     ESkill.Medicine,
+            ESkill.Perception,      ESkill.Survival,        ESkill.Deception,       ESkill.Intimidation,    ESkill.Performance, ESkill.Persuasion
+        };
+
+        public override List<EAttribute> SavingThrows => new List<EAttribute> {
+            EAttribute.Dexterity, EAttribute.Charisma
         };
 
         public override List<int> AttributesImprovementLevels => new List<int> { 4, 8, 12, 16, 19 };

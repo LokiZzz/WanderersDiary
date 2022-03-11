@@ -22,5 +22,10 @@ namespace WanderersDiary.CharacterManagement.Extensions
 
             return item;
         }
+
+        public static List<Equipment> ToList(this Equipment item)
+        {
+            return new List<Equipment> { item };
+        }
     }
 }

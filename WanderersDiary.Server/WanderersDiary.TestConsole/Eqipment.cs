@@ -1,12 +1,157 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WanderersDiary.CharacterManagement.Models;
 
 namespace WanderersDiary.TestConsole
 {
+    public static class ParsingHelper
+    {
+        public static string GetCSStaticFields(List<ItemsList> items)
+        {
+            string result = string.Empty;
+
+            foreach (ItemsList item in items)
+            {
+                string fieldName = GetItemFieldName(item.en.name);
+                string price = GetPrice(item.en.coast);
+                string weight = GetWeight(item.en.weight);
+                string type = item.en.type.ToType().ToFullString();
+
+                result += ParsingHelper.GetStaticString(fieldName,
+                    item.en.name, item.ru.name,
+                    item.en.text, item.ru.text,
+                    price, weight, type
+                );
+
+                result += Environment.NewLine + Environment.NewLine;
+            }
+
+            return result;
+        }
+
+        private static string GetWeight(string weight)
+        {
+            if (weight.Equals("1/2")) return "0.5";
+            if (weight.Equals("1/4")) return "0.25";
+            if (weight.Equals("1/8")) return "0.125";
+            if (string.IsNullOrEmpty(weight)) return "0";
+
+            if (decimal.TryParse(weight, out decimal output))
+            {
+                return output.ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public enum ECoin { Gp = 1, Sp = 2, Cp = 3 }
+
+        private static string GetPrice(string price)
+        {
+            ECoin coin = ECoin.Gp;
+            if (price.Contains("sp")) coin = ECoin.Sp;
+            if (price.Contains("cp")) coin = ECoin.Cp;
+
+            price = price.Replace(" ", string.Empty);
+            price = price.Replace("gp", string.Empty);
+            price = price.Replace("sp", string.Empty);
+            price = price.Replace("cp", string.Empty);
+
+            if (decimal.TryParse(price, out decimal output))
+            {
+                if (coin == ECoin.Sp) output = output / 10;
+                if (coin == ECoin.Cp) output = output / 100;
+
+                return output.ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        private static string GetItemFieldName(string name)
+        {
+            string result = string.Empty;
+
+            name = name.Replace("(", string.Empty);
+            name = name.Replace(")", string.Empty);
+            name = name.Replace(",", string.Empty);
+            name = name.Replace("'", string.Empty);
+            name = name.Replace("-", string.Empty);
+
+            string[] splitted = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string item in splitted)
+            {
+                string itemCopy = item.ToLower();
+                itemCopy = char.ToUpperInvariant(itemCopy[0]) + itemCopy.Substring(1);
+
+                result += itemCopy;
+            }
+
+            return result;
+        }
+
+        public static string GetStaticString(string itemName, string enName, string ruName, string enDesc, string ruDesc, string price, string weight, string type)
+        {
+            string result = string.Empty;
+
+            result += @$"public static EquipmentItem {itemName} = new EquipmentItem" + Environment.NewLine;
+            result += @$"{{" + Environment.NewLine;
+            result += @$"    Name = new LocalizedString {{ EN = ""{enName}"", RU = ""{ruName}"" }}," + Environment.NewLine;
+
+            if (!string.IsNullOrEmpty(enDesc) || !string.IsNullOrEmpty(ruDesc))
+            {
+                result += @$"    Description = new LocalizedString {{" + Environment.NewLine;
+                result += @$"       EN = ""{enDesc}""," + Environment.NewLine;
+                result += @$"       RU = ""{ruDesc}""" + Environment.NewLine;
+                result += @$"    }}," + Environment.NewLine;
+            }
+
+            result += @$"    Price = {price}m, Weight = {weight}m, Type = {type}" + Environment.NewLine;
+            result += @$"}};";
+
+            return result;
+        }
+    }
+
+    public static class EqExtension
+    {
+        public static EEquipmentType ToType(this string type)
+        {
+            type = type.Replace(" ", string.Empty);
+            type = type.ToLowerInvariant();
+
+            switch (type)
+            {
+                case "arcanefocus": return EEquipmentType.ArcaneFocus;
+                case "druidicfocus": return EEquipmentType.DruidicFocus;
+                case "hollysymbol": return EEquipmentType.HolySymbol;
+                case "hollysimbol": return EEquipmentType.HolySymbol;
+                case "ammunition": return EEquipmentType.Ammunition;
+                case "camp": return EEquipmentType.Camp;
+                case "clothes": return EEquipmentType.Clothes;
+                case "consumables": return EEquipmentType.Consumable;
+                case "container": return EEquipmentType.Container;
+                case "gear": return EEquipmentType.Gear;
+                case "kit": return EEquipmentType.Kit;
+                case "tool": return EEquipmentType.Tool;
+
+                default: throw new ArgumentException("Wrong type!");
+            }
+        }
+
+        public static string ToFullString(this EEquipmentType type) => $"EEquipmentType.{type.ToString("G")}";
+    }
+
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class En
     {

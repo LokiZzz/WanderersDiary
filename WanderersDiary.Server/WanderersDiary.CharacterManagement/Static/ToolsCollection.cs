@@ -11,8 +11,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment DisguiseKit = new Equipment
         {
             Name = new LocalizedString { EN = "Disguise Kit", RU = "Набор для грима" },
-            Price = 25m,
-            Weight = 3,
+            Price = 25m, Weight = 3,
             Description = new LocalizedString
             {
                 EN = "A disguise kit includes cosmetics, hair dye, small props, and a few pieces of clothing.",
@@ -24,8 +23,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment ForgeryKit = new Equipment
         {
             Name = new LocalizedString { EN = "Forgery Kit", RU = "Набор для фальсификации" },
-            Price = 15m,
-            Weight = 5,
+            Price = 15m, Weight = 5,
             Description = new LocalizedString
             {
                 EN = "A forgery kit includes several different types of ink, a variety of parchments and papers, several quills, seals and sealing wax, gold and silver leaf, and small tools to sculpt melted wax to mimic a seal.",
@@ -37,8 +35,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment HerbalismKit = new Equipment
         {
             Name = new LocalizedString { EN = "Herbalism Kit", RU = "Инструменты травника" },
-            Price = 5m,
-            Weight = 3m,
+            Price = 5m, Weight = 3m,
             Description = new LocalizedString
             {
                 EN = "An herbalism kit includes pouches to store herbs, clippers and leather gloves for collecting plants, a mortar and pestle, and several glass jars.",
@@ -47,11 +44,10 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Navigator = new Equipment
+        public static Equipment NavigatorsTools = new Equipment
         {
             Name = new LocalizedString { EN = "Navigator’s Tools", RU = "Инструменты навигатора" },
-            Price = 25m,
-            Weight = 2m,
+            Price = 25m, Weight = 2m,
             Description = new LocalizedString
             {
                 EN = "Navigator's tools include a sextant, a compass, calipers, a ruler, parchment, ink, and a quill.",
@@ -60,11 +56,10 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Poisoner = new Equipment
+        public static Equipment PoisonersKit = new Equipment
         {
             Name = new LocalizedString { EN = "Poisoner’s Kit", RU = "Инструменты отравителя" },
-            Price = 50m,
-            Weight = 2m,
+            Price = 50m, Weight = 2m,
             Description = new LocalizedString
             {
                 EN = "A poisoner's kit includes glass vials, a mortar and pestle, chemicals, and a glass stirring rod.",
@@ -73,11 +68,10 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Thieve = new Equipment
+        public static Equipment ThievesTools = new Equipment
         {
             Name = new LocalizedString { EN = "Thieves’ tools", RU = "Воровские инструменты" },
-            Price = 25m,
-            Weight = 1m,
+            Price = 25m, Weight = 1m,
             Description = new LocalizedString
             {
                 EN = "Smith's tools include hammers, tongs, charcoal, rags, and a whetstone.",
@@ -88,7 +82,7 @@ namespace WanderersDiary.CharacterManagement.Static
 
         #region Artisan's tools
 
-        public static Equipment Alchemist = new Equipment
+        public static Equipment AlchemistsSupplies = new Equipment
         {
             Name = new LocalizedString { EN = "Alchemist’s supplies	", RU = "Инструменты алхимика" },
             Price = 50m,
@@ -101,7 +95,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Brewer = new Equipment
+        public static Equipment BrewersSupplies = new Equipment
         {
             Name = new LocalizedString { EN = "Brewer’s supplies", RU = "Инструменты пивовара" },
             Price = 20m,
@@ -114,7 +108,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Calligrapher = new Equipment
+        public static Equipment CalligraphersSupplies = new Equipment
         {
             Name = new LocalizedString { EN = "Calligrapher’s Supplies", RU = "Инструменты каллиграфа" },
             Price = 10m,
@@ -127,7 +121,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Carpenter = new Equipment
+        public static Equipment CarpentersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Carpenter’s Tools", RU = "Инструменты плотника" },
             Price = 8m,
@@ -140,7 +134,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Cartographer = new Equipment
+        public static Equipment CartographersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Cartographer's Tools", RU = "Инструменты плотника" },
             Price = 15m,
@@ -153,7 +147,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Cobbler = new Equipment
+        public static Equipment CobblersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Cobbler’s Tools", RU = "Инструменты сапожник" },
             Price = 50m,
@@ -166,7 +160,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Cook = new Equipment
+        public static Equipment CooksUtensils = new Equipment
         {
             Name = new LocalizedString { EN = "Cook’s Utensils", RU = "Инструменты повара" },
             Price = 50m,
@@ -179,7 +173,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Glassblower = new Equipment
+        public static Equipment GlassblowersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Glassblower’s Tools", RU = "Инструменты стеклодува" },
             Price = 30m,
@@ -192,7 +186,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Jeweler = new Equipment
+        public static Equipment JewelersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Jeweler’s Tools", RU = "Инструменты ювелира" },
             Price = 25m,
@@ -205,7 +199,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Leatherworker = new Equipment
+        public static Equipment LeatherworkersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Leatherworker’s Tools", RU = "Инструменты ювелира" },
             Price = 5m,
@@ -218,7 +212,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Mason = new Equipment
+        public static Equipment MasonsTools = new Equipment
         {
             Name = new LocalizedString { EN = "Mason’s Tools", RU = "Инструменты каменщика" },
             Price = 10m,
@@ -231,7 +225,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Painter = new Equipment
+        public static Equipment PaintersSupplies = new Equipment
         {
             Name = new LocalizedString { EN = "Painter’s Supplies", RU = "Инструменты художника" },
             Price = 25m,
@@ -244,7 +238,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Potter = new Equipment
+        public static Equipment PottersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Potter’s Tools", RU = "Инструменты гончара" },
             Price = 10m,
@@ -257,7 +251,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Smith = new Equipment
+        public static Equipment SmithsTools = new Equipment
         {
             Name = new LocalizedString { EN = "Smith’s Tools", RU = "Инструменты кузнеца" },
             Price = 20m,
@@ -270,7 +264,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Tinker = new Equipment
+        public static Equipment TinkersTools = new Equipment
         {
             Name = new LocalizedString { EN = "Tinker’s Tools", RU = "Инструменты ремонтника" },
             Price = 50m,
@@ -283,7 +277,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Weaver = new Equipment
+        public static Equipment WeaversTools = new Equipment
         {
             Name = new LocalizedString { EN = "Weaver’s Tools", RU = "Инструменты ткача" },
             Price = 1m,
@@ -296,7 +290,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Type = EEquipmentType.Tool
         };
 
-        public static Equipment Woodcarver = new Equipment
+        public static Equipment WoodcarversTools = new Equipment
         {
             Name = new LocalizedString { EN = "Woodcarver’s Tools", RU = "Инструменты резчика по дереву" },
             Price = 1m,

@@ -5,9 +5,9 @@ using WanderersDiary.CharacterManagement.Models.Enums;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
-    public class Armor : InventoryItem
+    public class Armor : Equipment
     {
-        public EArmorType Type { get; set; }
+        public EArmorType Category { get; set; }
 
         public int? StrenghtRequirement { get; set; }
 
@@ -18,6 +18,8 @@ namespace WanderersDiary.CharacterManagement.Models
         public int? MaxDexterityBonus { get; set; }
 
         public bool HaveStealthDisadvantage { get; set; }
+
+        public new EEquipmentType Type => EEquipmentType.Armor;
     }
 
     public enum EArmorType

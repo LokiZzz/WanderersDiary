@@ -6,9 +6,9 @@ using WanderersDiary.CharacterManagement.Models.Game;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
-    public class Weapon : InventoryItem
+    public class Weapon : Equipment
     {
-        public List<EWeaponType> Type { get; set; }
+        public List<EWeaponType> Categories { get; set; }
 
         public List<Damage> Damage { get; set; } = new List<Damage>();
 
@@ -16,7 +16,9 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public Range Range { get; set; }
 
-        public List<Damage> Versatile { get; set; } 
+        public List<Damage> Versatile { get; set; }
+
+        public new EEquipmentType Type => EEquipmentType.Weapon;
     }
 
     public class Range

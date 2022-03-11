@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Utility;
 
 namespace WanderersDiary.CharacterManagement.Static
 {
-    public static class EquipmentCollection
+    public class EquipmentCollection : StaticCollectionBase<EquipmentCollection, Equipment>
     {
-        public static EquipmentItem Abacus = new EquipmentItem
+        public static Equipment Abacus = new Equipment
         {
             Name = new LocalizedString { EN = "Abacus", RU = "Счеты" },
             Price = 2m, Weight = 2m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem AcidVial = new EquipmentItem
+        public static Equipment AcidVial = new Equipment
         {
             Name = new LocalizedString { EN = "Acid (vial)", RU = "Кислота (Флакон)" },
             Description = new LocalizedString {
@@ -24,7 +25,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 25m, Weight = 1m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem AlchemistsFireFlask = new EquipmentItem
+        public static Equipment AlchemistsFireFlask = new Equipment
         {
             Name = new LocalizedString { EN = "Alchemist's fire (flask)", RU = "Алхимический огонь (фляжка)" },
             Description = new LocalizedString {
@@ -34,59 +35,59 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 50m, Weight = 1m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Arrow = new EquipmentItem
+        public static Equipment Arrow = new Equipment
         {
             Name = new LocalizedString { EN = "Arrow", RU = "Стрела" },
             Price = 0.05m, Weight = 0.05m, Type = EEquipmentType.Ammunition
         };
 
-        public static EquipmentItem Arrows20 = new EquipmentItem
+        public static Equipment Arrows20 = new Equipment
         {
             Name = new LocalizedString { EN = "Arrow", RU = "Стрела" },
             Price = 0.05m, Weight = 0.05m, Type = EEquipmentType.Ammunition,
             Quantity = 20
         };
 
-        public static EquipmentItem BlowgunNeedle = new EquipmentItem
+        public static Equipment BlowgunNeedle = new Equipment
         {
             Name = new LocalizedString { EN = "Blowgun needle", RU = "Игла для трубки" },
             Price = 0.02m, Weight = 0.02m, Type = EEquipmentType.Ammunition,
         };
 
-        public static EquipmentItem BlowgunNeedles50 = new EquipmentItem
+        public static Equipment BlowgunNeedles50 = new Equipment
         {
             Name = new LocalizedString { EN = "Blowgun needle", RU = "Игла для трубки" },
             Price = 0.02m, Weight = 0.02m, Type = EEquipmentType.Ammunition,
             Quantity = 50
         };
 
-        public static EquipmentItem CrossbowBolt = new EquipmentItem
+        public static Equipment CrossbowBolt = new Equipment
         {
             Name = new LocalizedString { EN = "Crossbow bolt", RU = "Арбалетный болт" },
             Price = 0.05m, Weight = 0.075m, Type = EEquipmentType.Ammunition
         };
 
-        public static EquipmentItem CrossbowBolts20 = new EquipmentItem
+        public static Equipment CrossbowBolts20 = new Equipment
         {
             Name = new LocalizedString { EN = "Crossbow bolt", RU = "Арбалетный болт" },
             Price = 0.05m, Weight = 0.075m, Type = EEquipmentType.Ammunition,
             Quantity = 20
         };
 
-        public static EquipmentItem SlingBullets = new EquipmentItem
+        public static Equipment SlingBullets = new Equipment
         {
             Name = new LocalizedString { EN = "Sling bullet", RU = "Снаряд для пращи" },
             Price = 0.002m, Weight = 0.075m, Type = EEquipmentType.Ammunition,
         };
 
-        public static EquipmentItem SlingBullets20 = new EquipmentItem
+        public static Equipment SlingBullets20 = new Equipment
         {
             Name = new LocalizedString { EN = "Sling bullet", RU = "Снаряд для пращи" },
             Price = 0.002m, Weight = 0.075m, Type = EEquipmentType.Ammunition,
             Quantity = 20
         };
 
-        public static EquipmentItem AntitoxinVial = new EquipmentItem
+        public static Equipment AntitoxinVial = new Equipment
         {
             Name = new LocalizedString { EN = "Antitoxin (vial)", RU = "Противоядие (флакон)" },
             Description = new LocalizedString {
@@ -96,7 +97,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 50m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Crystal = new EquipmentItem
+        public static Equipment Crystal = new Equipment
         {
             Name = new LocalizedString { EN = "Crystal", RU = "Кристалл" },
             Description = new LocalizedString {
@@ -106,7 +107,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 1m, Type = EEquipmentType.ArcaneFocus
         };
 
-        public static EquipmentItem Orb = new EquipmentItem
+        public static Equipment Orb = new Equipment
         {
             Name = new LocalizedString { EN = "Orb", RU = "Сфера" },
             Description = new LocalizedString {
@@ -116,7 +117,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 20m, Weight = 3m, Type = EEquipmentType.ArcaneFocus
         };
 
-        public static EquipmentItem Rod = new EquipmentItem
+        public static Equipment Rod = new Equipment
         {
             Name = new LocalizedString { EN = "Rod", RU = "Жезл" },
             Description = new LocalizedString {
@@ -126,7 +127,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 2m, Type = EEquipmentType.ArcaneFocus
         };
 
-        public static EquipmentItem Staff = new EquipmentItem
+        public static Equipment Staff = new Equipment
         {
             Name = new LocalizedString { EN = "Staff", RU = "Посох" },
             Description = new LocalizedString {
@@ -136,7 +137,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 4m, Type = EEquipmentType.ArcaneFocus
         };
 
-        public static EquipmentItem Wand = new EquipmentItem
+        public static Equipment Wand = new Equipment
         {
             Name = new LocalizedString { EN = "Wand", RU = "Волшебная палочка" },
             Description = new LocalizedString {
@@ -146,7 +147,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 1m, Type = EEquipmentType.ArcaneFocus
         };
 
-        public static EquipmentItem Backpack = new EquipmentItem
+        public static Equipment Backpack = new Equipment
         {
             Name = new LocalizedString { EN = "Backpack", RU = "Рюкзак" },
             Description = new LocalizedString {
@@ -156,18 +157,28 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 5m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem BallBearingsBagOf1000 = new EquipmentItem
+        public static Equipment BallBearing = new Equipment
         {
             Name = new LocalizedString { EN = "Ball bearings (bag of 1000)", RU = "Металлические шарики (сумка с 1000 шт.)" },
             Description = new LocalizedString {
                EN = "As an action, you can spill these tiny metal balls from their pouch to cover a levei area 10 feet square. Acreature moving across the covered area must succeed on a DC 10 Dexterity saving throw or fali prone. A creature moving through the area at half speed doesn't need to make the saving throw.",
                RU = "Вы можете действием рассыпать из этого мешка крохотные металлические шарики, покрыв площадь 10 × 10 футов. Существа, перемещающиеся по этой области, должны преуспеть в спасброске Ловкости со Сл 10, иначе они падают ничком. Существо, перемещающееся по этой области с уменьшенной вдвое скоростью, не обязано совершать спасбросок."
             },
-            Price = 1m, Weight = 2m, Type = EEquipmentType.Consumable,
+            Price = 0.001m, Weight = 0.002m, Type = EEquipmentType.Consumable,
+        };
+
+        public static Equipment BallBearingsBagOf1000 = new Equipment
+        {
+            Name = new LocalizedString { EN = "Ball bearings (bag of 1000)", RU = "Металлические шарики (сумка с 1000 шт.)" },
+            Description = new LocalizedString {
+               EN = "As an action, you can spill these tiny metal balls from their pouch to cover a levei area 10 feet square. Acreature moving across the covered area must succeed on a DC 10 Dexterity saving throw or fali prone. A creature moving through the area at half speed doesn't need to make the saving throw.",
+               RU = "Вы можете действием рассыпать из этого мешка крохотные металлические шарики, покрыв площадь 10 × 10 футов. Существа, перемещающиеся по этой области, должны преуспеть в спасброске Ловкости со Сл 10, иначе они падают ничком. Существо, перемещающееся по этой области с уменьшенной вдвое скоростью, не обязано совершать спасбросок."
+            },
+            Price = 0.001m, Weight = 0.002m, Type = EEquipmentType.Consumable,
             Quantity = 1000
         };
 
-        public static EquipmentItem Barrel = new EquipmentItem
+        public static Equipment Barrel = new Equipment
         {
             Name = new LocalizedString { EN = "Barrel", RU = "Бочка" },
             Description = new LocalizedString {
@@ -177,7 +188,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 70m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Basket = new EquipmentItem
+        public static Equipment Basket = new Equipment
         {
             Name = new LocalizedString { EN = "Basket", RU = "Корзина" },
             Description = new LocalizedString {
@@ -187,25 +198,25 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.4m, Weight = 2m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Bedroll = new EquipmentItem
+        public static Equipment Bedroll = new Equipment
         {
             Name = new LocalizedString { EN = "Bedroll", RU = "Спальник" },
             Price = 1m, Weight = 7m, Type = EEquipmentType.Camp
         };
 
-        public static EquipmentItem Bell = new EquipmentItem
+        public static Equipment Bell = new Equipment
         {
             Name = new LocalizedString { EN = "Bell", RU = "Колокольчик" },
             Price = 1m, Weight = 0m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Blanket = new EquipmentItem
+        public static Equipment Blanket = new Equipment
         {
             Name = new LocalizedString { EN = "Blanket", RU = "Одеяло" },
             Price = 0.5m, Weight = 3m, Type = EEquipmentType.Camp
         };
 
-        public static EquipmentItem BlockAndTackle = new EquipmentItem
+        public static Equipment BlockAndTackle = new Equipment
         {
             Name = new LocalizedString { EN = "Block and tackle", RU = "Блок и лебедка" },
             Description = new LocalizedString {
@@ -215,7 +226,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.1m, Weight = 5m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Book = new EquipmentItem
+        public static Equipment Book = new Equipment
         {
             Name = new LocalizedString { EN = "Book", RU = "Книга" },
             Description = new LocalizedString {
@@ -225,7 +236,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 25m, Weight = 5m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem BottleGlass = new EquipmentItem
+        public static Equipment BottleGlass = new Equipment
         {
             Name = new LocalizedString { EN = "Bottle, glass", RU = "Бутылка, стеклянная" },
             Description = new LocalizedString {
@@ -235,7 +246,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 2m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Bucket = new EquipmentItem
+        public static Equipment Bucket = new Equipment
         {
             Name = new LocalizedString { EN = "Bucket", RU = "Ведро" },
             Description = new LocalizedString {
@@ -245,7 +256,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.05m, Weight = 2m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Caltrop = new EquipmentItem
+        public static Equipment Caltrop = new Equipment
         {
             Name = new LocalizedString { EN = "Caltrop", RU = "Калтроп" },
             Description = new LocalizedString {
@@ -255,7 +266,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.05m, Weight = 0.1m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem CaltropsBagOf20 = new EquipmentItem
+        public static Equipment CaltropsBagOf20 = new Equipment
         {
             Name = new LocalizedString { EN = "Caltrops (bag of 20)", RU = "Калтропы (сумка 20 шт.)" },
             Description = new LocalizedString {
@@ -266,7 +277,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Quantity = 20
         };
 
-        public static EquipmentItem Candle = new EquipmentItem
+        public static Equipment Candle = new Equipment
         {
             Name = new LocalizedString { EN = "Candle", RU = "Свеча" },
             Description = new LocalizedString {
@@ -276,7 +287,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.01m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem CaseCrossbowBolt = new EquipmentItem
+        public static Equipment CaseCrossbowBolt = new Equipment
         {
             Name = new LocalizedString { EN = "Case, crossbow bolt", RU = "Футляр для болтов" },
             Description = new LocalizedString {
@@ -286,7 +297,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 1m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem CaseMapOrScroll = new EquipmentItem
+        public static Equipment CaseMapOrScroll = new Equipment
         {
             Name = new LocalizedString { EN = "Case, map or scroll", RU = "Футляр для документов" },
             Description = new LocalizedString {
@@ -296,7 +307,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 1m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Chain10Feet = new EquipmentItem
+        public static Equipment Chain10Feet = new Equipment
         {
             Name = new LocalizedString { EN = "Chain (10 feet)", RU = "Цепь (10 футов)" },
             Description = new LocalizedString {
@@ -306,13 +317,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 10m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Chalk1Piece = new EquipmentItem
+        public static Equipment Chalk1Piece = new Equipment
         {
             Name = new LocalizedString { EN = "Chalk (1 piece)", RU = "Мел (1 кусок)" },
             Price = 0.01m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Chest = new EquipmentItem
+        public static Equipment Chest = new Equipment
         {
             Name = new LocalizedString { EN = "Chest", RU = "Сундук" },
             Description = new LocalizedString {
@@ -322,7 +333,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 25m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem ClimbersKit = new EquipmentItem
+        public static Equipment ClimbersKit = new Equipment
         {
             Name = new LocalizedString { EN = "Climber's kit", RU = "Комплект для лазания" },
             Description = new LocalizedString {
@@ -332,31 +343,31 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 25m, Weight = 12m, Type = EEquipmentType.Kit
         };
 
-        public static EquipmentItem ClothesCommon = new EquipmentItem
+        public static Equipment ClothesCommon = new Equipment
         {
             Name = new LocalizedString { EN = "Clothes, common", RU = "Одежда, обычная" },
             Price = 0.5m, Weight = 3m, Type = EEquipmentType.Clothes
         };
 
-        public static EquipmentItem ClothesCostume = new EquipmentItem
+        public static Equipment ClothesCostume = new Equipment
         {
             Name = new LocalizedString { EN = "Clothes, costume", RU = "Одежда, костюм" },
             Price = 5m, Weight = 4m, Type = EEquipmentType.Clothes
         };
 
-        public static EquipmentItem ClothesFine = new EquipmentItem
+        public static Equipment ClothesFine = new Equipment
         {
             Name = new LocalizedString { EN = "Clothes, fine", RU = "Одежда, отличная" },
             Price = 15m, Weight = 6m, Type = EEquipmentType.Clothes
         };
 
-        public static EquipmentItem ClothesTravelers = new EquipmentItem
+        public static Equipment ClothesTravelers = new Equipment
         {
             Name = new LocalizedString { EN = "Clothes, traveler's", RU = "Одежда, дорожная" },
             Price = 2m, Weight = 4m, Type = EEquipmentType.Clothes
         };
 
-        public static EquipmentItem ComponentPouch = new EquipmentItem
+        public static Equipment ComponentPouch = new Equipment
         {
             Name = new LocalizedString { EN = "Component pouch", RU = "Мешочек с компонентами" },
             Description = new LocalizedString {
@@ -366,7 +377,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 25m, Weight = 2m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem Crowbar = new EquipmentItem
+        public static Equipment Crowbar = new Equipment
         {
             Name = new LocalizedString { EN = "Crowbar", RU = "Ломик" },
             Description = new LocalizedString {
@@ -376,7 +387,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 5m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem SprigOfMistletoe = new EquipmentItem
+        public static Equipment SprigOfMistletoe = new Equipment
         {
             Name = new LocalizedString { EN = "Sprig of mistletoe", RU = "Веточка омелы" },
             Description = new LocalizedString {
@@ -386,7 +397,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 0m, Type = EEquipmentType.DruidicFocus
         };
 
-        public static EquipmentItem Totem = new EquipmentItem
+        public static Equipment Totem = new Equipment
         {
             Name = new LocalizedString { EN = "Totem", RU = "Тотем" },
             Description = new LocalizedString {
@@ -396,7 +407,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 0m, Type = EEquipmentType.DruidicFocus
         };
 
-        public static EquipmentItem WoodenStaff = new EquipmentItem
+        public static Equipment WoodenStaff = new Equipment
         {
             Name = new LocalizedString { EN = "Wooden staff", RU = "Деревянный посох" },
             Description = new LocalizedString {
@@ -406,7 +417,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 4m, Type = EEquipmentType.DruidicFocus
         };
 
-        public static EquipmentItem YewWand = new EquipmentItem
+        public static Equipment YewWand = new Equipment
         {
             Name = new LocalizedString { EN = "Yew wand", RU = "Тисовая палочка" },
             Description = new LocalizedString {
@@ -416,7 +427,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 1m, Type = EEquipmentType.DruidicFocus
         };
 
-        public static EquipmentItem FishingTackle = new EquipmentItem
+        public static Equipment FishingTackle = new Equipment
         {
             Name = new LocalizedString { EN = "Fishing tackle", RU = "Комплект для рыбалки" },
             Description = new LocalizedString {
@@ -426,7 +437,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 4m, Type = EEquipmentType.Kit
         };
 
-        public static EquipmentItem FlaskOrTankard = new EquipmentItem
+        public static Equipment FlaskOrTankard = new Equipment
         {
             Name = new LocalizedString { EN = "Flask or tankard", RU = "Фляга или большая кружка" },
             Description = new LocalizedString {
@@ -436,25 +447,25 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.02m, Weight = 1m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem GrapplingHook = new EquipmentItem
+        public static Equipment GrapplingHook = new Equipment
         {
             Name = new LocalizedString { EN = "Grappling hook", RU = "Крюк-кошка" },
             Price = 2m, Weight = 4m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Hammer = new EquipmentItem
+        public static Equipment Hammer = new Equipment
         {
             Name = new LocalizedString { EN = "Hammer", RU = "Молоток" },
             Price = 1m, Weight = 3m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem HammerSledge = new EquipmentItem
+        public static Equipment HammerSledge = new Equipment
         {
             Name = new LocalizedString { EN = "Hammer, sledge", RU = "Молот кузнечный" },
             Price = 2m, Weight = 10m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem HealersKit = new EquipmentItem
+        public static Equipment HealersKit = new Equipment
         {
             Name = new LocalizedString { EN = "Healer's kit", RU = "Комплект целителя" },
             Description = new LocalizedString {
@@ -464,7 +475,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 10m, Type = EEquipmentType.Kit
         };
 
-        public static EquipmentItem Amulet = new EquipmentItem
+        public static Equipment Amulet = new Equipment
         {
             Name = new LocalizedString { EN = "Amulet", RU = "Амулет" },
             Description = new LocalizedString {
@@ -474,7 +485,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 1m, Type = EEquipmentType.HolySymbol
         };
 
-        public static EquipmentItem Emblem = new EquipmentItem
+        public static Equipment Emblem = new Equipment
         {
             Name = new LocalizedString { EN = "Emblem", RU = "Эмблема" },
             Description = new LocalizedString {
@@ -484,7 +495,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 0m, Type = EEquipmentType.HolySymbol
         };
 
-        public static EquipmentItem Reliquary = new EquipmentItem
+        public static Equipment Reliquary = new Equipment
         {
             Name = new LocalizedString { EN = "Reliquary", RU = "Реликварий" },
             Description = new LocalizedString {
@@ -494,7 +505,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 2m, Type = EEquipmentType.HolySymbol
         };
 
-        public static EquipmentItem HolyWaterFlask = new EquipmentItem
+        public static Equipment HolyWaterFlask = new Equipment
         {
             Name = new LocalizedString { EN = "Holy water (flask)", RU = "Святая вода (фляга)" },
             Description = new LocalizedString {
@@ -504,13 +515,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 25m, Weight = 1m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Hourglass = new EquipmentItem
+        public static Equipment Hourglass = new Equipment
         {
             Name = new LocalizedString { EN = "Hourglass", RU = "Песочные часы" },
             Price = 25m, Weight = 1m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem HuntingTrap = new EquipmentItem
+        public static Equipment HuntingTrap = new Equipment
         {
             Name = new LocalizedString { EN = "Hunting trap", RU = "Охотничий капкан" },
             Description = new LocalizedString {
@@ -520,19 +531,19 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 25m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Ink1OunceBottle = new EquipmentItem
+        public static Equipment Ink1OunceBottle = new Equipment
         {
             Name = new LocalizedString { EN = "Ink (1 ounce bottle)", RU = "Чернила (бутылочка 30 грамм)" },
             Price = 10m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem InkPen = new EquipmentItem
+        public static Equipment InkPen = new Equipment
         {
             Name = new LocalizedString { EN = "Ink pen", RU = "Писчее перо" },
             Price = 0.02m, Weight = 0m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem JugOrPitcher = new EquipmentItem
+        public static Equipment JugOrPitcher = new Equipment
         {
             Name = new LocalizedString { EN = "Jug or pitcher", RU = "Кувшин или графин" },
             Description = new LocalizedString {
@@ -542,13 +553,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.02m, Weight = 4m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Ladder10foot = new EquipmentItem
+        public static Equipment Ladder10foot = new Equipment
         {
             Name = new LocalizedString { EN = "Ladder (10-foot)", RU = "Лестница (10 футов)" },
             Price = 0.1m, Weight = 25m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Lamp = new EquipmentItem
+        public static Equipment Lamp = new Equipment
         {
             Name = new LocalizedString { EN = "Lamp", RU = "Лампа" },
             Description = new LocalizedString {
@@ -558,7 +569,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.5m, Weight = 1m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem LanternBullseye = new EquipmentItem
+        public static Equipment LanternBullseye = new Equipment
         {
             Name = new LocalizedString { EN = "Lantern, bullseye", RU = "Фонарь, направленный" },
             Description = new LocalizedString {
@@ -568,7 +579,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 2m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem LanternHooded = new EquipmentItem
+        public static Equipment LanternHooded = new Equipment
         {
             Name = new LocalizedString { EN = "Lantern, hooded", RU = "Фонарь, закрытый" },
             Description = new LocalizedString {
@@ -578,7 +589,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 2m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem Lock = new EquipmentItem
+        public static Equipment Lock = new Equipment
         {
             Name = new LocalizedString { EN = "Lock", RU = "Замóк" },
             Description = new LocalizedString {
@@ -588,7 +599,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 1m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem MagnifyingGlass = new EquipmentItem
+        public static Equipment MagnifyingGlass = new Equipment
         {
             Name = new LocalizedString { EN = "Magnifying glass", RU = "Увеличительное стекло" },
             Description = new LocalizedString {
@@ -598,7 +609,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 100m, Weight = 0m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem Manacles = new EquipmentItem
+        public static Equipment Manacles = new Equipment
         {
             Name = new LocalizedString { EN = "Manacles", RU = "Кандалы" },
             Description = new LocalizedString {
@@ -608,7 +619,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 6m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem MessKit = new EquipmentItem
+        public static Equipment MessKit = new Equipment
         {
             Name = new LocalizedString { EN = "Mess kit", RU = "Столовый набор" },
             Description = new LocalizedString {
@@ -618,13 +629,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.2m, Weight = 1m, Type = EEquipmentType.Kit
         };
 
-        public static EquipmentItem MirrorSteel = new EquipmentItem
+        public static Equipment MirrorSteel = new Equipment
         {
             Name = new LocalizedString { EN = "Mirror, steel", RU = "Зеркало, стальное" },
             Price = 5m, Weight = 0.5m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem OilFlask = new EquipmentItem
+        public static Equipment OilFlask = new Equipment
         {
             Name = new LocalizedString { EN = "Oil (flask)", RU = "Масло (фляга)" },
             Description = new LocalizedString {
@@ -634,37 +645,37 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.1m, Weight = 1m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem ParchmentOneSheet = new EquipmentItem
+        public static Equipment ParchmentOneSheet = new Equipment
         {
             Name = new LocalizedString { EN = "Parchment (one sheet)", RU = "Пергамент (1 лист)" },
             Price = 0.1m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem PaperOneSheet = new EquipmentItem
+        public static Equipment PaperOneSheet = new Equipment
         {
             Name = new LocalizedString { EN = "Paper (one sheet)", RU = "Бумага (1 лист)" },
             Price = 0.2m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem PerfumeVial = new EquipmentItem
+        public static Equipment PerfumeVial = new Equipment
         {
             Name = new LocalizedString { EN = "Perfume (vial)", RU = "Духи́ (флакон)" },
             Price = 5m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem PiekMiners = new EquipmentItem
+        public static Equipment PiekMiners = new Equipment
         {
             Name = new LocalizedString { EN = "Piek, miner's", RU = "Кирка, горняцкая" },
             Price = 2m, Weight = 10m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem Piton = new EquipmentItem
+        public static Equipment Piton = new Equipment
         {
             Name = new LocalizedString { EN = "Piton", RU = "Шлямбур" },
             Price = 0.05m, Weight = 0.25m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem PoisonBasicVial = new EquipmentItem
+        public static Equipment PoisonBasicVial = new Equipment
         {
             Name = new LocalizedString { EN = "Poison, basic (vial)", RU = "Яд, простой (флакон)" },
             Description = new LocalizedString {
@@ -674,13 +685,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 100m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Pole10foot = new EquipmentItem
+        public static Equipment Pole10foot = new Equipment
         {
             Name = new LocalizedString { EN = "Pole (10-foot)", RU = "Шест (10 футов)" },
             Price = 0.05m, Weight = 7m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem PotIron = new EquipmentItem
+        public static Equipment PotIron = new Equipment
         {
             Name = new LocalizedString { EN = "Pot, iron", RU = "Горшок, железный" },
             Description = new LocalizedString {
@@ -690,7 +701,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 10m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem PotionOfHealing = new EquipmentItem
+        public static Equipment PotionOfHealing = new Equipment
         {
             Name = new LocalizedString { EN = "Potion of healing", RU = "Зелье лечения" },
             Description = new LocalizedString {
@@ -700,7 +711,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 50m, Weight = 0.5m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Pouch = new EquipmentItem
+        public static Equipment Pouch = new Equipment
         {
             Name = new LocalizedString { EN = "Pouch", RU = "Кошель" },
             Description = new LocalizedString {
@@ -710,7 +721,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.5m, Weight = 1m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Quiver = new EquipmentItem
+        public static Equipment Quiver = new Equipment
         {
             Name = new LocalizedString { EN = "Quiver", RU = "Колчан" },
             Description = new LocalizedString {
@@ -720,7 +731,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 1m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem RamPortable = new EquipmentItem
+        public static Equipment RamPortable = new Equipment
         {
             Name = new LocalizedString { EN = "Ram, portable", RU = "Таран, переносной" },
             Description = new LocalizedString {
@@ -730,7 +741,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 4m, Weight = 35m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Rations1Day = new EquipmentItem
+        public static Equipment Rations1Day = new Equipment
         {
             Name = new LocalizedString { EN = "Rations (1 day)", RU = "Рационы (1 день)" },
             Description = new LocalizedString {
@@ -740,13 +751,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.5m, Weight = 2m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Robes = new EquipmentItem
+        public static Equipment Robes = new Equipment
         {
             Name = new LocalizedString { EN = "Robes", RU = "Ряса" },
             Price = 1m, Weight = 4m, Type = EEquipmentType.Clothes
         };
 
-        public static EquipmentItem RopeHempen50Feet = new EquipmentItem
+        public static Equipment RopeHempen50Feet = new Equipment
         {
             Name = new LocalizedString { EN = "Rope, hempen (50 feet)", RU = "Верёвка пеньковая (50 футов)" },
             Description = new LocalizedString {
@@ -756,7 +767,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 10m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem RopeSilk50Feet = new EquipmentItem
+        public static Equipment RopeSilk50Feet = new Equipment
         {
             Name = new LocalizedString { EN = "Rope, silk (50 feet)", RU = "Верёвка, шёлковая (50 футов)" },
             Description = new LocalizedString {
@@ -766,7 +777,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 10m, Weight = 5m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem Sack = new EquipmentItem
+        public static Equipment Sack = new Equipment
         {
             Name = new LocalizedString { EN = "Sack", RU = "Мешок" },
             Description = new LocalizedString {
@@ -776,7 +787,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.01m, Weight = 0.5m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem ScaleMerchants = new EquipmentItem
+        public static Equipment ScaleMerchants = new Equipment
         {
             Name = new LocalizedString { EN = "Scale, merchant's", RU = "Весы, торговые" },
             Description = new LocalizedString {
@@ -786,37 +797,37 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 5m, Weight = 3m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem SealingWax = new EquipmentItem
+        public static Equipment SealingWax = new Equipment
         {
             Name = new LocalizedString { EN = "Sealing wax", RU = "Сургуч" },
             Price = 0.5m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Shovel = new EquipmentItem
+        public static Equipment Shovel = new Equipment
         {
             Name = new LocalizedString { EN = "Shovel", RU = "Лопата" },
             Price = 2m, Weight = 5m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem SignalWhistle = new EquipmentItem
+        public static Equipment SignalWhistle = new Equipment
         {
             Name = new LocalizedString { EN = "Signal whistle", RU = "Сигнальный свисток" },
             Price = 0.05m, Weight = 0m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem SignetRing = new EquipmentItem
+        public static Equipment SignetRing = new Equipment
         {
             Name = new LocalizedString { EN = "Signet ring", RU = "Кольцо-печатка" },
             Price = 5m, Weight = 0m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem Soap = new EquipmentItem
+        public static Equipment Soap = new Equipment
         {
             Name = new LocalizedString { EN = "Soap", RU = "Мыло" },
             Price = 0.02m, Weight = 0m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Spellbook = new EquipmentItem
+        public static Equipment Spellbook = new Equipment
         {
             Name = new LocalizedString { EN = "Spellbook", RU = "Книга заклинаний" },
             Description = new LocalizedString {
@@ -826,13 +837,13 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 50m, Weight = 3m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem SpikesIron10 = new EquipmentItem
+        public static Equipment SpikesIron10 = new Equipment
         {
             Name = new LocalizedString { EN = "Spikes, iron (10)", RU = "Шипы, железные (10)" },
             Price = 1m, Weight = 5m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Spyglass = new EquipmentItem
+        public static Equipment Spyglass = new Equipment
         {
             Name = new LocalizedString { EN = "Spyglass", RU = "Подзорная труба" },
             Description = new LocalizedString {
@@ -842,7 +853,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1000m, Weight = 1m, Type = EEquipmentType.Gear
         };
 
-        public static EquipmentItem TentTwoperson = new EquipmentItem
+        public static Equipment TentTwoperson = new Equipment
         {
             Name = new LocalizedString { EN = "Tent, two-person", RU = "Палатка, двуместная" },
             Description = new LocalizedString {
@@ -852,7 +863,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 2m, Weight = 20m, Type = EEquipmentType.Camp
         };
 
-        public static EquipmentItem Tinderbox = new EquipmentItem
+        public static Equipment Tinderbox = new Equipment
         {
             Name = new LocalizedString { EN = "Tinderbox", RU = "Трутница" },
             Description = new LocalizedString {
@@ -862,7 +873,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.5m, Weight = 1m, Type = EEquipmentType.Tool
         };
 
-        public static EquipmentItem Torch = new EquipmentItem
+        public static Equipment Torch = new Equipment
         {
             Name = new LocalizedString { EN = "Torch", RU = "Факел" },
             Description = new LocalizedString {
@@ -872,7 +883,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.01m, Weight = 1m, Type = EEquipmentType.Consumable
         };
 
-        public static EquipmentItem Vial = new EquipmentItem
+        public static Equipment Vial = new Equipment
         {
             Name = new LocalizedString { EN = "Vial", RU = "Флакон" },
             Description = new LocalizedString {
@@ -882,7 +893,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1m, Weight = 0m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Waterskin = new EquipmentItem
+        public static Equipment Waterskin = new Equipment
         {
             Name = new LocalizedString { EN = "Waterskin", RU = "Бурдюк" },
             Description = new LocalizedString {
@@ -892,10 +903,52 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 0.2m, Weight = 5m, Type = EEquipmentType.Container
         };
 
-        public static EquipmentItem Whetstone = new EquipmentItem
+        public static Equipment Whetstone = new Equipment
         {
             Name = new LocalizedString { EN = "Whetstone", RU = "Точильный камень" },
             Price = 0.01m, Weight = 1m, Type = EEquipmentType.Tool
+        };
+
+        public static Equipment String10ft = new Equipment
+        {
+            Name = new LocalizedString { EN = "10 foots of string", RU = "10 футов лески" },
+            Type = EEquipmentType.Gear
+        };
+
+        public static Equipment AlmsBox = new Equipment
+        {
+            Name = new LocalizedString { EN = "Alms box", RU = "Коробка для пожертвований" },
+            Type = EEquipmentType.Tool
+        };
+
+        public static Equipment BlocksOfIncense = new Equipment
+        {
+            Name = new LocalizedString { EN = "Blocks of incense", RU = "Благовония" },
+            Type = EEquipmentType.Tool
+        };
+
+        public static Equipment Censer = new Equipment
+        {
+            Name = new LocalizedString { EN = "Censer", RU = "Кадило" },
+            Type = EEquipmentType.Tool
+        };
+
+        public static Equipment Vestments = new Equipment
+        {
+            Name = new LocalizedString { EN = "Vestments", RU = "Облачение священника" },
+            Type = EEquipmentType.Clothes
+        };
+
+        public static Equipment BagOfSand = new Equipment
+        {
+            Name = new LocalizedString { EN = "Small bag of sand", RU = "Небольшой мешочек с песком" },
+            Type = EEquipmentType.Clothes
+        };
+
+        public static Equipment SmallKnife = new Equipment
+        {
+            Name = new LocalizedString { EN = "Small knife", RU = "Небольшой нож" },
+            Type = EEquipmentType.Clothes
         };
     }
 }

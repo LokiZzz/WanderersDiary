@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
@@ -8,7 +9,7 @@ using WanderersDiary.CharacterManagement.Models.Utility;
 
 namespace WanderersDiary.CharacterManagement.Static
 {
-    public static class WeaponCollection
+    public class WeaponCollection : StaticCollectionBase<WeaponCollection,Weapon>
     {
         public static Weapon Club = new Weapon
         {
@@ -17,7 +18,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Bludgeoning } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Light },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
         };
 
         public static Weapon Dagger = new Weapon
@@ -27,7 +28,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Piercing } },
             Weight = 1,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Light, EWeaponProperty.Finesse, EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -38,7 +39,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Bludgeoning } },
             Weight = 10,
             Properties = new List<EWeaponProperty> { EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
         };
 
         public static Weapon Handaxe = new Weapon
@@ -48,7 +49,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Slashing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Light, EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -59,7 +60,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
             Range = new Range { WODis = 30, Max = 120 }
         };
 
@@ -70,7 +71,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Bludgeoning } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Light, EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -81,7 +82,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Bludgeoning } },
             Weight = 4,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -93,7 +94,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Versatile = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Bludgeoning } },
             Weight = 4,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
         };
 
         public static Weapon Sickle = new Weapon
@@ -103,7 +104,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Slashing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Light },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
         };
 
         public static Weapon Spear = new Weapon
@@ -114,7 +115,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Versatile = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 3,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Melee },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -125,7 +126,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 5,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition, EWeaponProperty.Loading, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
             Range = new Range { WODis = 80, Max = 320 }
         };
 
@@ -136,7 +137,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Piercing } },
             Weight = 0.25m,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Finesse, EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -147,7 +148,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
             Range = new Range { WODis = 80, Max = 320 }
         };
 
@@ -158,7 +159,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Bludgeoning } },
             Weight = null,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition },
-            Type = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Simple, EWeaponType.Ranged },
             Range = new Range { WODis = 30, Max = 120 }
         };
 
@@ -170,7 +171,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Versatile = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Slashing } },
             Weight = 4,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Flail = new Weapon
@@ -180,7 +181,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Bludgeoning } },
             Weight = 2,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Glaive = new Weapon
@@ -190,7 +191,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Slashing } },
             Weight = 6,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Heavy, EWeaponProperty.Reach, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Greataxe = new Weapon
@@ -200,7 +201,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D12, Type = EDamageType.Slashing } },
             Weight = 7,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Heavy, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Greatsword = new Weapon
@@ -210,7 +211,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 2, DiceType = EDice.D6, Type = EDamageType.Slashing } },
             Weight = 6,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Heavy, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Halberd = new Weapon
@@ -220,7 +221,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Slashing } },
             Weight = 6,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Heavy, EWeaponProperty.Reach, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Lance = new Weapon
@@ -230,7 +231,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D12, Type = EDamageType.Piercing } },
             Weight = 6,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Reach, EWeaponProperty.Special },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Longsword = new Weapon
@@ -241,7 +242,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Versatile = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Slashing } },
             Weight = 3,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Maul = new Weapon
@@ -251,7 +252,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 2, DiceType = EDice.D6, Type = EDamageType.Bludgeoning } },
             Weight = 10,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Heavy, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Morningstar = new Weapon
@@ -261,7 +262,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 4,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Pike = new Weapon
@@ -271,7 +272,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Piercing } },
             Weight = 18,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Heavy, EWeaponProperty.Reach, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Rapier = new Weapon
@@ -281,7 +282,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Finesse },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Scimitar = new Weapon
@@ -291,7 +292,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Slashing } },
             Weight = 3,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Finesse, EWeaponProperty.Light },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Shortsword = new Weapon
@@ -301,7 +302,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Finesse, EWeaponProperty.Light },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Trident = new Weapon
@@ -312,7 +313,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Versatile = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
             Range = new Range { WODis = 20, Max = 60 }
         };
 
@@ -323,7 +324,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Warhammer = new Weapon
@@ -334,7 +335,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Versatile = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Bludgeoning } },
             Weight = 2,
             Properties = new List<EWeaponProperty>(),
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Whip = new Weapon
@@ -344,7 +345,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D4, Type = EDamageType.Slashing } },
             Weight = 3,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Finesse, EWeaponProperty.Reach },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Melee },
         };
 
         public static Weapon Blowgun = new Weapon
@@ -354,7 +355,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { Modifier = 1, Type = EDamageType.Piercing } },
             Weight = 1,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition, EWeaponProperty.Loading },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
             Range = new Range { WODis = 25, Max = 100 }
         };
 
@@ -365,7 +366,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D6, Type = EDamageType.Piercing } },
             Weight = 3,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition, EWeaponProperty.Light, EWeaponProperty.Loading },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
             Range = new Range { WODis = 30, Max = 120 }
         };
 
@@ -376,7 +377,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D10, Type = EDamageType.Piercing } },
             Weight = 18,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition, EWeaponProperty.Heavy, EWeaponProperty.Loading, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
             Range = new Range { WODis = 100, Max = 400 }
         };
 
@@ -387,7 +388,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Damage = new List<Damage> { new Damage { DiceCount = 1, DiceType = EDice.D8, Type = EDamageType.Piercing } },
             Weight = 2,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Ammunition, EWeaponProperty.Heavy, EWeaponProperty.TwoHanded },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
             Range = new Range { WODis = 150, Max = 600 }
         };
 
@@ -397,7 +398,7 @@ namespace WanderersDiary.CharacterManagement.Static
             Price = 1,
             Weight = 3,
             Properties = new List<EWeaponProperty> { EWeaponProperty.Special, EWeaponProperty.Thrown },
-            Type = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
+            Categories = new List<EWeaponType> { EWeaponType.Martial, EWeaponType.Ranged },
             Range = new Range { WODis = 5, Max = 15 }
         };
     }

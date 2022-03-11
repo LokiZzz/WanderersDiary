@@ -6,14 +6,14 @@ namespace WanderersDiary.CharacterManagement.Models
 {
     public class CharacterInventory
     {
-        public List<InventoryContainer> Inventory { get; set; } = new List<InventoryContainer>();
+        public List<Equipment> Content { get; set; } = new List<Equipment>();
 
-        public List<Weapon> Weapons { get; set; } = new List<Weapon>();
+        public List<Weapon> EquipedWeapons { get; set; } = new List<Weapon>();
 
         /// <summary>
         /// Armor, including shields and other...
         /// </summary>
-        public List<Armor> Armor { get; set; } = new List<Armor>();
+        public List<Armor> EquipedArmor { get; set; } = new List<Armor>();
 
         public List<Currency> Currency { get; set; } = new List<Currency>();
     }

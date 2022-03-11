@@ -12,7 +12,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment Abacus = new Equipment
         {
             Name = new LocalizedString { EN = "Abacus", RU = "Счеты" },
-            Price = 2m, Weight = 2m, Type = EEquipmentType.Tool
+            Price = 2m, Weight = 2m, Type = EEquipmentType.Gear
         };
 
         public static Equipment AcidVial = new Equipment
@@ -374,7 +374,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "A component pouch is a small, watertight leather belt pouch that has compartments to hold ali the material components and other special items you need to cast your spells, except for those components that have a specitic cost (as indicated in a spell's description).",
                RU = "Мешочек с компонентами это маленький водонепроницаемый кожаный поясной кошель с отделениями для хранения материальных компонентов и других особых предметов, нужных для накладывания заклинаний, если только у этих компонентов не указана стоимость (смотрите описание заклинания)."
             },
-            Price = 25m, Weight = 2m, Type = EEquipmentType.Tool
+            Price = 25m, Weight = 2m, Type = EEquipmentType.Gear
         };
 
         public static Equipment Crowbar = new Equipment
@@ -384,7 +384,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "Using a crowbar granls advantage to Strength checks where the crowbar's leverage can be applied.",
                RU = "Использование ломика позволяет совершать проверки Силы с преимуществом, если рычаг должен помочь."
             },
-            Price = 2m, Weight = 5m, Type = EEquipmentType.Tool
+            Price = 2m, Weight = 5m, Type = EEquipmentType.Gear
         };
 
         public static Equipment SprigOfMistletoe = new Equipment
@@ -456,13 +456,13 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment Hammer = new Equipment
         {
             Name = new LocalizedString { EN = "Hammer", RU = "Молоток" },
-            Price = 1m, Weight = 3m, Type = EEquipmentType.Tool
+            Price = 1m, Weight = 3m, Type = EEquipmentType.Gear
         };
 
         public static Equipment HammerSledge = new Equipment
         {
             Name = new LocalizedString { EN = "Hammer, sledge", RU = "Молот кузнечный" },
-            Price = 2m, Weight = 10m, Type = EEquipmentType.Tool
+            Price = 2m, Weight = 10m, Type = EEquipmentType.Gear
         };
 
         public static Equipment HealersKit = new Equipment
@@ -540,7 +540,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment InkPen = new Equipment
         {
             Name = new LocalizedString { EN = "Ink pen", RU = "Писчее перо" },
-            Price = 0.02m, Weight = 0m, Type = EEquipmentType.Tool
+            Price = 0.02m, Weight = 0m, Type = EEquipmentType.Gear
         };
 
         public static Equipment JugOrPitcher = new Equipment
@@ -566,7 +566,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "A lamp casts bright light in a 15-foot radius and dim light for an additional 30 feet. Once lit, il burns for 6 hours on a flask (1 pint) of oil.",
                RU = "Лампа испускает яркий свет в пределах 15 футов и тусклый свет в пределах ещё 30 футов. Зажжённая лампа горит 6 часов от одной фляги (1 пинта [0,5 литра]) масла."
             },
-            Price = 0.5m, Weight = 1m, Type = EEquipmentType.Tool
+            Price = 0.5m, Weight = 1m, Type = EEquipmentType.Gear
         };
 
         public static Equipment LanternBullseye = new Equipment
@@ -576,7 +576,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "A bullseye lantern casts bright light in a 60-foot cone and dim light for an additional 60 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil.",
                RU = "Направленный фонарь испускает яркий свет 60-футовым конусом и тусклый свет в пределах ещё 60 футов. Зажжённый фонарь горит 6 часов от одной фляги (1 пинта [0,5 литра]) масла."
             },
-            Price = 10m, Weight = 2m, Type = EEquipmentType.Tool
+            Price = 10m, Weight = 2m, Type = EEquipmentType.Gear
         };
 
         public static Equipment LanternHooded = new Equipment
@@ -586,7 +586,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "A hooded lantern casts bright light in a 30-foot radius and dim light for an additional 30 feet. Once lit, it burns for 6 hours on a flask (1 pinl) of oil. As an action, you can lower the hood, reducing the light lo dim light in a 5-foot radius.",
                RU = "Закрытый фонарь испускает яркий свет в пределах 30 футов и тусклый свет в пределах ещё 30 футов. Зажжённый фонарь горит 6 часов от одной фляги (1 пинта [0,5 литра]) масла. Вы можете действием опустить козырёк, уменьшив освещение до тусклого света в пределах 5 футов."
             },
-            Price = 5m, Weight = 2m, Type = EEquipmentType.Tool
+            Price = 5m, Weight = 2m, Type = EEquipmentType.Gear
         };
 
         public static Equipment Lock = new Equipment
@@ -606,7 +606,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "This lens allows a closer look at small objects. It is also useful as a substitute for flint and steel when starting tires. Lighting a fire with a magnifying glass requires light as bright as sunlight to focus, tinder to ignite, and about 5 minutes for the fire to ignite. A magnifying glass grants advantage on any ability check made to appraise ar inspect an item that is small ar highly detailed.",
                RU = "Эта линза позволяет разглядывать маленькие предметы. Линзу также можно использовать для замены кремня и кресала. Разжигание огня увеличительным стеклом требует света, яркого как свет солнца, трута для розжига и примерно 5 минут. Увеличительное стекло позволяет совершать с преимуществом проверки характеристик, сделанных для оценки или исследования мелких и высокодетализированных предметов."
             },
-            Price = 100m, Weight = 0m, Type = EEquipmentType.Tool
+            Price = 100m, Weight = 0m, Type = EEquipmentType.Gear
         };
 
         public static Equipment Manacles = new Equipment
@@ -666,7 +666,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment PiekMiners = new Equipment
         {
             Name = new LocalizedString { EN = "Piek, miner's", RU = "Кирка, горняцкая" },
-            Price = 2m, Weight = 10m, Type = EEquipmentType.Tool
+            Price = 2m, Weight = 10m, Type = EEquipmentType.Gear
         };
 
         public static Equipment Piton = new Equipment
@@ -698,7 +698,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "Capacity: 1 gallon liquid",
                RU = "Вместимость: 1 галлон (3,75 литра)"
             },
-            Price = 2m, Weight = 10m, Type = EEquipmentType.Tool
+            Price = 2m, Weight = 10m, Type = EEquipmentType.Gear
         };
 
         public static Equipment PotionOfHealing = new Equipment
@@ -794,7 +794,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "A scale includes a small balance,pans, and a suitable assortment of weights up to 2pounds. With it, you can measure the exact weight ofsmall objects, such as raw precious metais or tradegoods, to help determine their worth.",
                RU = "В набор входят рычажные весы, чашки и набор грузиков на 2 фунта. С их помощью можно точно измерять вес небольших предметов, таких как драгоценные металлы или товары."
             },
-            Price = 5m, Weight = 3m, Type = EEquipmentType.Tool
+            Price = 5m, Weight = 3m, Type = EEquipmentType.Gear
         };
 
         public static Equipment SealingWax = new Equipment
@@ -806,19 +806,19 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment Shovel = new Equipment
         {
             Name = new LocalizedString { EN = "Shovel", RU = "Лопата" },
-            Price = 2m, Weight = 5m, Type = EEquipmentType.Tool
+            Price = 2m, Weight = 5m, Type = EEquipmentType.Gear
         };
 
         public static Equipment SignalWhistle = new Equipment
         {
             Name = new LocalizedString { EN = "Signal whistle", RU = "Сигнальный свисток" },
-            Price = 0.05m, Weight = 0m, Type = EEquipmentType.Tool
+            Price = 0.05m, Weight = 0m, Type = EEquipmentType.Gear
         };
 
         public static Equipment SignetRing = new Equipment
         {
             Name = new LocalizedString { EN = "Signet ring", RU = "Кольцо-печатка" },
-            Price = 5m, Weight = 0m, Type = EEquipmentType.Tool
+            Price = 5m, Weight = 0m, Type = EEquipmentType.Gear
         };
 
         public static Equipment Soap = new Equipment
@@ -834,7 +834,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "Essential for wizards, a spellbook is a lealher.bound tome wilh 100 blank vellum pages suitable for recording spells.",
                RU = "Книги заклинаний очень важны для волшебников. Это переплетённые кожей тома, содержащие 100 пустых пергаментных страниц, на которых можно записывать заклинания."
             },
-            Price = 50m, Weight = 3m, Type = EEquipmentType.Tool
+            Price = 50m, Weight = 3m, Type = EEquipmentType.Gear
         };
 
         public static Equipment SpikesIron10 = new Equipment
@@ -870,7 +870,7 @@ namespace WanderersDiary.CharacterManagement.Static
                EN = "This small container holds fiint, tire steel,and tinder (usually dry c10th soaked in Iight oil) used lokindle a tire. Using it to Iight a torch-or anything elsewith abundant, exposed fuel-takes an action. Lightingany olher tire takes 1 minute.",
                RU = "В этом небольшом контейнере находится кремень, кресало и трут (обычно это сухая тряпка, вымоченная в масле), используемые для разжигания огня. Использование его для разжигания факела — или чего-нибудь другого, легковоспламеняющегося — требует одного действия. Разжигание другого огня требует 1 минуты."
             },
-            Price = 0.5m, Weight = 1m, Type = EEquipmentType.Tool
+            Price = 0.5m, Weight = 1m, Type = EEquipmentType.Gear
         };
 
         public static Equipment Torch = new Equipment
@@ -906,7 +906,7 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment Whetstone = new Equipment
         {
             Name = new LocalizedString { EN = "Whetstone", RU = "Точильный камень" },
-            Price = 0.01m, Weight = 1m, Type = EEquipmentType.Tool
+            Price = 0.01m, Weight = 1m, Type = EEquipmentType.Gear
         };
 
         public static Equipment String10ft = new Equipment
@@ -918,19 +918,19 @@ namespace WanderersDiary.CharacterManagement.Static
         public static Equipment AlmsBox = new Equipment
         {
             Name = new LocalizedString { EN = "Alms box", RU = "Коробка для пожертвований" },
-            Type = EEquipmentType.Tool
+            Type = EEquipmentType.Gear
         };
 
         public static Equipment BlocksOfIncense = new Equipment
         {
             Name = new LocalizedString { EN = "Blocks of incense", RU = "Благовония" },
-            Type = EEquipmentType.Tool
+            Type = EEquipmentType.Gear
         };
 
         public static Equipment Censer = new Equipment
         {
             Name = new LocalizedString { EN = "Censer", RU = "Кадило" },
-            Type = EEquipmentType.Tool
+            Type = EEquipmentType.Gear
         };
 
         public static Equipment Vestments = new Equipment

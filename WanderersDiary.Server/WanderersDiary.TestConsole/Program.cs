@@ -21,12 +21,7 @@ namespace WanderersDiary.TestConsole
             //Root root = JsonConvert.DeserializeObject<Root>(fileString);
             //List<ItemsList> items = root.itemsList.Where(i => i.en.type != "Armor" && i.en.type != "weapon").ToList();
 
-            decimal sum = PackCollection.BurglarsPack.Items.Sum(i => i.Price * i.Quantity + i.Content.Sum(c => c.Price * c.Quantity)).Value;
-            List<string> itemPrices = PackCollection.BurglarsPack.Items.Select(i => 
-                $"{i.Name.RU}:\n\t\t{i.Price} x {i.Quantity} = {i.Price*i.Quantity}"
-            ).ToList();
-
-            itemPrices.ForEach(i => Console.WriteLine(i));
+            var tools = ToolsCollection.GetAll();
 
             Console.ReadLine();
         }

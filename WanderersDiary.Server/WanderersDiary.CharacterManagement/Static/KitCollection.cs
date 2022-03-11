@@ -56,7 +56,7 @@ namespace WanderersDiary.CharacterManagement.Static
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.Bedroll, EquipmentCollection.ClothesCostume.X(2), EquipmentCollection.Candle.X(5),
-                    EquipmentCollection.Rations1Day.X(5), EquipmentCollection.Waterskin, //DISGUISEKIT)
+                    EquipmentCollection.Rations1Day.X(5), EquipmentCollection.Waterskin, ToolsCollection.DisguiseKit)
             }
         };
 

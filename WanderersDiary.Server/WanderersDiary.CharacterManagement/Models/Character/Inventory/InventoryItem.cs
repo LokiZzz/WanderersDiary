@@ -8,11 +8,13 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public LocalizedString Description { get; set; }
 
+        public string Note { get; set; }
+
         public decimal? Price { get; set; }
 
         public decimal? Weight { get; set; }
 
-        public int Quiantity { get; set; } = 1;
+        public int Quantity { get; set; } = 1;
 
         public bool IsMagicalItem { get; set; }
     }

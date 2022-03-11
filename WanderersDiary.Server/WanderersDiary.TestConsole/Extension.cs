@@ -11,11 +11,15 @@ namespace WanderersDiary.TestConsole
     {
         public static EEquipmentType ToType(this string type)
         {
+            type = type.Replace(" ", string.Empty);
+            type = type.ToLowerInvariant();
+
             switch (type)
             {
-                case "ArcaneFocus": return EEquipmentType.ArcaneFocus;
-                case "DruidicFocus": return EEquipmentType.DruidicFocus;
-                case "HollySymbol": return EEquipmentType.HolySymbol;
+                case "arcanefocus": return EEquipmentType.ArcaneFocus;
+                case "druidicfocus": return EEquipmentType.DruidicFocus;
+                case "hollysymbol": return EEquipmentType.HolySymbol;
+                case "hollysimbol": return EEquipmentType.HolySymbol;
                 case "ammunition": return EEquipmentType.Ammunition;
                 case "camp": return EEquipmentType.Camp;
                 case "clothes": return EEquipmentType.Clothes;
@@ -28,5 +32,7 @@ namespace WanderersDiary.TestConsole
                 default: throw new ArgumentException("Wrong type!");
             }
         }
+
+        public static string ToFullString(this EEquipmentType type) => $"EEquipmentType.{type.ToString("G")}";
     }
 }

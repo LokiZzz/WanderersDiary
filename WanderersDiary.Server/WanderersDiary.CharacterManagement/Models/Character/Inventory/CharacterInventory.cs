@@ -16,5 +16,7 @@ namespace WanderersDiary.CharacterManagement.Models
         public List<Armor> EquipedArmor { get; set; } = new List<Armor>();
 
         public List<Currency> Currency { get; set; } = new List<Currency>();
+
+        public List<EquipmentToChoose> EquipmentToChoose { get; set; } = new List<EquipmentToChoose>();
     }
 }

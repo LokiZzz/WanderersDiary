@@ -16,12 +16,10 @@ namespace WanderersDiary.TestConsole
     {
         static void Main(string[] args)
         {
-            //string fileString = File.ReadAllText("EQUIPMENT.dtn");
+            CharacterContext context = new CharacterContext();
+            context.AddLevel(EClass.Bard);
 
-            //Root root = JsonConvert.DeserializeObject<Root>(fileString);
-            //List<ItemsList> items = root.itemsList.Where(i => i.en.type != "Armor" && i.en.type != "weapon").ToList();
-
-            var tools = ToolsCollection.GetAll();
+            var equipToChoose = context.Character.Inventory.EquipmentToChoose;
 
             Console.ReadLine();
         }

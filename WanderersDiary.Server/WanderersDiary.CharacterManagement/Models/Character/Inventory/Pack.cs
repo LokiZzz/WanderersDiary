@@ -5,12 +5,10 @@ using WanderersDiary.CharacterManagement.Models.Utility;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
-    public class Pack
+    public class Pack : Equipment
     {
-        public LocalizedString Name { get; set; }
+        public LocalizedString PackName { get; set; }
 
-        public decimal Price { get; set; }
-
-        public List<Equipment> Items { get; set; }
+        public decimal PackPrice { get; set; }
     }
 }

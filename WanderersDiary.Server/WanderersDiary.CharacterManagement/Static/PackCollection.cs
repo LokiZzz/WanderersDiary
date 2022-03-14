@@ -12,8 +12,8 @@ namespace WanderersDiary.CharacterManagement.Static
     {
         public static Pack BurglarsPack = new Pack
         {
-            Name = new LocalizedString { EN = "Burglar's Pack", RU = "Набор взломщика" }, Price = 16,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Burglar's Pack", RU = "Набор взломщика" }, Price = 16,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.BallBearingsBagOf1000, EquipmentCollection.String10ft, EquipmentCollection.Bell, 
@@ -26,8 +26,8 @@ namespace WanderersDiary.CharacterManagement.Static
 
         public static Pack DiplomatsPack = new Pack
         {
-            Name = new LocalizedString { EN = "Diplomat's Pack", RU = "Набор дипломата" }, Price = 39,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Diplomat's Pack", RU = "Набор дипломата" }, Price = 39,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Chest.With(
                     EquipmentCollection.CaseMapOrScroll.X(2), EquipmentCollection.ClothesFine, EquipmentCollection.Ink1OunceBottle,
@@ -39,8 +39,8 @@ namespace WanderersDiary.CharacterManagement.Static
 
         public static Pack DungeoneersPack = new Pack
         {
-            Name = new LocalizedString { EN = "Dungeoneer's Pack", RU = "Набор исследователя подземелий" }, Price = 12,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Dungeoneer's Pack", RU = "Набор исследователя подземелий" }, Price = 12,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.Crowbar, EquipmentCollection.Hammer, EquipmentCollection.Piton.X(10),
@@ -51,8 +51,8 @@ namespace WanderersDiary.CharacterManagement.Static
 
         public static Pack EntertainersPack = new Pack
         {
-            Name = new LocalizedString { EN = "Entertainer's Pack", RU = "Набор артиста" }, Price = 40,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Entertainer's Pack", RU = "Набор артиста" }, Price = 40,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.Bedroll, EquipmentCollection.ClothesCostume.X(2), EquipmentCollection.Candle.X(5),
@@ -62,8 +62,8 @@ namespace WanderersDiary.CharacterManagement.Static
 
         public static Pack ExplorersPack = new Pack
         {
-            Name = new LocalizedString { EN = "Explorer's Pack", RU = "Набор путешественника" }, Price = 10,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Explorer's Pack", RU = "Набор путешественника" }, Price = 10,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.Bedroll, EquipmentCollection.MessKit, EquipmentCollection.Tinderbox,
@@ -74,8 +74,8 @@ namespace WanderersDiary.CharacterManagement.Static
 
         public static Pack PriestsPack = new Pack
         {
-            Name = new LocalizedString { EN = "Priest's Pack", RU = "Набор священника" }, Price = 19,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Priest's Pack", RU = "Набор священника" }, Price = 19,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.Blanket, EquipmentCollection.Candle.X(10), EquipmentCollection.Tinderbox,
@@ -86,8 +86,8 @@ namespace WanderersDiary.CharacterManagement.Static
 
         public static Pack ScholarsPack = new Pack
         {
-            Name = new LocalizedString { EN = "Scholar's Pack", RU = "Набор учёного" }, Price = 40,
-            Items = new List<Equipment>
+            PackName = new LocalizedString { EN = "Scholar's Pack", RU = "Набор учёного" }, Price = 40,
+            Content = new List<Equipment>
             {
                 EquipmentCollection.Backpack.With(
                     EquipmentCollection.Book, EquipmentCollection.Ink1OunceBottle, EquipmentCollection.InkPen,

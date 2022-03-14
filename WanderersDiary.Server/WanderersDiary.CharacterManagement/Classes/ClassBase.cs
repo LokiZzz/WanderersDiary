@@ -18,6 +18,7 @@ namespace WanderersDiary.CharacterManagement.Classes
                 character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 0 });
                 AddSkills(character);
                 AddSavingThrows(character);
+                character.Inventory.EquipmentToChoose = EquipmentToChoose;
             }
 
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
@@ -167,6 +168,8 @@ namespace WanderersDiary.CharacterManagement.Classes
         public abstract List<ESkill> AvailiableSkills { get; }
 
         public abstract List<EAttribute> SavingThrows { get; }
+
+        public abstract List<EquipmentToChoose> EquipmentToChoose { get; }
 
         public abstract List<int> AttributesImprovementLevels { get; }
 

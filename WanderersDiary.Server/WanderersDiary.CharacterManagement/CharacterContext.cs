@@ -233,9 +233,9 @@ namespace WanderersDiary.CharacterManagement
         }
 
         public bool NeedToChooseOption => 
-            !NeedToChooseFeatures &&
-            !NeedToChooseArchetype &&
-            !NeedToChooseSkills &&
-            !NeedToImproveAttributes;
+            NeedToChooseFeatures ||
+            NeedToChooseArchetype ||
+            NeedToChooseSkills ||
+            NeedToImproveAttributes;
     }
 }

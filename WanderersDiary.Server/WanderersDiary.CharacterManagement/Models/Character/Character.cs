@@ -66,7 +66,7 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public int ExhaustionLevel { get; set; }
 
-        public CharacterInventory Inventory { get; set; }
+        public CharacterInventory Inventory { get; set; } = new CharacterInventory();
 
         //Immunity, Resistance & Vulnerability
 

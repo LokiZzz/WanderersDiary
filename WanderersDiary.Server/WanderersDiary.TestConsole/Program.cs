@@ -7,6 +7,7 @@ using System.Linq;
 using WanderersDiary.CharacterManagement;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
+using WanderersDiary.CharacterManagement.Models.Game;
 using WanderersDiary.CharacterManagement.Models.Utility;
 using WanderersDiary.CharacterManagement.Static;
 
@@ -19,7 +20,10 @@ namespace WanderersDiary.TestConsole
             CharacterContext context = new CharacterContext();
             context.AddLevel(EClass.Bard);
 
-            var equipToChoose = context.Character.Inventory.EquipmentToChoose;
+            List<EquipmentToChoose> equipToChoose = context.Character.Inventory.EquipmentToChoose;
+
+            DiceRoll cashRoll = context.SwitchStartingEquipmentToGold();
+            context.Character.Inventory.Currency.Add(new Currency { })
 
             Console.ReadLine();
         }

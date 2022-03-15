@@ -5,6 +5,7 @@ using System.Text;
 using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
+using WanderersDiary.CharacterManagement.Models.Game;
 using WanderersDiary.CharacterManagement.Models.Utility;
 
 namespace WanderersDiary.CharacterManagement.Classes
@@ -18,7 +19,7 @@ namespace WanderersDiary.CharacterManagement.Classes
                 character.Classes.Add(new CharacterClass { Class = AccosiatedEClass, Level = 0 });
                 AddSkills(character);
                 AddSavingThrows(character);
-                character.Inventory.EquipmentToChoose = EquipmentToChoose;
+                character.Inventory.EquipmentToChoose = StartingEquipment;
             }
 
             CharacterClass charClass = character.ConcreteClass(AccosiatedEClass);
@@ -169,7 +170,9 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public abstract List<EAttribute> SavingThrows { get; }
 
-        public abstract List<EquipmentToChoose> EquipmentToChoose { get; }
+        public abstract List<EquipmentToChoose> StartingEquipment { get; }
+
+        public abstract DiceRoll StartingGold { get; }
 
         public abstract List<int> AttributesImprovementLevels { get; }
 

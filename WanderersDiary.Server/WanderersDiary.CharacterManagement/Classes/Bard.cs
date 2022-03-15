@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
+using WanderersDiary.CharacterManagement.Models.Game;
 using WanderersDiary.CharacterManagement.Models.Utility;
 using WanderersDiary.CharacterManagement.Static;
 
@@ -36,52 +37,27 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         public override List<EAttribute> SavingThrows => new List<EAttribute> { EAttribute.Dexterity, EAttribute.Charisma };
 
-        public override List<EquipmentToChoose> EquipmentToChoose => GetStartingEquipment();
-
-        private List<EquipmentToChoose> GetStartingEquipment()
+        public override List<EquipmentToChoose> StartingEquipment => new List<EquipmentToChoose>
         {
-            List<EquipmentToChoose> startingEquipment = new List<EquipmentToChoose>();
+            new EquipmentToChoose { GroupToChooseFrom = {
+                new EquipmentToChoose(WeaponCollection.Rapier), new EquipmentToChoose(WeaponCollection.Longsword),
+                new EquipmentToChoose(WeaponCollection.GetAll().Where(w => w.Categories.Contains(EWeaponType.Simple)).Select(w => (Equipment)w).ToList())
+            }},
+            new EquipmentToChoose { GroupToChooseFrom = {
+                new EquipmentToChoose(PackCollection.DiplomatsPack), new EquipmentToChoose(PackCollection.EntertainersPack)
+            }},
+            new EquipmentToChoose { GroupToChooseFrom = {
+                new EquipmentToChoose(ToolsCollection.Bagpipes), new EquipmentToChoose(ToolsCollection.Drum), new EquipmentToChoose(ToolsCollection.Dulcimer),
+                new EquipmentToChoose(ToolsCollection.Flute), new EquipmentToChoose(ToolsCollection.Lute), new EquipmentToChoose(ToolsCollection.Lyre),
+                new EquipmentToChoose(ToolsCollection.Horn), new EquipmentToChoose(ToolsCollection.PanFlute), new EquipmentToChoose(ToolsCollection.Shawn),
+                new EquipmentToChoose(ToolsCollection.Viol)
+            }},
+            new EquipmentToChoose { GroupToChooseFrom = {
+                new EquipmentToChoose(WeaponCollection.Dagger, ArmorCollection.Leather)
+            }},
+        };
 
-            List<EquipmentToChoose> simpleWeapon = WeaponCollection.GetAll()
-                .Where(w => w.Categories.Contains(EWeaponType.Simple))
-                .Select(w => new EquipmentToChoose(w))
-                .ToList();
-
-            List<EquipmentToChoose> firstGroup = new List<EquipmentToChoose> {
-                new EquipmentToChoose(WeaponCollection.Rapier),
-                new EquipmentToChoose(WeaponCollection.Longsword),
-                new EquipmentToChoose(simpleWeapon)
-            };
-
-            List<EquipmentToChoose> secondGroup = new List<EquipmentToChoose> {
-                new EquipmentToChoose(PackCollection.DiplomatsPack),
-                new EquipmentToChoose(PackCollection.EntertainersPack),
-            };
-
-            List<EquipmentToChoose> thirdGroup = new List<EquipmentToChoose> {
-                new EquipmentToChoose(ToolsCollection.Bagpipes),
-                new EquipmentToChoose(ToolsCollection.Drum),
-                new EquipmentToChoose(ToolsCollection.Dulcimer),
-                new EquipmentToChoose(ToolsCollection.Flute),
-                new EquipmentToChoose(ToolsCollection.Lute),
-                new EquipmentToChoose(ToolsCollection.Lyre),
-                new EquipmentToChoose(ToolsCollection.Horn),
-                new EquipmentToChoose(ToolsCollection.PanFlute),
-                new EquipmentToChoose(ToolsCollection.Shawn),
-                new EquipmentToChoose(ToolsCollection.Viol),
-            };
-
-            List<EquipmentToChoose> fourGroup = new List<EquipmentToChoose> {
-                new EquipmentToChoose(WeaponCollection.Dagger, ArmorCollection.Leather),
-            };
-
-            startingEquipment.Add(new EquipmentToChoose { GroupToChooseFrom = firstGroup });
-            startingEquipment.Add(new EquipmentToChoose { GroupToChooseFrom = secondGroup });
-            startingEquipment.Add(new EquipmentToChoose { GroupToChooseFrom = thirdGroup });
-            startingEquipment.Add(new EquipmentToChoose { GroupToChooseFrom = thirdGroup });
-
-            return startingEquipment;
-        }
+        public override DiceRoll StartingGold => new DiceRoll(5, EDice.D4, coef: 10);
 
         public override List<int> AttributesImprovementLevels => new List<int> { 4, 8, 12, 16, 19 };
 

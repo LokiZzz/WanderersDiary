@@ -6,6 +6,16 @@ namespace WanderersDiary.CharacterManagement.Models
 {
     public class EquipmentToChoose
     {
+        public EquipmentToChoose(List<Equipment> items)
+        {
+            Option = new List<Equipment>();
+
+            foreach (Equipment item in items)
+            {
+                Option.Add(item);
+            }
+        }
+
         public EquipmentToChoose(params Equipment[] items)
         {
             Option = new List<Equipment>();

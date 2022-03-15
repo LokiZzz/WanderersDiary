@@ -6,6 +6,7 @@ using WanderersDiary.CharacterManagement.Classes;
 using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
+using WanderersDiary.CharacterManagement.Models.Game;
 
 namespace WanderersDiary.CharacterManagement
 {
@@ -188,6 +189,20 @@ namespace WanderersDiary.CharacterManagement
                 ClassBase blClass = CharacterClassFactory.GetClass(eClass);
                 blClass.SetArchetype(Character, archetypeIndex);
                 characterClass.ArchetypesToSelectFrom.Clear();
+            }
+        }
+
+        public DiceRoll SwitchStartingEquipmentToGold()
+        {
+            if (Character.Inventory.EquipmentToChoose.Any())
+            {
+                Character.Inventory.EquipmentToChoose.Clear();
+
+                return CharacterClassFactory.GetClass(Character.Classes.First().Class).StartingGold;
+            }
+            else
+            {
+                return null;
             }
         }
 

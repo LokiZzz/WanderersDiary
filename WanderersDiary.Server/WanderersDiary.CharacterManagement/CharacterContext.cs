@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Classes;
-using WanderersDiary.CharacterManagement.Extensions;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Models.Enums;
 using WanderersDiary.CharacterManagement.Models.Game;
@@ -20,18 +19,7 @@ namespace WanderersDiary.CharacterManagement
         {
             if(character == null)
             {
-                SavedCharacter = new Character()
-                {
-                    Attributes = new Attributes
-                    {
-                        Strenght = 8,
-                        Dexterity = 8,
-                        Constitution = 8,
-                        Intelligence = 8,
-                        Wisdom = 8,
-                        Charisma = 8
-                    }
-                };
+                SavedCharacter = CharacterSeed.GetNewCharacter();
             }
             else
             {

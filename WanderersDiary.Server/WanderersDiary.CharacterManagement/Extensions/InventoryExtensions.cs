@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models;
 
-namespace WanderersDiary.CharacterManagement.Extensions
+namespace WanderersDiary.CharacterManagement
 {
     public static class InventoryExtensions
     {

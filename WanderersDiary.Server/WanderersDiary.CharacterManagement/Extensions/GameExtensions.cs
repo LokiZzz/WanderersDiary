@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models.Game;
 
-namespace WanderersDiary.CharacterManagement.Extensions
+namespace WanderersDiary.CharacterManagement
 {
     public static class GameExtensions
     {

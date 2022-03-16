@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models.Enums;
 
-namespace WanderersDiary.CharacterManagement.Extensions
+namespace WanderersDiary.CharacterManagement
 {
     public static class AttributeExtensions
     {

@@ -23,11 +23,18 @@ namespace WanderersDiary.TestConsole
             List<EquipmentToChoose> equipToChoose = context.Character.Inventory.EquipmentToChoose;
 
             DiceRoll cashRoll = context.SwitchStartingEquipmentToGold();
-            context.Character.Inventory.Currency.Add(new Currency { })
+
+
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Gold.X(4));
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Silver.X(9));
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Copper.X(30));
+
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Gold.X(5));
+
+            context.Character.Inventory.Currency.SpendWithExchange(CurrencyCollection.Silver.X(19));
+
 
             Console.ReadLine();
         }
-
-        
     }
 }

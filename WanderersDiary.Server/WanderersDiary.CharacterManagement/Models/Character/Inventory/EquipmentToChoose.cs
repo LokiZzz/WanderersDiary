@@ -31,8 +31,8 @@ namespace WanderersDiary.CharacterManagement.Models
             GroupToChooseFrom = group;
         }
 
-        public List<Equipment> Option { get; set; }
+        public List<Equipment> Option { get; set; } = new List<Equipment>();
 
-        public List<EquipmentToChoose> GroupToChooseFrom { get; set; }
+        public List<EquipmentToChoose> GroupToChooseFrom { get; set; } = new List<EquipmentToChoose>();
     }
 }

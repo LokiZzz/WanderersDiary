@@ -17,6 +17,10 @@ namespace WanderersDiary.TestConsole
     {
         static void Main(string[] args)
         {
+            var one = CurrencyCollection.Copper.X(150);
+            var two = CurrencyCollection.Gold.X(2);
+            int remainder = one.SubstractRounded(two);
+
             CharacterContext context = new CharacterContext();
             context.AddLevel(EClass.Bard);
 
@@ -25,14 +29,19 @@ namespace WanderersDiary.TestConsole
             DiceRoll cashRoll = context.SwitchStartingEquipmentToGold();
 
 
-            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Gold.X(4));
-            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Silver.X(9));
-            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Copper.X(30));
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Gold.X(11));
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Silver.X(17));
+            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Copper.X(353));
 
-            context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Gold.X(5));
+            Currency toSubstract = CurrencyCollection.Copper.X(353);
+            int before = context.Character.Inventory.Currency.Sum(c => c.Count * c.ConversionFactor);
+            context.Character.Inventory.Currency.SpendWithExchange(toSubstract, true);
+            int after = context.Character.Inventory.Currency.Sum(c => c.Count * c.ConversionFactor);
+            bool valid = before - after == toSubstract.Count * toSubstract.ConversionFactor;
 
-            context.Character.Inventory.Currency.SpendWithExchange(CurrencyCollection.Silver.X(19));
 
+            List<Currency> c = context.Character.Inventory.Currency;
+            string output = $"pp: {c[4].Count}    gp: {c[3].Count}    ep: {c[2].Count}    sp: {c[1].Count}    cp: {c[0].Count}";
 
             Console.ReadLine();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WanderersDiary.CharacterManagement.Models;
 using WanderersDiary.CharacterManagement.Static;
@@ -23,8 +24,8 @@ namespace WanderersDiary.CharacterManagement
                 }
             };
 
-            CurrencyCollection.GetAll().ForEach(c =>
-                newCharacter.Inventory.Currency.Add(c.Copy())
+            newCharacter.Inventory.Currency.AddRange(
+                CurrencyCollection.GetAll().Select(c => c.Copy()).ToList()
             );
 
             return newCharacter;

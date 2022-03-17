@@ -23,25 +23,45 @@ namespace WanderersDiary.CharacterManagement
             }
         }
 
-        public static bool SpendWithExchange(this List<Currency> thisCurrency, Currency currencyToSpend)
+        public static bool SpendWithExchange(this List<Currency> thisCurrency, Currency currencyToSpend, bool saveLow = true)
         {
-            List<Currency> sortedCurrency = thisCurrency
-                .Where(c => c.CoversionFactor >= currencyToSpend.CoversionFactor)
-                .OrderBy(c => c.CoversionFactor)
-                .ToList();
+            Currency toSpend = currencyToSpend.Copy();
+
+            if (toSpend.Count * toSpend.ConversionFactor > thisCurrency.Sum(c => c.Count * c.ConversionFactor))
+            {
+                return false;
+            }
+
+            List<Currency> sortedCurrency = saveLow
+                ? thisCurrency.OrderByDescending(c => c.ConversionFactor).ToList()
+                : thisCurrency.OrderBy(c => c.ConversionFactor).ToList();
 
             foreach (Currency currency in sortedCurrency)
             {
-                currency.SubstractRounded(currencyToSpend);
+                if (currency.Count == 0) continue;
 
-                if(currency.Count >= 0)
+                int remainder = currency.SubstractRounded(toSpend);
+
+                if(currency.Count < 0)
                 {
-                    return true;
+                    if (toSpend.ConversionFactor <= currency.ConversionFactor)
+                    {
+                        toSpend.Count = -currency.Count * (currency.ConversionFactor / toSpend.ConversionFactor) + (-remainder);
+                    }
+                    else
+                    {
+                        toSpend = currency.Copy();
+                        toSpend.Count = -toSpend.Count;
+                    }
+
+                    currency.Count = 0;
                 }
                 else
                 {
-                    currencyToSpend.AddRounded(currency);
-                    currency.Count = 0;
+                    Currency currentCurrency = sortedCurrency.FirstOrDefault(c => c.IsSame(toSpend));
+                    currentCurrency.Count += remainder;
+
+                    return true;
                 }
             }
 
@@ -65,18 +85,40 @@ namespace WanderersDiary.CharacterManagement
             }
         }
 
-        public static void AddRounded(this Currency thisCurrency, Currency otherCurrency)
+        /// <summary>
+        /// Add currency, using rounded conversion and returns remainder of conversion.
+        /// </summary>
+        public static int AddRounded(this Currency thisCurrency, Currency otherCurrency)
         {
-            int converted = otherCurrency.Count * otherCurrency.CoversionFactor;
+            int converted = otherCurrency.Count * otherCurrency.ConversionFactor;
+            int remainder = converted % thisCurrency.ConversionFactor / otherCurrency.ConversionFactor;
+            thisCurrency.Count += converted / thisCurrency.ConversionFactor;
 
-            thisCurrency.Count += converted / thisCurrency.CoversionFactor;
+            return remainder;
         }
 
-        public static void SubstractRounded(this Currency thisCurrency, Currency otherCurrency)
+        /// <summary>
+        /// Substract currency, using rounded conversion and returns remainder of conversion.
+        /// </summary>
+        public static int SubstractRounded(this Currency thisCurrency, Currency otherCurrency)
         {
-            int converted = otherCurrency.Count * otherCurrency.CoversionFactor;
+            if (thisCurrency.ConversionFactor == otherCurrency.ConversionFactor)
+            {
+                thisCurrency.Count -= otherCurrency.Count;
 
-            thisCurrency.Count -= converted / thisCurrency.CoversionFactor;
+                return 0;
+            }
+            else
+            {
+                int convertedThis = thisCurrency.Count * thisCurrency.ConversionFactor;
+                int convertedOther = otherCurrency.Count * otherCurrency.ConversionFactor;
+
+                int nowThis = convertedThis - convertedOther;
+                int remainder = (nowThis % thisCurrency.ConversionFactor) / otherCurrency.ConversionFactor;
+                thisCurrency.Count = nowThis / thisCurrency.ConversionFactor;
+
+                return remainder;
+            }
         }
 
         public static Currency X(this Currency thisCurrency, int X)

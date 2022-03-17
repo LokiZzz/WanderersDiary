@@ -17,7 +17,7 @@ namespace WanderersDiary.CharacterManagement.Models
         /// Multiplier to convert to copper from PHB
         /// CP = 1, SP = 10, EP = 50, GP = 100, PP = 1000
         /// </summary>
-        public int CoversionFactor { get; set; }
+        public int ConversionFactor { get; set; }
 
         public EDefaultCurrency? DefaultCurrencyReference { get; set; }
     }

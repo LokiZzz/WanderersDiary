@@ -18,16 +18,5 @@ namespace WanderersDiary.CharacterManagement.Models
         /// CP = 1, SP = 10, EP = 50, GP = 100, PP = 1000
         /// </summary>
         public int ConversionFactor { get; set; }
-
-        public EDefaultCurrency? DefaultCurrencyReference { get; set; }
-    }
-
-    public enum EDefaultCurrency
-    {
-        Copper = 1,
-        Silver = 2,
-        Electrum = 3,
-        Gold = 4,
-        Platinum = 5
     }
 }

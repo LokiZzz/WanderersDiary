@@ -19,7 +19,7 @@ namespace WanderersDiary.CharacterManagement
             }
             else
             {
-                currentCurrency.AddRounded(currencyToAdd);
+                currentCurrency.Count += currencyToAdd.Count;
             }
         }
 
@@ -83,18 +83,6 @@ namespace WanderersDiary.CharacterManagement
 
                 return true;
             }
-        }
-
-        /// <summary>
-        /// Add currency, using rounded conversion and returns remainder of conversion.
-        /// </summary>
-        public static int AddRounded(this Currency thisCurrency, Currency otherCurrency)
-        {
-            int converted = otherCurrency.Count * otherCurrency.ConversionFactor;
-            int remainder = converted % thisCurrency.ConversionFactor / otherCurrency.ConversionFactor;
-            thisCurrency.Count += converted / thisCurrency.ConversionFactor;
-
-            return remainder;
         }
 
         /// <summary>

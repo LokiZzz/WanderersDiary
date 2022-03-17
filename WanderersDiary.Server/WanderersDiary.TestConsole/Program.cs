@@ -33,7 +33,7 @@ namespace WanderersDiary.TestConsole
             context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Silver.X(17));
             context.Character.Inventory.Currency.AddCurrency(CurrencyCollection.Copper.X(353));
 
-            Currency toSubstract = CurrencyCollection.Copper.X(353);
+            Currency toSubstract = CurrencyCollection.Copper.X(1325);
             int before = context.Character.Inventory.Currency.Sum(c => c.Count * c.ConversionFactor);
             context.Character.Inventory.Currency.SpendWithExchange(toSubstract, true);
             int after = context.Character.Inventory.Currency.Sum(c => c.Count * c.ConversionFactor);

@@ -40,11 +40,6 @@ namespace WanderersDiary.CharacterManagement
             }
         }
 
-        public static Archetype Get(this List<Archetype> archetypesToSelectFrom, int index)
-        {
-            return archetypesToSelectFrom.FirstOrDefault(a => a.Index == index);
-        }
-
         public static void ImproveAttribute(this Character character, EAttribute attributeToImprove)
         {
             switch(attributeToImprove)
@@ -68,6 +63,57 @@ namespace WanderersDiary.CharacterManagement
                     character.Attributes.Charisma++;
                     break;
             }
+        }
+
+        public static int GetArmorClass(this Character character)
+        {
+            int dex = character.Attributes.Dexterity.Modifier();
+            int actualAC = 10 + dex;
+
+            Armor armor = character.Inventory.EquipedArmor
+                    .Where(a => a.Category != EArmorType.Additional && a.Category != EArmorType.Shield)
+                    .FirstOrDefault();
+            Armor shield = character.Inventory.EquipedArmor
+                .Where(a => a.Category == EArmorType.Shield)
+                .FirstOrDefault();
+
+            if (armor != null)
+            {
+                int dexterityBonus = 0;
+
+                if(armor.HaveDexterityModifier)
+                {
+                    if(armor.MaxDexterityBonus != null)
+                    {
+                        dexterityBonus = dex < armor.MaxDexterityBonus ? dex : armor.MaxDexterityBonus.Value;
+                    }
+                    else
+                    {
+                        dexterityBonus = dex;
+                    }
+                }
+
+                actualAC = armor.BaseAC + armor.BonusAC.Value + dexterityBonus;
+            }
+
+            if (character.Race.ReplaceIfBiggerArmorClass != null)
+            {
+                actualAC = actualAC > character.Race.ReplaceIfBiggerArmorClass.Value
+                    ? actualAC
+                    : character.Race.ReplaceIfBiggerArmorClass.Value;
+            }
+
+            if(character.Race.OverridingArmorClass != null)
+            {
+                actualAC = character.Race.OverridingArmorClass.Value;
+            }
+
+            if (shield != null)
+            {
+                actualAC += shield.BaseAC + shield.BonusAC.Value;
+            }
+
+            return actualAC;
         }
     }
 }

@@ -9,6 +9,10 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public int HitPointsFactor { get; set; }
 
+        public int? ReplaceIfBiggerArmorClass { get; set; }
+
+        public int? OverridingArmorClass { get; set; }
+
         /// <summary>
         /// Subrace is another feature specified in race business logic.
         /// </summary>

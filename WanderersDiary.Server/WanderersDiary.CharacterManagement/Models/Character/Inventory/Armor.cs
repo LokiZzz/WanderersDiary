@@ -13,6 +13,8 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public int BaseAC { get; set; }
 
+        public int? BonusAC { get; set; }
+
         public bool HaveDexterityModifier { get; set; }
 
         public int? MaxDexterityBonus { get; set; }

@@ -14,5 +14,18 @@ namespace WanderersDiary.CharacterManagement.Static
 
             return fields.Select(f => (T)f.GetValue(null)).ToList();
         }
+
+        public static Dictionary<string,T> GetWithStaticFieldNames()
+        {
+            System.Reflection.FieldInfo[] fields = typeof(C).GetFields();
+            Dictionary<string, T> dict = new Dictionary<string, T>();
+
+            foreach (var item in fields)
+            {
+                dict.Add(item.Name, (T)item.GetValue(null));
+            }
+
+            return dict;
+        }
     }
 }

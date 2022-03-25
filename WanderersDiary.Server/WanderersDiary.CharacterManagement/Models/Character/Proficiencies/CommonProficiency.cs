@@ -1,4 +1,5 @@
 ﻿using WanderersDiary.CharacterManagement.Models.Enums;
+using WanderersDiary.CharacterManagement.Models.Utility;
 
 namespace WanderersDiary.CharacterManagement.Models
 {
@@ -7,7 +8,7 @@ namespace WanderersDiary.CharacterManagement.Models
         /// <summary>
         /// Tool, language, vehicle, etc.
         /// </summary>
-        public string Competence { get; set; }
+        public LocalizedString Competence { get; set; }
 
         public EProficiency Proficiency { get; set; }
     }

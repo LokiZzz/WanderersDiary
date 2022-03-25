@@ -13,6 +13,6 @@ namespace WanderersDiary.CharacterManagement.Models
         public bool MartialWeapons { get; set; }
         public bool Firearms { get; set; }
 
-        public List<CommonProficiency> Specific { get; set; }
+        public List<Weapon> Specific { get; set; }
     }
 }

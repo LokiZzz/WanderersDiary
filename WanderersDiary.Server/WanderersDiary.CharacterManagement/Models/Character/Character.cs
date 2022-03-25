@@ -26,13 +26,7 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public Queue<SkillsToChoose> SkillsToChoose { get; set; } = new Queue<SkillsToChoose>();
 
-        public ArmouryProficiencies ArmouryProficiencies { get; set; } = new ArmouryProficiencies();
-
-        public List<CommonProficiency> Tools { get; set; } = new List<CommonProficiency>();
-
-        public List<CommonProficiency> Languages { get; set; } = new List<CommonProficiency>();
-
-        public List<CommonProficiency> OtherProficiencies { get; set; } = new List<CommonProficiency>();
+        public CharacterProficiencies Proficiencies { get; set; } = new CharacterProficiencies();
 
         /// <summary>
         /// Gained  from race and modified later

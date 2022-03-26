@@ -152,9 +152,9 @@ namespace WanderersDiary.CharacterManagement.Classes
 
         private void AddValorProficiencies(Character character)
         {
-            character.ArmouryProficiencies.MediumArmor = true;
-            character.ArmouryProficiencies.Shields = true;
-            character.ArmouryProficiencies.MartialWeapons = true;
+            character.Proficiencies.Armoury.MediumArmor = true;
+            character.Proficiencies.Armoury.Shields = true;
+            character.Proficiencies.Armoury.MartialWeapons = true;
         }
 
         private void AddLoreProficiencies(Character character)

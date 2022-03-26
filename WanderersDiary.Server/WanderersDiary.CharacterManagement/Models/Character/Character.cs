@@ -28,14 +28,8 @@ namespace WanderersDiary.CharacterManagement.Models
 
         public CharacterProficiencies Proficiencies { get; set; } = new CharacterProficiencies();
 
-        /// <summary>
-        /// Gained  from race and modified later
-        /// </summary>
         public Speed Speed { get; set; } = new Speed();
 
-        /// <summary>
-        /// Gained  from race and modified later
-        /// </summary>
         public Senses Senses { get; set; } = new Senses();
 
         public Background Background { get; set; } = new Background();

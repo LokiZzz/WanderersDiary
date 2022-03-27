@@ -18,6 +18,7 @@ namespace WanderersDiary.TestConsole
         static void Main(string[] args)
         {
             List<Race> races = Races.GetRacesAsync().GetAwaiter().GetResult();
+            string racesJSON = JsonConvert.SerializeObject(races);
 
             Console.ReadLine();
         }

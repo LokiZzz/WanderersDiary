@@ -1,0 +1,1941 @@
+[
+  {
+    "Name": {
+      "EN": "Aarakocra",
+      "RU": "Ааракокра"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 25,
+      "Swim": 0,
+      "Fly": 50,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Aasimar",
+      "RU": "Аасимар"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Bugbear",
+      "RU": "Багбир"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Vedalken",
+      "RU": "Ведалкен"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Verdan",
+      "RU": "Вердан"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Reborn",
+      "RU": "Возрождённый"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      },
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Simic Hybrid",
+      "RU": "Гибрид симиков"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 30,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Gith",
+      "RU": "Гит"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Gnome",
+      "RU": "Гном"
+    },
+    "SizesToChooseFrom": [ 2 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 25,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Goblin",
+      "RU": "Гоблин"
+    },
+    "SizesToChooseFrom": [ 2 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Goliath",
+      "RU": "Голиаф"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Dhampir",
+      "RU": "Дампир"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": null,
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 35,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 35,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Dwarf",
+      "RU": "Дварф"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 25,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Genasi",
+      "RU": "Дженази"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Dragonborn",
+      "RU": "Драконорождённый"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Harengon",
+      "RU": "Зайчаны"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      },
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Changeling",
+      "RU": "Изменяющиеся"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Kalashtar",
+      "RU": "Калаштар"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Kenku",
+      "RU": "Кенку"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Centaur",
+      "RU": "Кентавр"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 40,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Kobold",
+      "RU": "Кобольд"
+    },
+    "SizesToChooseFrom": [ 2 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Warforged",
+      "RU": "Кованный"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Leonin",
+      "RU": "Леонин"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 35,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Locathah",
+      "RU": "Локата"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 30,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Loxodon",
+      "RU": "Локсодон"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Lizardfolk",
+      "RU": "Людоящер"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 30,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Minotaur",
+      "RU": "Минотавр"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Orc",
+      "RU": "Орк"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Half-Orc",
+      "RU": "Полуорк"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Halfling",
+      "RU": "Полурослик"
+    },
+    "SizesToChooseFrom": [ 2 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 25,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Half-Elf",
+      "RU": "Полуэльф"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Hexblood",
+      "RU": "Порчекровные"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": null,
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Satyr",
+      "RU": "Сатир"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 35,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Owlin",
+      "RU": "Совлин"
+    },
+    "SizesToChooseFrom": [ 2, 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      },
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1, 2, 3, 4, 5, 6 ],
+            "MustBeOther": true
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 30,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 120,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Tabaxi",
+      "RU": "Табакси"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Tiefling",
+      "RU": "Тифлинг"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Tortle",
+      "RU": "Тортл"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Triton",
+      "RU": "Тритон"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 30,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Firbolg",
+      "RU": "Фирболг"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Hobgoblin",
+      "RU": "Хобгоблин"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Human",
+      "RU": "Человек"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 1 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 3 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 5 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 0,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Shifter",
+      "RU": "Шифтер"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": null,
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Elf",
+      "RU": "Эльф"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 2 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  },
+  {
+    "Name": {
+      "EN": "Yuan-ti",
+      "RU": "Юань-ти"
+    },
+    "SizesToChooseFrom": [ 3 ],
+    "AttributesBonusesOptions": [
+      {
+        "Bonuses": [
+          {
+            "CountToSelect": 1,
+            "Bonus": 2,
+            "AttributesToSelectFrom": [ 6 ],
+            "MustBeOther": false
+          },
+          {
+            "CountToSelect": 1,
+            "Bonus": 1,
+            "AttributesToSelectFrom": [ 4 ],
+            "MustBeOther": false
+          }
+        ]
+      }
+    ],
+    "Proficiencies": null,
+    "Speed": {
+      "Walk": 30,
+      "Swim": 0,
+      "Fly": 0,
+      "Climb": 0,
+      "Burrow": 0
+    },
+    "Senses": {
+      "Darkvision": 60,
+      "Blindsight": 0,
+      "Truesight": 0,
+      "Tremorsense": 0
+    },
+    "HitPointsFactor": 0,
+    "ReplaceIfBiggerArmorClass": null,
+    "OverridingArmorClass": null,
+    "Features": null,
+    "Subraces": null
+  }
+]

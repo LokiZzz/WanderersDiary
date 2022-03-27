@@ -10,9 +10,13 @@ namespace WanderersDiary.CharacterManagement.Models
     {
         public LocalizedString Name { get; set; }
 
-        public ESize Size { get; set; }
+        public List<ESize> SizesToChooseFrom { get; set; }
 
-        public List<EAttribute> AttributesBonuses { get; set; }
+        /// <summary>
+        /// List of options player have to choose from.
+        /// Player can choose only one option.
+        /// </summary>
+        public List<AttributesBonusesGroup> AttributesBonusesOptions { get; set; }
 
         public CharacterProficiencies Proficiencies { get; set; }
 
@@ -29,5 +33,29 @@ namespace WanderersDiary.CharacterManagement.Models
         public List<Feature> Features { get; set; }
 
         public List<Race> Subraces { get; set; }
+    }
+
+    public class AttributesBonusesGroup
+    {
+        /// <summary>
+        /// Bonuses that the player receives in full.
+        /// </summary>
+        public List<AttributeBonus> Bonuses { get; set; }
+    }
+
+    public class AttributeBonus
+    {
+        public int CountToSelect { get; set; }
+
+        public int Bonus { get; set; }
+
+        public List<EAttribute> AttributesToSelectFrom { get; set; }
+
+        /// <summary>
+        /// After every choice need to check if this field is True
+        /// in other bonuses of group. If it is true, need to remove 
+        /// choosed attribute from bonus setup.
+        /// </summary>
+        public bool MustBeOther { get; set; }
     }
 }

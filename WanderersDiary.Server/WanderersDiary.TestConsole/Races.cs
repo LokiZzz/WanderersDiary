@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -40,12 +41,81 @@ namespace WanderersDiary.TestConsole
                     SizesToChooseFrom = GetSizes(html),
                     Speed = GetSpeed(html),
                     Senses = GetSenses(html),
+                    Features = GetFeatures(html, name.Key),
                 };
 
                 races.Add(race);
             }
 
             return races;
+        }
+
+        private static List<Feature> GetFeatures(string html, string enName)
+        {
+            List<Feature> result = new List<Feature>();
+
+            //1. Добыть фичи расы без подрас.
+
+            string inline = html.GetInline();
+            List<string> ruTitles = GetRUFeaturesTitles(inline);
+            
+            foreach(string ruTitle in ruTitles)
+            {
+                Feature currentFeature = new Feature
+                {
+                    Name = new LocalizedString { RU = ruTitle.Replace(".", string.Empty), },
+                    Description = new LocalizedString { RU = GetRUFeatureDescription(ruTitle, inline) }
+                };
+
+
+
+                result.Add(currentFeature);
+            }
+
+            //2. Добыть хтмл на английском и добыть от туда фичи на английском.
+            //3. Сопоставить фичи на разных языках через консоль вручную.
+
+            return result;
+        }
+
+        private static string GetRUFeatureDescription(string ruTitle, string inline)
+        {
+            string featureDescription =  inline.GetBetweenThe(
+                $@"<summary class=""h4 header_separator""><span>{ruTitle}</span></summary><div class=""content""><div><p>",
+                @"</p></div></div></details>"
+            );
+
+            //Clear from formating
+            MatchCollection matches = Regex.Matches(featureDescription, @$"(<)(.*?)(>)");
+            foreach(Match match in matches)
+            {
+                featureDescription = featureDescription.Replace(match.ToString(), string.Empty);
+            }
+
+            return featureDescription;
+        }
+
+        private static List<string> GetRUFeaturesTitles(string inline)
+        {
+            List<string> titles = inline.GetAllBetweenThe(
+                @"<summary class=""h4 header_separator""><span>",
+                @"</span></summary><div class=""content""><div><p>"
+            );
+
+            titles = titles
+                .Where(t => !t.Equals("Увеличение характеристик.")
+                    && !t.Equals("Скорость.")
+                    && !t.Equals("Размер.")
+                    && !t.Equals("Имена")
+                    && !t.Equals("Описание"))
+                .ToList();
+
+            titles = titles.OrderBy(t => t == "Тёмное зрение" ? 1 : 0).ToList();
+            titles = titles.OrderBy(t => t == "Возраст" ? 1 : 0).ToList();
+            titles = titles.OrderBy(t => t == "Мировоззрение" ? 1 : 0).ToList();
+            titles = titles.OrderBy(t => t == "Языки" ? 1 : 0).ToList();
+
+            return titles;
         }
 
         private static Senses GetSenses(string html)

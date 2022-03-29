@@ -17,11 +17,14 @@ namespace WanderersDiary.TestConsole
     {
         static void Main(string[] args)
         {
+            if(File.Exists("FeatureTitleMapping.json"))
+            {
+                string featureMappingFileContent = File.ReadAllText("FeatureTitleMapping.json");
+                Races.FeatureTitlesMapping = JsonConvert.DeserializeObject<Dictionary<string, string>>(featureMappingFileContent);
+            }
+
             List<Race> races = Races.GetRacesAsync().GetAwaiter().GetResult();
             string racesJSON = JsonConvert.SerializeObject(races);
-
-            string FeatureTitleMapping = JsonConvert.SerializeObject(Races.FeatureTitlesMapping);
-            File.WriteAllText("FeatureTitleMapping.json", FeatureTitleMapping);
 
             Console.ReadLine();
         }

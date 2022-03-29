@@ -91,6 +91,17 @@ namespace WanderersDiary.TestConsole
                 return;
             }
 
+            if(FeatureTitlesMapping.ContainsKey(currentFeature.Name.RU))
+            {
+                currentFeature.Name.EN = FeatureTitlesMapping[currentFeature.Name.RU].Replace(".", string.Empty);
+                (string, string) enFeatureDesc = enFeatures.FirstOrDefault(f => f.Item1 == FeatureTitlesMapping[currentFeature.Name.RU]);
+                currentFeature.Description.EN = enFeatureDesc.Item2;
+
+                enFeatures.Remove(enFeatureDesc);
+
+                return;
+            }
+
             Console.Clear();
             Console.WriteLine($"{currentFeature.Name.RU}: {currentFeature.Description.RU}");
             Console.WriteLine($"__________________________________________________________________\n");
@@ -110,7 +121,11 @@ namespace WanderersDiary.TestConsole
             int selected = Convert.ToInt32(input);
             currentFeature.Name.EN = enFeatures[selected].Item1.Replace(".", string.Empty);
             currentFeature.Description.EN = enFeatures[selected].Item2;
-            FeatureTitlesMapping.Add(currentFeature.Name.RU, currentFeature.Name.EN);
+
+            FeatureTitlesMapping.Add(currentFeature.Name.RU, enFeatures[selected].Item1);
+            string FeatureTitleMapping = JsonConvert.SerializeObject(Races.FeatureTitlesMapping);
+            File.WriteAllText("FeatureTitleMapping.json", FeatureTitleMapping);
+
             enFeatures.RemoveAt(selected);
         }
 

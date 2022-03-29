@@ -41,7 +41,7 @@ namespace WanderersDiary.TestConsole
                     SizesToChooseFrom = GetSizes(html),
                     Speed = GetSpeed(html),
                     Senses = GetSenses(html),
-                    Features = GetFeatures(html, name.Key),
+                    Features = await GetFeatures(html, name.Key),
                 };
 
                 races.Add(race);
@@ -50,30 +50,139 @@ namespace WanderersDiary.TestConsole
             return races;
         }
 
-        private static List<Feature> GetFeatures(string html, string enName)
+        private static async Task<List<Feature>> GetFeatures(string html, string enRace)
         {
             List<Feature> result = new List<Feature>();
 
-            //1. Добыть фичи расы без подрас.
-
             string inline = html.GetInline();
             List<string> ruTitles = GetRUFeaturesTitles(inline);
+
+            Dictionary<string, string> enFeatures = await GetENFeatureDictionary(enRace);
+            List<(string, string)> enFeaturesList = enFeatures.Select(f => (f.Key, f.Value)).ToList();
             
-            foreach(string ruTitle in ruTitles)
+            foreach (string ruTitle in ruTitles)
             {
-                Feature currentFeature = new Feature
+                result.Add(new Feature
                 {
                     Name = new LocalizedString { RU = ruTitle.Replace(".", string.Empty), },
                     Description = new LocalizedString { RU = GetRUFeatureDescription(ruTitle, inline) }
-                };
-
-
-
-                result.Add(currentFeature);
+                });
             }
 
-            //2. Добыть хтмл на английском и добыть от туда фичи на английском.
-            //3. Сопоставить фичи на разных языках через консоль вручную.
+            result.ForEach(f => TryFillKnownFeature(f, enFeaturesList));
+
+            foreach(Feature feature in result)
+            {
+                if(string.IsNullOrEmpty(feature.Name.EN))
+                {
+                    ChooseRightTranslationManually(feature, enFeaturesList);
+                }    
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, string> FeatureTitlesMapping = new Dictionary<string, string>();
+
+        private static void ChooseRightTranslationManually(Feature currentFeature, List<(string,string)> enFeatures)
+        {
+            if (!enFeatures.Any() && currentFeature.Name.RU.Equals("Мировоззрение"))
+            {
+                return;
+            }
+
+            Console.Clear();
+            Console.WriteLine($"{currentFeature.Name.RU}: {currentFeature.Description.RU}");
+            Console.WriteLine($"__________________________________________________________________\n");
+            
+            foreach((string, string) enFeature in enFeatures)
+            {
+                Console.WriteLine($"{enFeatures.IndexOf(enFeature)}) {enFeature.Item1}: {enFeature.Item2}\n");
+            }
+
+            string input = Console.ReadLine();
+
+            if(input.Equals("x"))
+            {
+                return;
+            }
+
+            int selected = Convert.ToInt32(input);
+            currentFeature.Name.EN = enFeatures[selected].Item1.Replace(".", string.Empty);
+            currentFeature.Description.EN = enFeatures[selected].Item2;
+            FeatureTitlesMapping.Add(currentFeature.Name.RU, currentFeature.Name.EN);
+            enFeatures.RemoveAt(selected);
+        }
+
+        private static void TryFillKnownFeature(Feature currentFeature, List<(string, string)> enFeatures)
+        {
+            foreach ((string, string) enFeature in enFeatures.ToList())
+            {
+                if((enFeature.Item1.Equals("Age.") && currentFeature.Name.RU.Equals("Возраст"))
+                    || (enFeature.Item1.Equals("Alignment.") && currentFeature.Name.RU.Equals("Мировоззрение"))
+                    || (enFeature.Item1.Equals("Size.") && currentFeature.Name.RU.Equals("Размер"))
+                    || (enFeature.Item1.Equals("Speed.") && currentFeature.Name.RU.Equals("Скорость"))
+                    || (enFeature.Item1.Equals("Languages.") && currentFeature.Name.RU.Equals("Языки"))
+                    || (enFeature.Item1.Equals("Darkvision.") && currentFeature.Name.RU.Equals("Тёмное зрение")))
+                {
+                    currentFeature.Name.EN = enFeature.Item1.Replace(".", string.Empty);
+                    currentFeature.Description.EN = enFeature.Item2;
+
+                    enFeatures.Remove(enFeature);
+                }
+            }
+        }
+
+        private static async Task<Dictionary<string, string>> GetENFeatureDictionary(string enRace)
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+
+            using HttpClient client = new HttpClient();
+
+            string formattedName = enRace.ToLower().Replace("Half", "half-");
+            HttpResponseMessage response = await client.GetAsync($"http://dnd5e.wikidot.com/{formattedName}");
+            string html = await response.Content.ReadAsStringAsync();
+            string inline = html.GetInline();
+
+            if(formattedName.Equals("verdan"))
+            {
+                string stop = "";
+            }
+
+            inline = inline.Split(@"<h3 id=""toc2""><span>")[0];
+            inline = inline.Split(@"<h1 id=""toc1""><span>")[0];
+
+            List<string> enNames = inline.GetAllBetweenThe(@"<li><strong>", @"</strong>");
+            if (!enNames.Any())
+            {
+                enNames = inline.GetAllBetweenThe(@"<p>• <strong>", @"</strong>");
+            }
+            enNames = enNames
+                .Where(t => !t.Equals("Ability Score Increase.") && !t.Equals("Speed.") && !t.Equals("Size."))
+                .ToList();
+            enNames = enNames.OrderBy(t => t == "Darkvision." ? 1 : 0).ToList();
+            enNames = enNames.OrderBy(t => t == "Age." ? 1 : 0).ToList();
+            enNames = enNames.OrderBy(t => t == "Alignment." ? 1 : 0).ToList();
+            enNames = enNames.OrderBy(t => t == "Languages." ? 1 : 0).ToList();
+
+            foreach(string name in enNames)
+            {
+                string description = inline.GetBetweenThe($@"<li><strong>{name}</strong> ", @"</li></ul>");
+
+                if(string.IsNullOrEmpty(description))
+                {
+                    description = inline.GetBetweenThe($@"<p>• <strong>{name}</strong> ", @"</p>");
+                }
+
+                //Clear from formating
+                MatchCollection matches = Regex.Matches(description, @$"(<)(.*?)(>)");
+                foreach (Match match in matches)
+                {
+                    description = description.Replace(match.ToString(), string.Empty);
+                }
+
+                result.Add(name, description);
+            }
 
             return result;
         }

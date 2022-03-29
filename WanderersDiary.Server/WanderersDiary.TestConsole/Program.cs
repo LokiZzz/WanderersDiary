@@ -20,6 +20,9 @@ namespace WanderersDiary.TestConsole
             List<Race> races = Races.GetRacesAsync().GetAwaiter().GetResult();
             string racesJSON = JsonConvert.SerializeObject(races);
 
+            string FeatureTitleMapping = JsonConvert.SerializeObject(Races.FeatureTitlesMapping);
+            File.WriteAllText("FeatureTitleMapping.json", FeatureTitleMapping);
+
             Console.ReadLine();
         }
     }
